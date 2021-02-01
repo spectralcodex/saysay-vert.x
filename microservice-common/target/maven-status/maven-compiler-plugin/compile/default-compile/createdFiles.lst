@@ -1,0 +1,15 @@
+io/vertx/saysayX/common/service/JdbcRepositoryWrapper.class
+io/vertx/saysayX/common/config/ConfigRetrieverHelper.class
+io/vertx/saysayX/common/config/RequestLogHandler.class
+io/vertx/saysayX/common/config/PropertiesCache.class
+io/vertx/saysayX/common/config/PropertiesCache$LazyHolder.class
+io/vertx/saysayX/common/config/Log4jConfigurationServiceHandler.class
+io/vertx/saysayX/common/config/AuthProviderHelper.class
+io/vertx/saysayX/common/service/JooqRepositoryWrapper.class
+io/vertx/saysayX/common/config/PropertiesCache$1.class
+vertx-saysayx-microservice-common-js/request_log_handler.js
+io/vertx/saysayX/common/package-info.class
+io/vertx/saysayX/common/BaseMicroserviceVerticle.class
+io/vertx/saysayX/common/config/Slf4jRequestLogger$1.class
+io/vertx/saysayX/common/RestAPIVerticle.class
+io/vertx/saysayX/common/config/Slf4jRequestLogger.class

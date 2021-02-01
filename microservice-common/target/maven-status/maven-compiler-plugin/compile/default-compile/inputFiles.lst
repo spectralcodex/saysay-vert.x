@@ -1,0 +1,11 @@
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/Slf4jRequestLogger.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/Log4jConfigurationServiceHandler.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/BaseMicroserviceVerticle.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/service/JdbcRepositoryWrapper.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/RequestLogHandler.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/AuthProviderHelper.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/service/JooqRepositoryWrapper.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/RestAPIVerticle.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/PropertiesCache.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/package-info.java
+/home/zeus/IdeaProjects/saysayX/microservice-common/src/main/java/io/vertx/saysayX/common/config/ConfigRetrieverHelper.java
