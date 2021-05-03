@@ -13,6 +13,7 @@
         <!-- infrastructure components-->
         <!--<module>api-gateway</module>-->
         <module>microservice-common</module>
+        <module>api-gateway</module>
 
         <!-- service components -->
         <!--<module>administration-microservice</module>-->

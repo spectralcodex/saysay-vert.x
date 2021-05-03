@@ -18,16 +18,16 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE impala;
+DROP DATABASE saysay;
 --
 -- TOC entry 3031 (class 1262 OID 16385)
--- Name: impala; Type: DATABASE; Schema: -; Owner: -
+-- Name: saysay; Type: DATABASE; Schema: -; Owner: -
 --
 
-CREATE DATABASE impala WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
+CREATE DATABASE saysay WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
 
 
-\connect impala
+\connect saysay
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
