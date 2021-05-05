@@ -14,6 +14,8 @@
         <!--<module>api-gateway</module>-->
         <module>microservice-common</module>
         <module>api-gateway</module>
+        <module>administration-microservice</module>
+        <module>story-microservice</module>
 
         <!-- service components -->
         <!--<module>administration-microservice</module>-->

@@ -1,0 +1,11 @@
+{
+  "api.name": "story",
+  "property.http.address": "localhost",
+  "property.http.port": 8085,
+  "host": "localhost",
+  "driver_class": "org.postgresql.Driver",
+  "username": "postgres",
+  "password": "secr3t",
+  "max_pool_size": 30,
+  "database": "saysay"
+}

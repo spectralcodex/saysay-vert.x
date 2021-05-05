@@ -1,0 +1,11 @@
+{
+  "api.name": "propertyman",
+  "property.http.address": "property-management-microservice",
+  "property.http.port": 8085,
+  "host": "pg_db",
+  "driver_class": "org.postgresql.Driver",
+  "username": "postgres",
+  "password": "postgres",
+  "max_pool_size": 30,
+  "database": "impala"
+}
