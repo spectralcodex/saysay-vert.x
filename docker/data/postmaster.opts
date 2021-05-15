@@ -1,0 +1,1 @@
+/Applications/Postgres.app/Contents/Versions/13/bin/postgres "-D" "/Users/sfadarkwah/Library/Application Support/Postgres/var-13" "-p" "5432"

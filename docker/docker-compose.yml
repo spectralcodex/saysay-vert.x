@@ -11,12 +11,11 @@ services:
       - "5432"
     volumes:
       - ./postgres.conf:/etc/postgresql/postgresql.conf
-      - ./data:/var/lib/postgresql/data
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
 
-  administration-microservice:
-    image: saysay/administration-microservice
+  story-microservice:
+    image: ms-saysay/story-microservice
     links:
       - pg_db
     depends_on:
@@ -25,14 +24,13 @@ services:
       - "8082"
 
   api-gateway:
-    image: saysay/api-gateway
+    image: ms-saysay/api-gateway
     ports:
       - 8787:8787
     environment:
       - JAVA_OPTS="-Xms128m -Xmx256m"
     links:
-      - administration-microservice
-      - filebeat
+      - story-microservice
 
 volumes:
   esdata1:

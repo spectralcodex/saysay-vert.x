@@ -10,6 +10,9 @@ import io.vertx.ext.sql.SQLConnection;
 import io.vertx.pgclient.PgConnectOptions;
 import io.vertx.pgclient.PgPool;
 import io.vertx.sqlclient.PoolOptions;
+import io.vertx.sqlclient.Row;
+import io.vertx.sqlclient.RowSet;
+import io.vertx.sqlclient.SqlConnection;
 import org.jooq.Configuration;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DefaultConfiguration;
@@ -32,42 +35,43 @@ public class JooqRepositoryWrapper {
     protected final PoolOptions poolOptions;
 
 
-
-
-    public JooqRepositoryWrapper(Vertx vertx, JsonObject config){
-       connectOptions = new PgConnectOptions().setPort(5432)
+    public JooqRepositoryWrapper(Vertx vertx, JsonObject config) {
+        connectOptions = new PgConnectOptions().setPort(5432)
                 .setHost(config.getString("PGHOST", "the-host"))
                 .setDatabase(config.getString("PGDATABASE", "the-db"))
                 .setUser(config.getString("PGUSER", "user"))
-                .setPassword(config.getString("PGPASSWORD", "secret"));
+                .setPassword(config.getString("PGPASSWORD", "passwd"));
+
 
         poolOptions = new PoolOptions().setMaxSize(config.getInteger("PGMAXSIZE", 5));
 
         this.client = PgPool.pool(vertx, connectOptions, poolOptions);
-        //this.nonShared = PostgreSQLClient.createNonShared(vertx, config);
         this.executor = new ReactiveClassicGenericQueryExecutor(DIALECT, this.client);
     }
 
     protected <T> Future<Void> retrieveNone(T t, String sql) {
-        return getConnection()
-                .compose(pgCon -> {
-                    Promise<JsonObject> promise = Promise.promise();
-                    pgCon.execute(sql, ar -> {
-                        if (ar.succeeded()) {
-                            logger.info("Persist OK --> id:" + t);
-                            promise.complete();
-                        } else {
-                            promise.fail(ar.cause());
-                        }
+        Promise<JsonObject> promise = Promise.promise();
+        this.client.getConnection(ar -> {
+            if (ar.failed()) {
+                promise.fail(ar.cause());
+                logger.info("Failure#############################"+ ar.cause());
+            } else {
+                SqlConnection pgCon = ar.result();
+                pgCon.query(sql).execute(res -> {
+                    if (res.failed()) {
                         pgCon.close();
-                    });
-                    return promise.future().map(r -> null);
+                        logger.info("Failure2::::#############################"+ ar.cause());
+                        promise.fail(res.cause());
+                    } else {
+                            logger.info("Persist OKKKK --> id:" + t);
+                            logger.info("User: ", res.result());
+                            pgCon.close();
+                            promise.complete();
+                    }
                 });
-    }
+            }
 
-    protected Future<SQLConnection> getConnection() {
-        Promise<SQLConnection> promise = Promise.promise();
-        this.client.getConnection(ar -> promise.complete());
-        return promise.future();
+        });
+        return promise.future().map(r -> null);
     }
 }

@@ -10,7 +10,7 @@ IP=127.0.0.1
 unamestr=`uname`
 if [[ "$unamestr" != 'Linux' ]]; then
   # Set docker-machine IP
-  IP="$(docker-machine ip)"
+  IP="$(docker-machine ip dev)"
 fi
 export EXTERNAL_IP=$IP
 
