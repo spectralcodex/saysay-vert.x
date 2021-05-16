@@ -12,22 +12,20 @@
     <artifactId>api-gateway</artifactId>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
         <main.verticle>io.vertx.saysayX.ms.gateway.APIGatewayVerticle</main.verticle>
 
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.vertx.easyerp</groupId>
+            <groupId>io.vertx.saysayX</groupId>
             <artifactId>microservice-common</artifactId>
-            <version>${project.version}</version>
+            <version>1.0</version>
         </dependency>
-        <!--<dependency>
-            <groupId>io.vertx.easyerp</groupId>
-            <artifactId>administration-microservice</artifactId>
-            <version>${project.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>io.vertx.saysayX</groupId>
+            <artifactId>story-microservice</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>io.vertx</groupId>

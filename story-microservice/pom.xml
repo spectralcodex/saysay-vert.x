@@ -12,15 +12,13 @@
     <artifactId>story-microservice</artifactId>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
         <main.verticle>io.vertx.saysayX.ms.story.StoryVerticle</main.verticle>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.vertx.easyerp</groupId>
+            <groupId>io.vertx.saysayX</groupId>
             <artifactId>microservice-common</artifactId>
-            <version>${project.version}</version>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

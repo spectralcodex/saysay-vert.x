@@ -1,8 +1,8 @@
 /**
  * Indicates that this module contains classes that need to be generated / processed.
  */
-@ModuleGen(name = "vertx-easyerp-administration", groupPackage = "io.vertx.easyerp.microservice.administration")
+@ModuleGen(name = "vertx-saysay-story", groupPackage = "io.vertx.saysayX.ms.story")
 
-package io.vertx.easyerp.microservice.administration;
+package io.vertx.saysayX.ms.story;
 
 import io.vertx.codegen.annotations.ModuleGen;

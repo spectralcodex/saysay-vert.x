@@ -1,0 +1,20 @@
+= Cheatsheets
+
+[[Story]]
+== Story
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[authorId]]`@authorId`|`String`|-
+|[[entries]]`@entries`|`Json object`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[lang]]`@lang`|`String`|-
+|[[possiblySensitive]]`@possiblySensitive`|`Number (Integer)`|-
+|[[source]]`@source`|`String`|-
+|[[storyId]]`@storyId`|`String`|-
+|[[text]]`@text`|`String`|-
+|===
+

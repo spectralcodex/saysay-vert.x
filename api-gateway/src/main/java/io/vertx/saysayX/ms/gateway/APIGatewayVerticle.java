@@ -7,7 +7,7 @@ import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.net.JksOptions;
-import io.vertx.easyerp.microservice.common.RestAPIVerticle;
+import io.vertx.saysayX.common.RestAPIVerticle;
 import io.vertx.ext.auth.oauth2.OAuth2Auth;
 import io.vertx.ext.auth.oauth2.OAuth2FlowType;
 import io.vertx.ext.auth.oauth2.providers.KeycloakAuth;
@@ -25,9 +25,6 @@ import java.util.Optional;
 
 
 public class APIGatewayVerticle extends RestAPIVerticle {
-    //private static final long SCAN_PERIOD = 20000L;
-    //private final static InputStream CONFIG_IN = APIGatewayVerticle.class.getClassLoader().getResourceAsStream(PropertiesCache.getInstance().getProperty("local.config.file"));
-
     private static final int DEFAULT_PORT = 8787;
 
     private static final Logger logger = LoggerFactory.getLogger(APIGatewayVerticle.class);
@@ -97,11 +94,12 @@ public class APIGatewayVerticle extends RestAPIVerticle {
     }*/
 
     private void apiVersion(RoutingContext context) {
+        logger.info("Her we are !!!!!!");
         String res = new JsonObject()
                 .put("type", "response")
                 .put("service", "vertx-docker")
                 .put("version", "v1").encode();
-        logger.info("Response from postman echo: {}", res);
+        //logger.info("Response from postman echo: {}", res);
         context.response()
                 .putHeader("Content-Type", "application/json")
                 .end(res);

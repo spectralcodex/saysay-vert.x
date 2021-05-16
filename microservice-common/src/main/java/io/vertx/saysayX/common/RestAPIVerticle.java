@@ -56,7 +56,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         // use customized request logger
         // there are three logger format: DEFAULT, SHORT, TINY, see Slf4jRequestLogger.java for details
         // you can make it configurable, e.g. dev using DEFAULT, prod using TINY
-        LoggerFormat loggerFormat = LoggerFormat.DEFAULT;
+        LoggerFormat loggerFormat = LoggerFormat.TINY;
         route.route().handler(RequestLogHandler.create(loggerFormat));
 
         return route;
@@ -137,7 +137,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
             if (ar.succeeded()) {
                 handler.handle(ar.result());
             } else {
-                //logger.error(ar.cause());
+                //logger.error(ar.cause().getMessage());
                 internalError(context, ar.cause());
                 ar.cause().printStackTrace();
             }
@@ -216,7 +216,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         return ar -> {
             if (ar.succeeded()) {
                 T res = ar.result();
-                logger.info("RESULT-->" + res);
+                //logger.info("RESULT-->" + res);
                 if (res == null) {
                     notFound(context);
                 } else {
