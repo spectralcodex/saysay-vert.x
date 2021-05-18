@@ -33,7 +33,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implements VertxPojo, Record16<Long, String, String, String, String, Integer, String, String, String, String, String, OffsetTime, String, String, String, String>, ITbCompany {
 
-    private static final long serialVersionUID = -1329935065;
+    private static final long serialVersionUID = 955538319;
 
     /**
      * Setter for <code>public.tb_company.id</code>.
@@ -172,19 +172,19 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
     }
 
     /**
-     * Setter for <code>public.tb_company.pictures</code>.
+     * Setter for <code>public.tb_company.entities</code>.
      */
     @Override
-    public TbCompanyRecord setPictures(String value) {
+    public TbCompanyRecord setEntities(String value) {
         set(8, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.tb_company.pictures</code>.
+     * Getter for <code>public.tb_company.entities</code>.
      */
     @Override
-    public String getPictures() {
+    public String getEntities() {
         return (String) get(8);
     }
 
@@ -408,7 +408,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
      */
     @Override
     public Field<String> field9() {
-        return TbCompany.TB_COMPANY.PICTURES;
+        return TbCompany.TB_COMPANY.ENTITIES;
     }
 
     /**
@@ -536,7 +536,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
      */
     @Override
     public String component9() {
-        return getPictures();
+        return getEntities();
     }
 
     /**
@@ -664,7 +664,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
      */
     @Override
     public String value9() {
-        return getPictures();
+        return getEntities();
     }
 
     /**
@@ -800,7 +800,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
      */
     @Override
     public TbCompanyRecord value9(String value) {
-        setPictures(value);
+        setEntities(value);
         return this;
     }
 
@@ -908,7 +908,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
         setRating(from.getRating());
         setLogo(from.getLogo());
         setBackgroundInfo(from.getBackgroundInfo());
-        setPictures(from.getPictures());
+        setEntities(from.getEntities());
         setCompanyId(from.getCompanyId());
         setCompanyCode(from.getCompanyCode());
         setCreatedAt(from.getCreatedAt());
@@ -941,7 +941,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
     /**
      * Create a detached, initialised TbCompanyRecord
      */
-    public TbCompanyRecord(Long id, String name, String location, String phoneNumber, String sector, Integer rating, String logo, String backgroundInfo, String pictures, String companyId, String companyCode, OffsetTime createdAt, String createdBy, String email, String website, String otherLinks) {
+    public TbCompanyRecord(Long id, String name, String location, String phoneNumber, String sector, Integer rating, String logo, String backgroundInfo, String entities, String companyId, String companyCode, OffsetTime createdAt, String createdBy, String email, String website, String otherLinks) {
         super(TbCompany.TB_COMPANY);
 
         set(0, id);
@@ -952,7 +952,7 @@ public class TbCompanyRecord extends UpdatableRecordImpl<TbCompanyRecord> implem
         set(5, rating);
         set(6, logo);
         set(7, backgroundInfo);
-        set(8, pictures);
+        set(8, entities);
         set(9, companyId);
         set(10, companyCode);
         set(11, createdAt);

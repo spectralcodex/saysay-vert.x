@@ -26,7 +26,7 @@ import jooq.tables.interfaces.ITbCompany;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCompany implements VertxPojo, ITbCompany {
 
-    private static final long serialVersionUID = -68367283;
+    private static final long serialVersionUID = 1487555569;
 
     private Long       id;
     private String     name;
@@ -36,7 +36,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
     private Integer    rating;
     private String     logo;
     private String     backgroundInfo;
-    private String     pictures;
+    private String     entities;
     private String     companyId;
     private String     companyCode;
     private OffsetTime createdAt;
@@ -56,7 +56,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
         this.rating = value.getRating();
         this.logo = value.getLogo();
         this.backgroundInfo = value.getBackgroundInfo();
-        this.pictures = value.getPictures();
+        this.entities = value.getEntities();
         this.companyId = value.getCompanyId();
         this.companyCode = value.getCompanyCode();
         this.createdAt = value.getCreatedAt();
@@ -75,7 +75,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
         Integer    rating,
         String     logo,
         String     backgroundInfo,
-        String     pictures,
+        String     entities,
         String     companyId,
         String     companyCode,
         OffsetTime createdAt,
@@ -92,7 +92,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
         this.rating = rating;
         this.logo = logo;
         this.backgroundInfo = backgroundInfo;
-        this.pictures = pictures;
+        this.entities = entities;
         this.companyId = companyId;
         this.companyCode = companyCode;
         this.createdAt = createdAt;
@@ -191,13 +191,13 @@ public class TbCompany implements VertxPojo, ITbCompany {
     }
 
     @Override
-    public String getPictures() {
-        return this.pictures;
+    public String getEntities() {
+        return this.entities;
     }
 
     @Override
-    public TbCompany setPictures(String pictures) {
-        this.pictures = pictures;
+    public TbCompany setEntities(String entities) {
+        this.entities = entities;
         return this;
     }
 
@@ -290,7 +290,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
         sb.append(", ").append(rating);
         sb.append(", ").append(logo);
         sb.append(", ").append(backgroundInfo);
-        sb.append(", ").append(pictures);
+        sb.append(", ").append(entities);
         sb.append(", ").append(companyId);
         sb.append(", ").append(companyCode);
         sb.append(", ").append(createdAt);
@@ -320,7 +320,7 @@ public class TbCompany implements VertxPojo, ITbCompany {
         setRating(from.getRating());
         setLogo(from.getLogo());
         setBackgroundInfo(from.getBackgroundInfo());
-        setPictures(from.getPictures());
+        setEntities(from.getEntities());
         setCompanyId(from.getCompanyId());
         setCompanyCode(from.getCompanyCode());
         setCreatedAt(from.getCreatedAt());

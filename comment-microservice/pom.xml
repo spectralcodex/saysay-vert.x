@@ -12,7 +12,7 @@
     <artifactId>rate-microservice</artifactId>
 
     <properties>
-        <main.verticle>io.vertx.saysayX.ms.comment.RateVerticle</main.verticle>
+        <main.verticle>io.vertx.saysayX.ms.comment.CommentVerticle</main.verticle>
     </properties>
     <dependencies>
         <dependency>

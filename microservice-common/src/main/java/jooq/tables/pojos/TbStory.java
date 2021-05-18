@@ -26,11 +26,11 @@ import jooq.tables.interfaces.ITbStory;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory implements VertxPojo, ITbStory {
 
-    private static final long serialVersionUID = -707297887;
+    private static final long serialVersionUID = 664904726;
 
     private Long           id;
     private String         authorId;
-    private String         entries;
+    private String         entities;
     private String         storyId;
     private String         lang;
     private Integer        possiblySensitive;
@@ -40,13 +40,16 @@ public class TbStory implements VertxPojo, ITbStory {
     private Integer        likeCount;
     private Integer        commentCount;
     private Integer        cautionCount;
+    private String         category;
+    private String         sector;
+    private String         companyId;
 
     public TbStory() {}
 
     public TbStory(ITbStory value) {
         this.id = value.getId();
         this.authorId = value.getAuthorId();
-        this.entries = value.getEntries();
+        this.entities = value.getEntities();
         this.storyId = value.getStoryId();
         this.lang = value.getLang();
         this.possiblySensitive = value.getPossiblySensitive();
@@ -56,12 +59,15 @@ public class TbStory implements VertxPojo, ITbStory {
         this.likeCount = value.getLikeCount();
         this.commentCount = value.getCommentCount();
         this.cautionCount = value.getCautionCount();
+        this.category = value.getCategory();
+        this.sector = value.getSector();
+        this.companyId = value.getCompanyId();
     }
 
     public TbStory(
         Long           id,
         String         authorId,
-        String         entries,
+        String         entities,
         String         storyId,
         String         lang,
         Integer        possiblySensitive,
@@ -70,11 +76,14 @@ public class TbStory implements VertxPojo, ITbStory {
         OffsetDateTime createdAt,
         Integer        likeCount,
         Integer        commentCount,
-        Integer        cautionCount
+        Integer        cautionCount,
+        String         category,
+        String         sector,
+        String         companyId
     ) {
         this.id = id;
         this.authorId = authorId;
-        this.entries = entries;
+        this.entities = entities;
         this.storyId = storyId;
         this.lang = lang;
         this.possiblySensitive = possiblySensitive;
@@ -84,6 +93,9 @@ public class TbStory implements VertxPojo, ITbStory {
         this.likeCount = likeCount;
         this.commentCount = commentCount;
         this.cautionCount = cautionCount;
+        this.category = category;
+        this.sector = sector;
+        this.companyId = companyId;
     }
 
     @Override
@@ -109,13 +121,13 @@ public class TbStory implements VertxPojo, ITbStory {
     }
 
     @Override
-    public String getEntries() {
-        return this.entries;
+    public String getEntities() {
+        return this.entities;
     }
 
     @Override
-    public TbStory setEntries(String entries) {
-        this.entries = entries;
+    public TbStory setEntities(String entities) {
+        this.entities = entities;
         return this;
     }
 
@@ -219,12 +231,45 @@ public class TbStory implements VertxPojo, ITbStory {
     }
 
     @Override
+    public String getCategory() {
+        return this.category;
+    }
+
+    @Override
+    public TbStory setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+
+    @Override
+    public String getSector() {
+        return this.sector;
+    }
+
+    @Override
+    public TbStory setSector(String sector) {
+        this.sector = sector;
+        return this;
+    }
+
+    @Override
+    public String getCompanyId() {
+        return this.companyId;
+    }
+
+    @Override
+    public TbStory setCompanyId(String companyId) {
+        this.companyId = companyId;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbStory (");
 
         sb.append(id);
         sb.append(", ").append(authorId);
-        sb.append(", ").append(entries);
+        sb.append(", ").append(entities);
         sb.append(", ").append(storyId);
         sb.append(", ").append(lang);
         sb.append(", ").append(possiblySensitive);
@@ -234,6 +279,9 @@ public class TbStory implements VertxPojo, ITbStory {
         sb.append(", ").append(likeCount);
         sb.append(", ").append(commentCount);
         sb.append(", ").append(cautionCount);
+        sb.append(", ").append(category);
+        sb.append(", ").append(sector);
+        sb.append(", ").append(companyId);
 
         sb.append(")");
         return sb.toString();
@@ -250,7 +298,7 @@ public class TbStory implements VertxPojo, ITbStory {
     public void from(ITbStory from) {
         setId(from.getId());
         setAuthorId(from.getAuthorId());
-        setEntries(from.getEntries());
+        setEntities(from.getEntities());
         setStoryId(from.getStoryId());
         setLang(from.getLang());
         setPossiblySensitive(from.getPossiblySensitive());
@@ -260,6 +308,9 @@ public class TbStory implements VertxPojo, ITbStory {
         setLikeCount(from.getLikeCount());
         setCommentCount(from.getCommentCount());
         setCautionCount(from.getCautionCount());
+        setCategory(from.getCategory());
+        setSector(from.getSector());
+        setCompanyId(from.getCompanyId());
     }
 
     /**

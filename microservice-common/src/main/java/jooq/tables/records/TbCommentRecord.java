@@ -33,7 +33,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implements VertxPojo, Record8<Long, String, String, String, Integer, String, OffsetDateTime, String>, ITbComment {
 
-    private static final long serialVersionUID = 972616612;
+    private static final long serialVersionUID = 451942974;
 
     /**
      * Setter for <code>public.tb_comment.id</code>.
@@ -155,19 +155,19 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
     }
 
     /**
-     * Setter for <code>public.tb_comment.entries</code>.
+     * Setter for <code>public.tb_comment.entities</code>.
      */
     @Override
-    public TbCommentRecord setEntries(String value) {
+    public TbCommentRecord setEntities(String value) {
         set(7, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.tb_comment.entries</code>.
+     * Getter for <code>public.tb_comment.entities</code>.
      */
     @Override
-    public String getEntries() {
+    public String getEntities() {
         return (String) get(7);
     }
 
@@ -264,7 +264,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
      */
     @Override
     public Field<String> field8() {
-        return TbComment.TB_COMMENT.ENTRIES;
+        return TbComment.TB_COMMENT.ENTITIES;
     }
 
     /**
@@ -328,7 +328,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
      */
     @Override
     public String component8() {
-        return getEntries();
+        return getEntities();
     }
 
     /**
@@ -392,7 +392,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
      */
     @Override
     public String value8() {
-        return getEntries();
+        return getEntities();
     }
 
     /**
@@ -463,7 +463,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
      */
     @Override
     public TbCommentRecord value8(String value) {
-        setEntries(value);
+        setEntities(value);
         return this;
     }
 
@@ -499,7 +499,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
         setPossibilitySensitive(from.getPossibilitySensitive());
         setLang(from.getLang());
         setCreatedAt(from.getCreatedAt());
-        setEntries(from.getEntries());
+        setEntities(from.getEntities());
     }
 
     /**
@@ -525,7 +525,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
     /**
      * Create a detached, initialised TbCommentRecord
      */
-    public TbCommentRecord(Long id, String authorId, String commentId, String storyId, Integer possibilitySensitive, String lang, OffsetDateTime createdAt, String entries) {
+    public TbCommentRecord(Long id, String authorId, String commentId, String storyId, Integer possibilitySensitive, String lang, OffsetDateTime createdAt, String entities) {
         super(TbComment.TB_COMMENT);
 
         set(0, id);
@@ -535,7 +535,7 @@ public class TbCommentRecord extends UpdatableRecordImpl<TbCommentRecord> implem
         set(4, possibilitySensitive);
         set(5, lang);
         set(6, createdAt);
-        set(7, entries);
+        set(7, entities);
     }
 
     public TbCommentRecord(io.vertx.core.json.JsonObject json) {

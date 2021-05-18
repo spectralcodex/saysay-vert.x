@@ -26,7 +26,7 @@ import jooq.tables.interfaces.ITbComment;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbComment implements VertxPojo, ITbComment {
 
-    private static final long serialVersionUID = 153308109;
+    private static final long serialVersionUID = -1364008114;
 
     private Long           id;
     private String         authorId;
@@ -35,7 +35,7 @@ public class TbComment implements VertxPojo, ITbComment {
     private Integer        possibilitySensitive;
     private String         lang;
     private OffsetDateTime createdAt;
-    private String         entries;
+    private String         entities;
 
     public TbComment() {}
 
@@ -47,7 +47,7 @@ public class TbComment implements VertxPojo, ITbComment {
         this.possibilitySensitive = value.getPossibilitySensitive();
         this.lang = value.getLang();
         this.createdAt = value.getCreatedAt();
-        this.entries = value.getEntries();
+        this.entities = value.getEntities();
     }
 
     public TbComment(
@@ -58,7 +58,7 @@ public class TbComment implements VertxPojo, ITbComment {
         Integer        possibilitySensitive,
         String         lang,
         OffsetDateTime createdAt,
-        String         entries
+        String         entities
     ) {
         this.id = id;
         this.authorId = authorId;
@@ -67,7 +67,7 @@ public class TbComment implements VertxPojo, ITbComment {
         this.possibilitySensitive = possibilitySensitive;
         this.lang = lang;
         this.createdAt = createdAt;
-        this.entries = entries;
+        this.entities = entities;
     }
 
     @Override
@@ -148,13 +148,13 @@ public class TbComment implements VertxPojo, ITbComment {
     }
 
     @Override
-    public String getEntries() {
-        return this.entries;
+    public String getEntities() {
+        return this.entities;
     }
 
     @Override
-    public TbComment setEntries(String entries) {
-        this.entries = entries;
+    public TbComment setEntities(String entities) {
+        this.entities = entities;
         return this;
     }
 
@@ -169,7 +169,7 @@ public class TbComment implements VertxPojo, ITbComment {
         sb.append(", ").append(possibilitySensitive);
         sb.append(", ").append(lang);
         sb.append(", ").append(createdAt);
-        sb.append(", ").append(entries);
+        sb.append(", ").append(entities);
 
         sb.append(")");
         return sb.toString();
@@ -191,7 +191,7 @@ public class TbComment implements VertxPojo, ITbComment {
         setPossibilitySensitive(from.getPossibilitySensitive());
         setLang(from.getLang());
         setCreatedAt(from.getCreatedAt());
-        setEntries(from.getEntries());
+        setEntities(from.getEntities());
     }
 
     /**

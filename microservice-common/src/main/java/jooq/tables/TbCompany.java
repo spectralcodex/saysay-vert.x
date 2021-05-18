@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCompany extends TableImpl<TbCompanyRecord> {
 
-    private static final long serialVersionUID = 942633723;
+    private static final long serialVersionUID = -1996561761;
 
     /**
      * The reference instance of <code>public.tb_company</code>
@@ -98,9 +98,9 @@ public class TbCompany extends TableImpl<TbCompanyRecord> {
     public final TableField<TbCompanyRecord, String> BACKGROUND_INFO = createField("background_info", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
-     * The column <code>public.tb_company.pictures</code>.
+     * The column <code>public.tb_company.entities</code>.
      */
-    public final TableField<TbCompanyRecord, String> PICTURES = createField("pictures", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<TbCompanyRecord, String> ENTITIES = createField("entities", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>public.tb_company.company_id</code>.

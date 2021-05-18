@@ -99,10 +99,10 @@ public class TbCompanyDao extends AbstractAsyncVertxDAO<TbCompanyRecord, jooq.ta
     }
 
     /**
-     * Find records that have <code>pictures IN (values)</code> asynchronously
+     * Find records that have <code>entities IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbCompany>> findManyByPictures(Collection<String> values) {
-        return findManyByCondition(TbCompany.TB_COMPANY.PICTURES.in(values));
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyByEntities(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.ENTITIES.in(values));
     }
 
     /**

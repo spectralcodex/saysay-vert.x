@@ -97,14 +97,14 @@ public interface ITbComment extends VertxPojo, Serializable {
     public OffsetDateTime getCreatedAt();
 
     /**
-     * Setter for <code>public.tb_comment.entries</code>.
+     * Setter for <code>public.tb_comment.entities</code>.
      */
-    public ITbComment setEntries(String value);
+    public ITbComment setEntities(String value);
 
     /**
-     * Getter for <code>public.tb_comment.entries</code>.
+     * Getter for <code>public.tb_comment.entities</code>.
      */
-    public String getEntries();
+    public String getEntities();
 
     // -------------------------------------------------------------------------
     // FROM and INTO
@@ -158,9 +158,9 @@ public interface ITbComment extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("created_at","java.time.OffsetDateTime",e);
         }
         try {
-            setEntries(json.getString("entries"));
+            setEntities(json.getString("entities"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("entries","java.lang.String",e);
+            throw new UnexpectedJsonValueType("entities","java.lang.String",e);
         }
         return this;
     }
@@ -176,7 +176,7 @@ public interface ITbComment extends VertxPojo, Serializable {
         json.put("possibility_sensitive",getPossibilitySensitive());
         json.put("lang",getLang());
         // Omitting unrecognized type java.time.OffsetDateTime for column created_at!
-        json.put("entries",getEntries());
+        json.put("entities",getEntities());
         return json;
     }
 

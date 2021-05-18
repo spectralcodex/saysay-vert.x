@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory extends TableImpl<TbStoryRecord> {
 
-    private static final long serialVersionUID = -564358334;
+    private static final long serialVersionUID = -940761726;
 
     /**
      * The reference instance of <code>public.tb_story</code>
@@ -68,9 +68,9 @@ public class TbStory extends TableImpl<TbStoryRecord> {
     public final TableField<TbStoryRecord, String> AUTHOR_ID = createField("author_id", org.jooq.impl.SQLDataType.VARCHAR(30), this, "");
 
     /**
-     * The column <code>public.tb_story.entries</code>.
+     * The column <code>public.tb_story.entities</code>.
      */
-    public final TableField<TbStoryRecord, String> ENTRIES = createField("entries", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<TbStoryRecord, String> ENTITIES = createField("entities", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>public.tb_story.story_id</code>.
@@ -116,6 +116,21 @@ public class TbStory extends TableImpl<TbStoryRecord> {
      * The column <code>public.tb_story.caution_count</code>.
      */
     public final TableField<TbStoryRecord, Integer> CAUTION_COUNT = createField("caution_count", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>public.tb_story.category</code>.
+     */
+    public final TableField<TbStoryRecord, String> CATEGORY = createField("category", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.tb_story.sector</code>.
+     */
+    public final TableField<TbStoryRecord, String> SECTOR = createField("sector", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.tb_story.company_id</code>.
+     */
+    public final TableField<TbStoryRecord, String> COMPANY_ID = createField("company_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * Create a <code>public.tb_story</code> table reference

@@ -92,10 +92,10 @@ public class TbCommentDao extends AbstractAsyncVertxDAO<TbCommentRecord, jooq.ta
     }
 
     /**
-     * Find records that have <code>entries IN (values)</code> asynchronously
+     * Find records that have <code>entities IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbComment>> findManyByEntries(Collection<String> values) {
-        return findManyByCondition(TbComment.TB_COMMENT.ENTRIES.in(values));
+    public Future<List<jooq.tables.pojos.TbComment>> findManyByEntities(Collection<String> values) {
+        return findManyByCondition(TbComment.TB_COMMENT.ENTITIES.in(values));
     }
 
     @Override

@@ -107,14 +107,14 @@ public interface ITbCompany extends VertxPojo, Serializable {
     public String getBackgroundInfo();
 
     /**
-     * Setter for <code>public.tb_company.pictures</code>.
+     * Setter for <code>public.tb_company.entities</code>.
      */
-    public ITbCompany setPictures(String value);
+    public ITbCompany setEntities(String value);
 
     /**
-     * Getter for <code>public.tb_company.pictures</code>.
+     * Getter for <code>public.tb_company.entities</code>.
      */
-    public String getPictures();
+    public String getEntities();
 
     /**
      * Setter for <code>public.tb_company.company_id</code>.
@@ -243,9 +243,9 @@ public interface ITbCompany extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("background_info","java.lang.String",e);
         }
         try {
-            setPictures(json.getString("pictures"));
+            setEntities(json.getString("entities"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("pictures","java.lang.String",e);
+            throw new UnexpectedJsonValueType("entities","java.lang.String",e);
         }
         try {
             setCompanyId(json.getString("company_id"));
@@ -297,7 +297,7 @@ public interface ITbCompany extends VertxPojo, Serializable {
         json.put("rating",getRating());
         json.put("logo",getLogo());
         json.put("background_info",getBackgroundInfo());
-        json.put("pictures",getPictures());
+        json.put("entities",getEntities());
         json.put("company_id",getCompanyId());
         json.put("company_code",getCompanyCode());
         // Omitting unrecognized type java.time.OffsetTime for column created_at!

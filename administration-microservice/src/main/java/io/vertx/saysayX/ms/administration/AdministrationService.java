@@ -53,6 +53,4 @@ public interface AdministrationService{
     @Fluent
     AdministrationService retrieveUser(String userId, Handler<AsyncResult<JsonObject>> resultHandler);
 
-
-
 }
