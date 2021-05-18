@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory extends TableImpl<TbStoryRecord> {
 
-    private static final long serialVersionUID = 551213689;
+    private static final long serialVersionUID = -564358334;
 
     /**
      * The reference instance of <code>public.tb_story</code>
@@ -101,6 +101,21 @@ public class TbStory extends TableImpl<TbStoryRecord> {
      * The column <code>public.tb_story.created_at</code>.
      */
     public final TableField<TbStoryRecord, OffsetDateTime> CREATED_AT = createField("created_at", org.jooq.impl.SQLDataType.TIMESTAMPWITHTIMEZONE.defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMPWITHTIMEZONE)), this, "");
+
+    /**
+     * The column <code>public.tb_story.like_count</code>.
+     */
+    public final TableField<TbStoryRecord, Integer> LIKE_COUNT = createField("like_count", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>public.tb_story.comment_count</code>.
+     */
+    public final TableField<TbStoryRecord, Integer> COMMENT_COUNT = createField("comment_count", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>public.tb_story.caution_count</code>.
+     */
+    public final TableField<TbStoryRecord, Integer> CAUTION_COUNT = createField("caution_count", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>public.tb_story</code> table reference

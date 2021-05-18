@@ -35,9 +35,9 @@ import io.vertx.serviceproxy.ProxyUtils;
 
 import java.util.List;
 import io.vertx.saysayX.ms.story.StoryService;
+import io.vertx.saysayX.ms.story.pojo.StoryBean;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.AsyncResult;
-import io.vertx.saysayX.ms.story.jpojo.Story;
 import io.vertx.core.Handler;
 /*
   Generated Proxy code - DO NOT EDIT
@@ -84,7 +84,7 @@ public class StoryServiceVertxEBProxy implements StoryService {
     return this;
   }
   @Override
-  public  StoryService addStory(Story story, Handler<AsyncResult<Integer>> resultHandler){
+  public  StoryService addStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -124,16 +124,16 @@ public class StoryServiceVertxEBProxy implements StoryService {
     return this;
   }
   @Override
-  public  StoryService retrieveStoryByUsername(String username, Handler<AsyncResult<JsonObject>> resultHandler){
+  public  StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<JsonObject>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
-    _json.put("username", username);
+    _json.put("authorId", authorId);
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveStoryByUsername");
+    _deliveryOptions.addHeader("action", "retrieveStoryByAuthorId");
     _vertx.eventBus().<JsonObject>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
@@ -144,16 +144,16 @@ public class StoryServiceVertxEBProxy implements StoryService {
     return this;
   }
   @Override
-  public  StoryService retrieveAllStoriesByUsername(String username, Handler<AsyncResult<List<JsonObject>>> resultHandler){
+  public  StoryService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
-    _json.put("username", username);
+    _json.put("authorId", authorId);
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveAllStoriesByUsername");
+    _deliveryOptions.addHeader("action", "retrieveAllStoriesByAuthorId");
     _vertx.eventBus().<JsonArray>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
@@ -183,7 +183,7 @@ public class StoryServiceVertxEBProxy implements StoryService {
     return this;
   }
   @Override
-  public  StoryService updateStory(Story story, Handler<AsyncResult<JsonObject>> resultHandler){
+  public  StoryService updateStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -193,7 +193,7 @@ public class StoryServiceVertxEBProxy implements StoryService {
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
     _deliveryOptions.addHeader("action", "updateStory");
-    _vertx.eventBus().<JsonObject>request(_address, _json, _deliveryOptions, res -> {
+    _vertx.eventBus().<Integer>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
@@ -203,7 +203,7 @@ public class StoryServiceVertxEBProxy implements StoryService {
     return this;
   }
   @Override
-  public  StoryService deleteStory(String id, Handler<AsyncResult<JsonObject>> resultHandler){
+  public  StoryService deleteStory(String id, Handler<AsyncResult<Integer>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -213,26 +213,7 @@ public class StoryServiceVertxEBProxy implements StoryService {
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
     _deliveryOptions.addHeader("action", "deleteStory");
-    _vertx.eventBus().<JsonObject>request(_address, _json, _deliveryOptions, res -> {
-      if (res.failed()) {
-        resultHandler.handle(Future.failedFuture(res.cause()));
-      } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body()));
-      }
-    });
-    return this;
-  }
-  @Override
-  public  StoryService deleteAllAccounts(Handler<AsyncResult<Void>> resultHandler){
-    if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
-      return this;
-    }
-    JsonObject _json = new JsonObject();
-
-    DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "deleteAllAccounts");
-    _vertx.eventBus().<Void>request(_address, _json, _deliveryOptions, res -> {
+    _vertx.eventBus().<Integer>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {

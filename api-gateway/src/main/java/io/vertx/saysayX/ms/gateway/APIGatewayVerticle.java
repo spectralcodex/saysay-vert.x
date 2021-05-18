@@ -127,7 +127,7 @@ public class APIGatewayVerticle extends RestAPIVerticle {
 
                 // get relative path and retrieve prefix to dispatch client
                 String path = ctx.request().uri();
-                if (path.length() <= initialOffset) { //Api path starts with /api/
+                if (path.length() <= initialOffset) { //Api path does not starts with /api/
                     notFound(ctx);
                     future.complete();
                     return;
@@ -154,8 +154,11 @@ public class APIGatewayVerticle extends RestAPIVerticle {
                 }
             }
         })).onComplete(ar -> {
-            if(ar.failed())
-                badGateway(ar.cause(), ctx);
+            if(ar.failed()) {
+                badRequest(ctx, ar.cause());
+                ar.cause().printStackTrace();
+                //badGateway(ar.cause(), ctx);
+            }
         });
     }
 

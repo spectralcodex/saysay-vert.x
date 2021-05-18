@@ -109,17 +109,17 @@
      Retrieve the story account with certain `username`.
 
      @public
-     @param username {string} username 
+     @param authorId {string} username 
      @param resultHandler {function} the result handler will be called as soon as the Story has been retrieved. The async result indicates whether the operation was successful or not. 
      @return {StoryService}
      */
-    this.retrieveStoryByUsername =  function(username, resultHandler) {
+    this.retrieveStoryByAuthorId =  function(authorId, resultHandler) {
       var __args = arguments;
       if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"username":__args[0]}, {"action":"retrieveStoryByUsername"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"authorId":__args[0]}, {"action":"retrieveStoryByAuthorId"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };
@@ -128,17 +128,17 @@
      Retrieve all story accounts.
 
      @public
-     @param username {string} 
+     @param authorId {string} 
      @param resultHandler {function} the result handler will be called as soon as the stories have been retrieved. The async result indicates whether the operation was successful or not. 
      @return {StoryService}
      */
-    this.retrieveAllStoriesByUsername =  function(username, resultHandler) {
+    this.retrieveAllStoriesByAuthorId =  function(authorId, resultHandler) {
       var __args = arguments;
       if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"username":__args[0]}, {"action":"retrieveAllStoriesByUsername"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"authorId":__args[0]}, {"action":"retrieveAllStoriesByAuthorId"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };
@@ -194,24 +194,6 @@
           throw new Error('Proxy is closed');
         }
         j_eb.send(j_address, {"id":__args[0]}, {"action":"deleteStory"}, function(err, result) { __args[1](err, result && result.body); });
-        return that;
-      } else throw new TypeError('function invoked with invalid arguments');
-    };
-
-    /**
-     Delete all stories from the persistence
-
-     @public
-     @param resultHandler {function} the result handler will be called as soon as the stories have been removed. The async result indicates whether the operation was successful or not. 
-     @return {StoryService}
-     */
-    this.deleteAllAccounts =  function(resultHandler) {
-      var __args = arguments;
-      if (__args.length === 1 && typeof __args[0] === 'function') {
-        if (closed) {
-          throw new Error('Proxy is closed');
-        }
-        j_eb.send(j_address, {}, {"action":"deleteAllAccounts"}, function(err, result) { __args[0](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };

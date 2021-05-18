@@ -26,7 +26,7 @@ import jooq.tables.interfaces.ITbStory;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory implements VertxPojo, ITbStory {
 
-    private static final long serialVersionUID = 311645697;
+    private static final long serialVersionUID = -707297887;
 
     private Long           id;
     private String         authorId;
@@ -37,6 +37,9 @@ public class TbStory implements VertxPojo, ITbStory {
     private String         source;
     private String         story;
     private OffsetDateTime createdAt;
+    private Integer        likeCount;
+    private Integer        commentCount;
+    private Integer        cautionCount;
 
     public TbStory() {}
 
@@ -50,6 +53,9 @@ public class TbStory implements VertxPojo, ITbStory {
         this.source = value.getSource();
         this.story = value.getStory();
         this.createdAt = value.getCreatedAt();
+        this.likeCount = value.getLikeCount();
+        this.commentCount = value.getCommentCount();
+        this.cautionCount = value.getCautionCount();
     }
 
     public TbStory(
@@ -61,7 +67,10 @@ public class TbStory implements VertxPojo, ITbStory {
         Integer        possiblySensitive,
         String         source,
         String         story,
-        OffsetDateTime createdAt
+        OffsetDateTime createdAt,
+        Integer        likeCount,
+        Integer        commentCount,
+        Integer        cautionCount
     ) {
         this.id = id;
         this.authorId = authorId;
@@ -72,6 +81,9 @@ public class TbStory implements VertxPojo, ITbStory {
         this.source = source;
         this.story = story;
         this.createdAt = createdAt;
+        this.likeCount = likeCount;
+        this.commentCount = commentCount;
+        this.cautionCount = cautionCount;
     }
 
     @Override
@@ -174,6 +186,39 @@ public class TbStory implements VertxPojo, ITbStory {
     }
 
     @Override
+    public Integer getLikeCount() {
+        return this.likeCount;
+    }
+
+    @Override
+    public TbStory setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+        return this;
+    }
+
+    @Override
+    public Integer getCommentCount() {
+        return this.commentCount;
+    }
+
+    @Override
+    public TbStory setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+        return this;
+    }
+
+    @Override
+    public Integer getCautionCount() {
+        return this.cautionCount;
+    }
+
+    @Override
+    public TbStory setCautionCount(Integer cautionCount) {
+        this.cautionCount = cautionCount;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbStory (");
 
@@ -186,6 +231,9 @@ public class TbStory implements VertxPojo, ITbStory {
         sb.append(", ").append(source);
         sb.append(", ").append(story);
         sb.append(", ").append(createdAt);
+        sb.append(", ").append(likeCount);
+        sb.append(", ").append(commentCount);
+        sb.append(", ").append(cautionCount);
 
         sb.append(")");
         return sb.toString();
@@ -209,6 +257,9 @@ public class TbStory implements VertxPojo, ITbStory {
         setSource(from.getSource());
         setStory(from.getStory());
         setCreatedAt(from.getCreatedAt());
+        setLikeCount(from.getLikeCount());
+        setCommentCount(from.getCommentCount());
+        setCautionCount(from.getCautionCount());
     }
 
     /**

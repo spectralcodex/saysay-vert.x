@@ -33,15 +33,13 @@ export default class StoryService {
 
   retrieveStory(id: string, resultHandler: (err: any, result: Object) => any) : StoryService;
 
-  retrieveStoryByUsername(username: string, resultHandler: (err: any, result: Object) => any) : StoryService;
+  retrieveStoryByAuthorId(authorId: string, resultHandler: (err: any, result: Object) => any) : StoryService;
 
-  retrieveAllStoriesByUsername(username: string, resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
+  retrieveAllStoriesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
 
   retrieveAllStories(resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
 
-  updateStory(story: any, resultHandler: (err: any, result: Object) => any) : StoryService;
+  updateStory(story: any, resultHandler: (err: any, result: any) => any) : StoryService;
 
-  deleteStory(id: string, resultHandler: (err: any, result: Object) => any) : StoryService;
-
-  deleteAllAccounts(resultHandler: (err: any, result: any) => any) : StoryService;
+  deleteStory(id: string, resultHandler: (err: any, result: any) => any) : StoryService;
 }

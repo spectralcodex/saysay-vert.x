@@ -43,9 +43,9 @@ import io.vertx.serviceproxy.HelperUtils;
 
 import java.util.List;
 import io.vertx.saysayX.ms.story.StoryService;
+import io.vertx.saysayX.ms.story.pojo.StoryBean;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.AsyncResult;
-import io.vertx.saysayX.ms.story.jpojo.Story;
 import io.vertx.core.Handler;
 /*
   Generated Proxy code - DO NOT EDIT
@@ -122,7 +122,7 @@ public class StoryServiceVertxProxyHandler extends ProxyHandler {
           break;
         }
         case "addStory": {
-          service.addStory(json.getJsonObject("story") == null ? null : new io.vertx.saysayX.ms.story.jpojo.Story(json.getJsonObject("story")),
+          service.addStory(json.getJsonObject("story") == null ? null : new io.vertx.saysayX.ms.story.pojo.StoryBean(json.getJsonObject("story")),
                         HelperUtils.createHandler(msg));
           break;
         }
@@ -131,13 +131,13 @@ public class StoryServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "retrieveStoryByUsername": {
-          service.retrieveStoryByUsername((java.lang.String)json.getValue("username"),
+        case "retrieveStoryByAuthorId": {
+          service.retrieveStoryByAuthorId((java.lang.String)json.getValue("authorId"),
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "retrieveAllStoriesByUsername": {
-          service.retrieveAllStoriesByUsername((java.lang.String)json.getValue("username"),
+        case "retrieveAllStoriesByAuthorId": {
+          service.retrieveAllStoriesByAuthorId((java.lang.String)json.getValue("authorId"),
                         HelperUtils.createListHandler(msg));
           break;
         }
@@ -146,17 +146,13 @@ public class StoryServiceVertxProxyHandler extends ProxyHandler {
           break;
         }
         case "updateStory": {
-          service.updateStory(json.getJsonObject("story") == null ? null : new io.vertx.saysayX.ms.story.jpojo.Story(json.getJsonObject("story")),
+          service.updateStory(json.getJsonObject("story") == null ? null : new io.vertx.saysayX.ms.story.pojo.StoryBean(json.getJsonObject("story")),
                         HelperUtils.createHandler(msg));
           break;
         }
         case "deleteStory": {
           service.deleteStory((java.lang.String)json.getValue("id"),
                         HelperUtils.createHandler(msg));
-          break;
-        }
-        case "deleteAllAccounts": {
-          service.deleteAllAccounts(HelperUtils.createHandler(msg));
           break;
         }
         default: throw new IllegalStateException("Invalid action: " + action);

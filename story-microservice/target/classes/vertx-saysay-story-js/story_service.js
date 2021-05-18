@@ -20,7 +20,7 @@ var utils = require('vertx-js/util/utils');
 var io = Packages.io;
 var JsonObject = io.vertx.core.json.JsonObject;
 var JStoryService = Java.type('io.vertx.saysayX.ms.story.StoryService');
-var Story = Java.type('io.vertx.saysayX.ms.story.jpojo.Story');
+var StoryBean = Java.type('io.vertx.saysayX.ms.story.pojo.StoryBean');
 
 /**
  A service interface managing stories.
@@ -38,12 +38,11 @@ var StoryService = function(j_val) {
   var __super_init = this.init;
   var __super_addStory = this.addStory;
   var __super_retrieveStory = this.retrieveStory;
-  var __super_retrieveStoryByUsername = this.retrieveStoryByUsername;
-  var __super_retrieveAllStoriesByUsername = this.retrieveAllStoriesByUsername;
+  var __super_retrieveStoryByAuthorId = this.retrieveStoryByAuthorId;
+  var __super_retrieveAllStoriesByAuthorId = this.retrieveAllStoriesByAuthorId;
   var __super_retrieveAllStories = this.retrieveAllStories;
   var __super_updateStory = this.updateStory;
   var __super_deleteStory = this.deleteStory;
-  var __super_deleteAllAccounts = this.deleteAllAccounts;
   /**
 
    @public
@@ -78,7 +77,7 @@ var StoryService = function(j_val) {
   this.addStory =  function(story, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
-      j_storyService["addStory(io.vertx.saysayX.ms.story.jpojo.Story,io.vertx.core.Handler)"](__args[0]  != null ? new Story(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+      j_storyService["addStory(io.vertx.saysayX.ms.story.pojo.StoryBean,io.vertx.core.Handler)"](__args[0]  != null ? new StoryBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
           __args[1](ar.result(), null);
         } else {
@@ -121,14 +120,14 @@ var StoryService = function(j_val) {
    Retrieve the story account with certain `username`.
 
    @public
-   @param username {string} username 
+   @param authorId {string} username 
    @param resultHandler {function} the result handler will be called as soon as the Story has been retrieved. The async result indicates whether the operation was successful or not. 
    @return {StoryService}
    */
-  this.retrieveStoryByUsername =  function(username, resultHandler) {
+  this.retrieveStoryByAuthorId =  function(authorId, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_storyService["retrieveStoryByUsername(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+      j_storyService["retrieveStoryByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
           __args[1](utils.convReturnJson(ar.result()), null);
         } else {
@@ -136,8 +135,8 @@ var StoryService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveStoryByUsername != 'undefined') {
-      return __super_retrieveStoryByUsername.apply(this, __args);
+    } else if (typeof __super_retrieveStoryByAuthorId != 'undefined') {
+      return __super_retrieveStoryByAuthorId.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };
@@ -146,14 +145,14 @@ var StoryService = function(j_val) {
    Retrieve all story accounts.
 
    @public
-   @param username {string} 
+   @param authorId {string} 
    @param resultHandler {function} the result handler will be called as soon as the stories have been retrieved. The async result indicates whether the operation was successful or not. 
    @return {StoryService}
    */
-  this.retrieveAllStoriesByUsername =  function(username, resultHandler) {
+  this.retrieveAllStoriesByAuthorId =  function(authorId, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_storyService["retrieveAllStoriesByUsername(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+      j_storyService["retrieveAllStoriesByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
           __args[1](utils.convReturnListSetJson(ar.result()), null);
         } else {
@@ -161,8 +160,8 @@ var StoryService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveAllStoriesByUsername != 'undefined') {
-      return __super_retrieveAllStoriesByUsername.apply(this, __args);
+    } else if (typeof __super_retrieveAllStoriesByAuthorId != 'undefined') {
+      return __super_retrieveAllStoriesByAuthorId.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };
@@ -201,9 +200,9 @@ var StoryService = function(j_val) {
   this.updateStory =  function(story, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
-      j_storyService["updateStory(io.vertx.saysayX.ms.story.jpojo.Story,io.vertx.core.Handler)"](__args[0]  != null ? new Story(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+      j_storyService["updateStory(io.vertx.saysayX.ms.story.pojo.StoryBean,io.vertx.core.Handler)"](__args[0]  != null ? new StoryBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
-          __args[1](utils.convReturnJson(ar.result()), null);
+          __args[1](ar.result(), null);
         } else {
           __args[1](null, ar.cause());
         }
@@ -228,7 +227,7 @@ var StoryService = function(j_val) {
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
       j_storyService["deleteStory(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
-          __args[1](utils.convReturnJson(ar.result()), null);
+          __args[1](ar.result(), null);
         } else {
           __args[1](null, ar.cause());
         }
@@ -236,30 +235,6 @@ var StoryService = function(j_val) {
       return that;
     } else if (typeof __super_deleteStory != 'undefined') {
       return __super_deleteStory.apply(this, __args);
-    }
-    else throw new TypeError('function invoked with invalid arguments');
-  };
-
-  /**
-   Delete all stories from the persistence
-
-   @public
-   @param resultHandler {function} the result handler will be called as soon as the stories have been removed. The async result indicates whether the operation was successful or not. 
-   @return {StoryService}
-   */
-  this.deleteAllAccounts =  function(resultHandler) {
-    var __args = arguments;
-    if (__args.length === 1 && typeof __args[0] === 'function') {
-      j_storyService["deleteAllAccounts(io.vertx.core.Handler)"](function(ar) {
-        if (ar.succeeded()) {
-          __args[0](null, null);
-        } else {
-          __args[0](null, ar.cause());
-        }
-      }) ;
-      return that;
-    } else if (typeof __super_deleteAllAccounts != 'undefined') {
-      return __super_deleteAllAccounts.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

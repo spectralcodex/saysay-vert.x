@@ -1,6 +1,6 @@
 io/vertx/saysayX/ms/story/StoryService.class
 io/vertx/saysayX/ms/story/StoryServiceVertxProxyHandler.class
-io/vertx/saysayX/ms/story/jpojo/StoryConverter.class
+io/vertx/saysayX/ms/story/pojo/StoryBean.class
 io/vertx/saysayX/ms/story/impl/JooqStoryServiceImpl.class
 io/vertx/saysayX/ms/story/api/RestStoryApiVerticle.class
 vertx-saysay-story-js/story_service.js
@@ -8,5 +8,5 @@ io/vertx/saysayX/ms/story/StoryServiceVertxEBProxy.class
 vertx-saysay-story-js/story_service-proxy.d.ts
 vertx-saysay-story-js/story_service-proxy.js
 io/vertx/saysayX/ms/story/StoryVerticle.class
-io/vertx/saysayX/ms/story/jpojo/Story.class
 io/vertx/saysayX/ms/story/package-info.class
+io/vertx/saysayX/ms/story/pojo/StoryBeanConverter.class

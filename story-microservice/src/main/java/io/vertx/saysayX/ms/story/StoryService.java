@@ -6,7 +6,7 @@ import io.vertx.codegen.annotations.VertxGen;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonObject;
-import io.vertx.saysayX.ms.story.jpojo.Story;
+import io.vertx.saysayX.ms.story.pojo.StoryBean;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public interface StoryService {
      *                      indicates whether the operation was successful or not.
      */
     @Fluent
-    StoryService addStory(Story story, Handler<AsyncResult<Integer>> resultHandler);
+    StoryService addStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler);
 
     /**
      * Retrieve the story with certain `id`.
@@ -63,12 +63,12 @@ public interface StoryService {
     /**
      * Retrieve the story account with certain `username`.
      *
-     * @param username      username
+     * @param authorId      username
      * @param resultHandler the result handler will be called as soon as the Story has been retrieved. The async result indicates
      *                      whether the operation was successful or not.
      */
     @Fluent
-    StoryService retrieveStoryByUsername(String username, Handler<AsyncResult<JsonObject>> resultHandler);
+    StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<JsonObject>> resultHandler);
 
     /**
      * Retrieve all story accounts.
@@ -77,7 +77,7 @@ public interface StoryService {
      *                      whether the operation was successful or not.
      */
     @Fluent
-    StoryService retrieveAllStoriesByUsername(String username, Handler<AsyncResult<List<JsonObject>>> resultHandler);
+    StoryService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     @Fluent
     StoryService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler);
@@ -90,7 +90,7 @@ public interface StoryService {
      *                      whether the operation was successful or not.
      */
     @Fluent
-    StoryService updateStory(Story story, Handler<AsyncResult<JsonObject>> resultHandler);
+    StoryService updateStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler);
 
 
     /**
@@ -101,7 +101,7 @@ public interface StoryService {
      *                      whether the operation was successful or not.
      */
     @Fluent
-    StoryService deleteStory(String id, Handler<AsyncResult<JsonObject>> resultHandler);
+    StoryService deleteStory(String id, Handler<AsyncResult<Integer>> resultHandler);
 
 
     /**
@@ -110,7 +110,7 @@ public interface StoryService {
      * @param resultHandler the result handler will be called as soon as the stories have been removed. The async result indicates
      *                      whether the operation was successful or not.
      */
-    @Fluent
+    /*@Fluent
     StoryService deleteAllAccounts(Handler<AsyncResult<Void>> resultHandler);
-
+    */
 }

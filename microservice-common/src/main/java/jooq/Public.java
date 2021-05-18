@@ -10,7 +10,10 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbComment;
+import jooq.tables.TbCompany;
 import jooq.tables.TbStory;
+import jooq.tables.TbUser;
 
 import org.jooq.Catalog;
 import org.jooq.Sequence;
@@ -31,7 +34,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 328152356;
+    private static final long serialVersionUID = 917819820;
 
     /**
      * The reference instance of <code>public</code>
@@ -39,9 +42,24 @@ public class Public extends SchemaImpl {
     public static final Public PUBLIC = new Public();
 
     /**
+     * The table <code>public.tb_comment</code>.
+     */
+    public final TbComment TB_COMMENT = jooq.tables.TbComment.TB_COMMENT;
+
+    /**
+     * The table <code>public.tb_company</code>.
+     */
+    public final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
      * The table <code>public.tb_story</code>.
      */
     public final TbStory TB_STORY = jooq.tables.TbStory.TB_STORY;
+
+    /**
+     * The table <code>public.tb_user</code>.
+     */
+    public final TbUser TB_USER = jooq.tables.TbUser.TB_USER;
 
     /**
      * No further instances allowed
@@ -68,7 +86,10 @@ public class Public extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.TB_STORY_ID_SEQ);
+            Sequences.TB_COMMENT_ID_SEQ,
+            Sequences.TB_COMPANY_ID_SEQ,
+            Sequences.TB_STORY_ID_SEQ,
+            Sequences.TB_USER_ID_SEQ);
     }
 
     @Override
@@ -80,6 +101,9 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            TbStory.TB_STORY);
+            TbComment.TB_COMMENT,
+            TbCompany.TB_COMPANY,
+            TbStory.TB_STORY,
+            TbUser.TB_USER);
     }
 }

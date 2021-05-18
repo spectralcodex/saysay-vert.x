@@ -106,6 +106,27 @@ public class TbStoryDao extends AbstractAsyncVertxDAO<TbStoryRecord, jooq.tables
     }
 
     /**
+     * Find records that have <code>like_count IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbStory>> findManyByLikeCount(Collection<Integer> values) {
+        return findManyByCondition(TbStory.TB_STORY.LIKE_COUNT.in(values));
+    }
+
+    /**
+     * Find records that have <code>comment_count IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbStory>> findManyByCommentCount(Collection<Integer> values) {
+        return findManyByCondition(TbStory.TB_STORY.COMMENT_COUNT.in(values));
+    }
+
+    /**
+     * Find records that have <code>caution_count IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbStory>> findManyByCautionCount(Collection<Integer> values) {
+        return findManyByCondition(TbStory.TB_STORY.CAUTION_COUNT.in(values));
+    }
+
+    /**
      * Find a unique record that has <code>author_id = value</code> asynchronously
      */
     public Future<jooq.tables.pojos.TbStory> findOneByAuthorId(String value) {

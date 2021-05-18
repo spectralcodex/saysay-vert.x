@@ -1,7 +1,7 @@
 = Cheatsheets
 
-[[Story]]
-== Story
+[[StoryBean]]
+== StoryBean
 
 
 [cols=">25%,25%,50%"]
@@ -9,12 +9,15 @@
 |===
 ^|Name | Type ^| Description
 |[[authorId]]`@authorId`|`String`|-
+|[[cautionCount]]`@cautionCount`|`Number (Integer)`|-
+|[[commentCount]]`@commentCount`|`Number (Integer)`|-
 |[[entries]]`@entries`|`Json object`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[lang]]`@lang`|`String`|-
+|[[likeCount]]`@likeCount`|`Number (Integer)`|-
 |[[possiblySensitive]]`@possiblySensitive`|`Number (Integer)`|-
 |[[source]]`@source`|`String`|-
+|[[story]]`@story`|`String`|-
 |[[storyId]]`@storyId`|`String`|-
-|[[text]]`@text`|`String`|-
 |===
 

@@ -2,6 +2,7 @@ package io.vertx.saysayX.common.config;
 
 
 import io.vertx.core.Vertx;
+import io.vertx.core.json.DecodeException;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.auth.VertxContextPRNG;
 import io.vertx.ext.auth.jdbc.JDBCAuth;
@@ -9,11 +10,11 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AuthProviderHelper {
+public class BaseUtils {
     private  final JDBCAuth auth;
-    private final static Logger logger = LoggerFactory.getLogger(AuthProviderHelper.class);
+    private final static Logger logger = LoggerFactory.getLogger(BaseUtils.class);
 
-    public AuthProviderHelper(Vertx vertx){
+    public BaseUtils(Vertx vertx){
         auth = JDBCAuth.create(vertx, null);
         auth.setNonces(new JsonArray().add(VertxContextPRNG.current().nextString(32)));//generate random nonce
     }
@@ -32,5 +33,12 @@ public class AuthProviderHelper {
         final String generatedPassword = RandomStringUtils.randomAlphanumeric(7);
         logger.info("RANDOM generated password --> " + generatedPassword);
       return generatedPassword;
+    }
+
+    public static <T>void isNullEmpty(T t, String name) throws DecodeException {
+            // check if string is null
+            if (t == null || String.valueOf(t).isEmpty()) {
+                throw new DecodeException("Empty/Null/Type error -> " + name);
+            }
     }
 }

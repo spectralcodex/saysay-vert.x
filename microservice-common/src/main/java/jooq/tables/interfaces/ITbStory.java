@@ -116,6 +116,36 @@ public interface ITbStory extends VertxPojo, Serializable {
      */
     public OffsetDateTime getCreatedAt();
 
+    /**
+     * Setter for <code>public.tb_story.like_count</code>.
+     */
+    public ITbStory setLikeCount(Integer value);
+
+    /**
+     * Getter for <code>public.tb_story.like_count</code>.
+     */
+    public Integer getLikeCount();
+
+    /**
+     * Setter for <code>public.tb_story.comment_count</code>.
+     */
+    public ITbStory setCommentCount(Integer value);
+
+    /**
+     * Getter for <code>public.tb_story.comment_count</code>.
+     */
+    public Integer getCommentCount();
+
+    /**
+     * Setter for <code>public.tb_story.caution_count</code>.
+     */
+    public ITbStory setCautionCount(Integer value);
+
+    /**
+     * Getter for <code>public.tb_story.caution_count</code>.
+     */
+    public Integer getCautionCount();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -177,6 +207,21 @@ public interface ITbStory extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("created_at","java.time.OffsetDateTime",e);
         }
+        try {
+            setLikeCount(json.getInteger("like_count"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("like_count","java.lang.Integer",e);
+        }
+        try {
+            setCommentCount(json.getInteger("comment_count"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("comment_count","java.lang.Integer",e);
+        }
+        try {
+            setCautionCount(json.getInteger("caution_count"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("caution_count","java.lang.Integer",e);
+        }
         return this;
     }
 
@@ -193,6 +238,9 @@ public interface ITbStory extends VertxPojo, Serializable {
         json.put("source",getSource());
         json.put("story",getStory());
         // Omitting unrecognized type java.time.OffsetDateTime for column created_at!
+        json.put("like_count",getLikeCount());
+        json.put("comment_count",getCommentCount());
+        json.put("caution_count",getCautionCount());
         return json;
     }
 

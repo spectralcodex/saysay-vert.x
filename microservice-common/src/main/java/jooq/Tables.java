@@ -6,7 +6,10 @@ package jooq;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbComment;
+import jooq.tables.TbCompany;
 import jooq.tables.TbStory;
+import jooq.tables.TbUser;
 
 
 /**
@@ -23,7 +26,22 @@ import jooq.tables.TbStory;
 public class Tables {
 
     /**
+     * The table <code>public.tb_comment</code>.
+     */
+    public static final TbComment TB_COMMENT = jooq.tables.TbComment.TB_COMMENT;
+
+    /**
+     * The table <code>public.tb_company</code>.
+     */
+    public static final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
      * The table <code>public.tb_story</code>.
      */
     public static final TbStory TB_STORY = jooq.tables.TbStory.TB_STORY;
+
+    /**
+     * The table <code>public.tb_user</code>.
+     */
+    public static final TbUser TB_USER = jooq.tables.TbUser.TB_USER;
 }

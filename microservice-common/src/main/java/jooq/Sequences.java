@@ -24,7 +24,22 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
+     * The sequence <code>public.tb_comment_id_seq</code>
+     */
+    public static final Sequence<Long> TB_COMMENT_ID_SEQ = new SequenceImpl<Long>("tb_comment_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.tb_company_id_seq</code>
+     */
+    public static final Sequence<Long> TB_COMPANY_ID_SEQ = new SequenceImpl<Long>("tb_company_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.tb_story_id_seq</code>
      */
     public static final Sequence<Long> TB_STORY_ID_SEQ = new SequenceImpl<Long>("tb_story_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.tb_user_id_seq</code>
+     */
+    public static final Sequence<Long> TB_USER_ID_SEQ = new SequenceImpl<Long>("tb_user_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 }
