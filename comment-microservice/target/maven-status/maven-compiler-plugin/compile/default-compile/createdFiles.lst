@@ -1,5 +1,5 @@
-io/vertx/saysayX/ms/comment/RateVerticle.class
+io/vertx/saysayX/ms/comment/CommentVerticle.class
+io/vertx/saysayX/ms/comment/CommentService.class
 io/vertx/saysayX/ms/comment/pojo/RateBeanConverter.class
-io/vertx/saysayX/ms/comment/RateService.class
 io/vertx/saysayX/ms/comment/package-info.class
 io/vertx/saysayX/ms/comment/pojo/RateBean.class

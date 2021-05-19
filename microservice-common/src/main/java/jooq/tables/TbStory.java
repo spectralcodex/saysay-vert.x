@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory extends TableImpl<TbStoryRecord> {
 
-    private static final long serialVersionUID = -940761726;
+    private static final long serialVersionUID = -667748335;
 
     /**
      * The reference instance of <code>public.tb_story</code>
@@ -73,9 +73,9 @@ public class TbStory extends TableImpl<TbStoryRecord> {
     public final TableField<TbStoryRecord, String> ENTITIES = createField("entities", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
-     * The column <code>public.tb_story.story_id</code>.
+     * The column <code>public.tb_story.sid</code>.
      */
-    public final TableField<TbStoryRecord, String> STORY_ID = createField("story_id", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<TbStoryRecord, String> SID = createField("sid", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * The column <code>public.tb_story.lang</code>.
@@ -118,19 +118,34 @@ public class TbStory extends TableImpl<TbStoryRecord> {
     public final TableField<TbStoryRecord, Integer> CAUTION_COUNT = createField("caution_count", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>public.tb_story.category</code>.
+     * The column <code>public.tb_story.category_name</code>.
      */
-    public final TableField<TbStoryRecord, String> CATEGORY = createField("category", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<TbStoryRecord, String> CATEGORY_NAME = createField("category_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
-     * The column <code>public.tb_story.sector</code>.
+     * The column <code>public.tb_story.sector_name</code>.
      */
-    public final TableField<TbStoryRecord, String> SECTOR = createField("sector", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<TbStoryRecord, String> SECTOR_NAME = createField("sector_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * The column <code>public.tb_story.company_id</code>.
      */
     public final TableField<TbStoryRecord, String> COMPANY_ID = createField("company_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+
+    /**
+     * The column <code>public.tb_story.sector_id</code>.
+     */
+    public final TableField<TbStoryRecord, String> SECTOR_ID = createField("sector_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+
+    /**
+     * The column <code>public.tb_story.category_id</code>.
+     */
+    public final TableField<TbStoryRecord, String> CATEGORY_ID = createField("category_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+
+    /**
+     * The column <code>public.tb_story.author_name</code>.
+     */
+    public final TableField<TbStoryRecord, String> AUTHOR_NAME = createField("author_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * Create a <code>public.tb_story</code> table reference

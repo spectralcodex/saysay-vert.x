@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCompany extends TableImpl<TbCompanyRecord> {
 
-    private static final long serialVersionUID = -1996561761;
+    private static final long serialVersionUID = -100595093;
 
     /**
      * The reference instance of <code>public.tb_company</code>
@@ -78,9 +78,9 @@ public class TbCompany extends TableImpl<TbCompanyRecord> {
     public final TableField<TbCompanyRecord, String> PHONE_NUMBER = createField("phone_number", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
-     * The column <code>public.tb_company.sector</code>.
+     * The column <code>public.tb_company.sector_name</code>.
      */
-    public final TableField<TbCompanyRecord, String> SECTOR = createField("sector", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<TbCompanyRecord, String> SECTOR_NAME = createField("sector_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * The column <code>public.tb_company.rating</code>.
@@ -103,14 +103,14 @@ public class TbCompany extends TableImpl<TbCompanyRecord> {
     public final TableField<TbCompanyRecord, String> ENTITIES = createField("entities", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
-     * The column <code>public.tb_company.company_id</code>.
+     * The column <code>public.tb_company.cid</code>.
      */
-    public final TableField<TbCompanyRecord, String> COMPANY_ID = createField("company_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+    public final TableField<TbCompanyRecord, String> CID = createField("cid", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
-     * The column <code>public.tb_company.company_code</code>.
+     * The column <code>public.tb_company.code</code>.
      */
-    public final TableField<TbCompanyRecord, String> COMPANY_CODE = createField("company_code", org.jooq.impl.SQLDataType.VARCHAR(10), this, "");
+    public final TableField<TbCompanyRecord, String> CODE = createField("code", org.jooq.impl.SQLDataType.VARCHAR(10), this, "");
 
     /**
      * The column <code>public.tb_company.created_at</code>.
@@ -136,6 +136,21 @@ public class TbCompany extends TableImpl<TbCompanyRecord> {
      * The column <code>public.tb_company.other_links</code>.
      */
     public final TableField<TbCompanyRecord, String> OTHER_LINKS = createField("other_links", org.jooq.impl.SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>public.tb_company.category_name</code>.
+     */
+    public final TableField<TbCompanyRecord, String> CATEGORY_NAME = createField("category_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.tb_company.sector_id</code>.
+     */
+    public final TableField<TbCompanyRecord, String> SECTOR_ID = createField("sector_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+
+    /**
+     * The column <code>public.tb_company.category_id</code>.
+     */
+    public final TableField<TbCompanyRecord, String> CATEGORY_ID = createField("category_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * Create a <code>public.tb_company</code> table reference

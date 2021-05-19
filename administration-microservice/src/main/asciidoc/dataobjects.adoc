@@ -1,5 +1,33 @@
 = Cheatsheets
 
+[[CompanyBean]]
+== CompanyBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[backgroundInfo]]`@backgroundInfo`|`String`|-
+|[[categoryId]]`@categoryId`|`String`|-
+|[[categoryName]]`@categoryName`|`String`|-
+|[[cid]]`@cid`|`String`|-
+|[[code]]`@code`|`String`|-
+|[[createdBy]]`@createdBy`|`String`|-
+|[[email]]`@email`|`String`|-
+|[[entities]]`@entities`|`String`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[location]]`@location`|`String`|-
+|[[logo]]`@logo`|`String`|-
+|[[name]]`@name`|`String`|-
+|[[otherLinks]]`@otherLinks`|`String`|-
+|[[phoneNumber]]`@phoneNumber`|`String`|-
+|[[rating]]`@rating`|`Number (Integer)`|-
+|[[sectorId]]`@sectorId`|`String`|-
+|[[sectorName]]`@sectorName`|`String`|-
+|[[website]]`@website`|`String`|-
+|===
+
 [[UserBean]]
 == UserBean
 
@@ -21,7 +49,9 @@
 |[[otherInfo]]`@otherInfo`|`String`|-
 |[[profilePic]]`@profilePic`|`String`|-
 |[[roleId]]`@roleId`|`String`|-
+|[[roleName]]`@roleName`|`String`|-
 |[[salt]]`@salt`|`String`|-
+|[[uid]]`@uid`|`String`|-
 |[[website]]`@website`|`String`|-
 |===
 

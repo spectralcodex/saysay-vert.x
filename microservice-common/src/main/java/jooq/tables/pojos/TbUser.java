@@ -26,7 +26,7 @@ import jooq.tables.interfaces.ITbUser;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbUser implements VertxPojo, ITbUser {
 
-    private static final long serialVersionUID = -1238115018;
+    private static final long serialVersionUID = 242677247;
 
     private Long           id;
     private String         roleId;
@@ -44,6 +44,8 @@ public class TbUser implements VertxPojo, ITbUser {
     private String         otherInfo;
     private String         createdBy;
     private OffsetDateTime createdOn;
+    private String         roleName;
+    private String         uid;
 
     public TbUser() {}
 
@@ -64,6 +66,8 @@ public class TbUser implements VertxPojo, ITbUser {
         this.otherInfo = value.getOtherInfo();
         this.createdBy = value.getCreatedBy();
         this.createdOn = value.getCreatedOn();
+        this.roleName = value.getRoleName();
+        this.uid = value.getUid();
     }
 
     public TbUser(
@@ -82,7 +86,9 @@ public class TbUser implements VertxPojo, ITbUser {
         String         dob,
         String         otherInfo,
         String         createdBy,
-        OffsetDateTime createdOn
+        OffsetDateTime createdOn,
+        String         roleName,
+        String         uid
     ) {
         this.id = id;
         this.roleId = roleId;
@@ -100,6 +106,8 @@ public class TbUser implements VertxPojo, ITbUser {
         this.otherInfo = otherInfo;
         this.createdBy = createdBy;
         this.createdOn = createdOn;
+        this.roleName = roleName;
+        this.uid = uid;
     }
 
     @Override
@@ -279,6 +287,28 @@ public class TbUser implements VertxPojo, ITbUser {
     }
 
     @Override
+    public String getRoleName() {
+        return this.roleName;
+    }
+
+    @Override
+    public TbUser setRoleName(String roleName) {
+        this.roleName = roleName;
+        return this;
+    }
+
+    @Override
+    public String getUid() {
+        return this.uid;
+    }
+
+    @Override
+    public TbUser setUid(String uid) {
+        this.uid = uid;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbUser (");
 
@@ -298,6 +328,8 @@ public class TbUser implements VertxPojo, ITbUser {
         sb.append(", ").append(otherInfo);
         sb.append(", ").append(createdBy);
         sb.append(", ").append(createdOn);
+        sb.append(", ").append(roleName);
+        sb.append(", ").append(uid);
 
         sb.append(")");
         return sb.toString();
@@ -328,6 +360,8 @@ public class TbUser implements VertxPojo, ITbUser {
         setOtherInfo(from.getOtherInfo());
         setCreatedBy(from.getCreatedBy());
         setCreatedOn(from.getCreatedOn());
+        setRoleName(from.getRoleName());
+        setUid(from.getUid());
     }
 
     /**

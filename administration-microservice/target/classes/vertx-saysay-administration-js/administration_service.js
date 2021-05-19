@@ -37,7 +37,16 @@ var AdministrationService = function(j_val) {
 
   var __super_initializePersistence = this.initializePersistence;
   var __super_addUser = this.addUser;
-  var __super_retrieveUser = this.retrieveUser;
+  var __super_retrieveUserById = this.retrieveUserById;
+  var __super_retrieveUserByEmail = this.retrieveUserByEmail;
+  var __super_deleteUser = this.deleteUser;
+  var __super_updateUser = this.updateUser;
+  var __super_retrieveAllUsers = this.retrieveAllUsers;
+  var __super_addCompany = this.addCompany;
+  var __super_retrieveCompanyById = this.retrieveCompanyById;
+  var __super_deleteCompany = this.deleteCompany;
+  var __super_updateCompanyById = this.updateCompanyById;
+  var __super_retrieveCompanyAll = this.retrieveCompanyAll;
   /**
 
    @public
@@ -91,12 +100,12 @@ var AdministrationService = function(j_val) {
    @public
    @param userId {string} 
    @param resultHandler {function} 
-   @return {AdministrationService}
+   @return {AdministrationService} 
    */
-  this.retrieveUser =  function(userId, resultHandler) {
+  this.retrieveUserById =  function(userId, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_administrationService["retrieveUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+      j_administrationService["retrieveUserById(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
           __args[1](utils.convReturnJson(ar.result()), null);
         } else {
@@ -104,8 +113,223 @@ var AdministrationService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveUser != 'undefined') {
-      return __super_retrieveUser.apply(this, __args);
+    } else if (typeof __super_retrieveUserById != 'undefined') {
+      return __super_retrieveUserById.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param email {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService} 
+   */
+  this.retrieveUserByEmail =  function(email, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["retrieveUserByEmail(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](utils.convReturnJson(ar.result()), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveUserByEmail != 'undefined') {
+      return __super_retrieveUserByEmail.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param userId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService} 
+   */
+  this.deleteUser =  function(userId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["deleteUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_deleteUser != 'undefined') {
+      return __super_deleteUser.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param userId {string} userId we want to query for 
+   @param resultHandler {function} this handler will return as soon as update is complete. The jooq.async result * indicates whether the operation was successful or not. 
+   @return {AdministrationService} 
+   */
+  this.updateUser =  function(userId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["updateUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_updateUser != 'undefined') {
+      return __super_updateUser.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param resultHandler {function} for all users 
+   @return {AdministrationService} 
+   */
+  this.retrieveAllUsers =  function(resultHandler) {
+    var __args = arguments;
+    if (__args.length === 1 && typeof __args[0] === 'function') {
+      j_administrationService["retrieveAllUsers(io.vertx.core.Handler)"](function(ar) {
+        if (ar.succeeded()) {
+          __args[0](utils.convReturnListSetJson(ar.result()), null);
+        } else {
+          __args[0](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveAllUsers != 'undefined') {
+      return __super_retrieveAllUsers.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+   Add a Company to the persistence.
+
+   @public
+   @param companyId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService} 
+   */
+  this.addCompany =  function(companyId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["addCompany(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_addCompany != 'undefined') {
+      return __super_addCompany.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param companyId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.retrieveCompanyById =  function(companyId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["retrieveCompanyById(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](utils.convReturnJson(ar.result()), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveCompanyById != 'undefined') {
+      return __super_retrieveCompanyById.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param companyId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.deleteCompany =  function(companyId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["deleteCompany(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_deleteCompany != 'undefined') {
+      return __super_deleteCompany.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param companyId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.updateCompanyById =  function(companyId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["updateCompanyById(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_updateCompanyById != 'undefined') {
+      return __super_updateCompanyById.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.retrieveCompanyAll =  function(resultHandler) {
+    var __args = arguments;
+    if (__args.length === 1 && typeof __args[0] === 'function') {
+      j_administrationService["retrieveCompanyAll(io.vertx.core.Handler)"](function(ar) {
+        if (ar.succeeded()) {
+          __args[0](utils.convReturnListSetJson(ar.result()), null);
+        } else {
+          __args[0](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveCompanyAll != 'undefined') {
+      return __super_retrieveCompanyAll.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

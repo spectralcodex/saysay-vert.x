@@ -41,6 +41,7 @@ import io.vertx.serviceproxy.ServiceException;
 import io.vertx.serviceproxy.ServiceExceptionMessageCodec;
 import io.vertx.serviceproxy.HelperUtils;
 
+import java.util.List;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import io.vertx.saysayX.ms.administration.AdministrationService;
 import io.vertx.core.json.JsonObject;
@@ -125,9 +126,52 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "retrieveUser": {
-          service.retrieveUser((java.lang.String)json.getValue("userId"),
+        case "retrieveUserById": {
+          service.retrieveUserById((java.lang.String)json.getValue("userId"),
                         HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveUserByEmail": {
+          service.retrieveUserByEmail((java.lang.String)json.getValue("email"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "deleteUser": {
+          service.deleteUser((java.lang.String)json.getValue("userId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "updateUser": {
+          service.updateUser((java.lang.String)json.getValue("userId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveAllUsers": {
+          service.retrieveAllUsers(HelperUtils.createListHandler(msg));
+          break;
+        }
+        case "addCompany": {
+          service.addCompany((java.lang.String)json.getValue("companyId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveCompanyById": {
+          service.retrieveCompanyById((java.lang.String)json.getValue("companyId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "deleteCompany": {
+          service.deleteCompany((java.lang.String)json.getValue("companyId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "updateCompanyById": {
+          service.updateCompanyById((java.lang.String)json.getValue("companyId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveCompanyAll": {
+          service.retrieveCompanyAll(HelperUtils.createListHandler(msg));
           break;
         }
         default: throw new IllegalStateException("Invalid action: " + action);

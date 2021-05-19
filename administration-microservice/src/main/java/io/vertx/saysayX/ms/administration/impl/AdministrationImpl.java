@@ -9,6 +9,7 @@ import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import io.vertx.saysayX.common.config.BaseUtils;
 import io.vertx.saysayX.common.service.JooqRepositoryWrapper;
 
+import java.util.List;
 import java.util.UUID;
 
 import static jooq.Tables.TB_USER;
@@ -47,15 +48,65 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
         return this;
     }
 
-
-
+    @Override
+    public AdministrationService retrieveUserById(String userId, Handler<AsyncResult<JsonObject>> resultHandler) {
+        return null;
+    }
 
     @Override
+    public AdministrationService retrieveUserByEmail(String email, Handler<AsyncResult<JsonObject>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService deleteUser(String userId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService updateUser(String userId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService retrieveAllUsers(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService addCompany(String companyId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService retrieveCompanyById(String companyId, Handler<AsyncResult<JsonObject>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService deleteCompany(String companyId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService updateCompanyById(String companyId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService retrieveCompanyAll(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+        return null;
+    }
+
+
+
+
+   /* @Override
     public AdministrationService retrieveUser(String userId, Handler<AsyncResult<JsonObject>> resultHandler) {
         executor.findOneJson(dsl -> dsl.selectFrom(TB_USER).where(TB_USER.ID.eq(Long.valueOf(userId))))
                 .onComplete(resultHandler);
         return this;
-    }
+    }*/
 
 
 }

@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbUser extends TableImpl<TbUserRecord> {
 
-    private static final long serialVersionUID = 452045692;
+    private static final long serialVersionUID = 833121739;
 
     /**
      * The reference instance of <code>public.tb_user</code>
@@ -136,6 +136,16 @@ public class TbUser extends TableImpl<TbUserRecord> {
      * The column <code>public.tb_user.created_on</code>.
      */
     public final TableField<TbUserRecord, OffsetDateTime> CREATED_ON = createField("created_on", org.jooq.impl.SQLDataType.TIMESTAMPWITHTIMEZONE.defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMPWITHTIMEZONE)), this, "");
+
+    /**
+     * The column <code>public.tb_user.role_name</code>.
+     */
+    public final TableField<TbUserRecord, String> ROLE_NAME = createField("role_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+
+    /**
+     * The column <code>public.tb_user.uid</code>.
+     */
+    public final TableField<TbUserRecord, String> UID = createField("uid", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * Create a <code>public.tb_user</code> table reference

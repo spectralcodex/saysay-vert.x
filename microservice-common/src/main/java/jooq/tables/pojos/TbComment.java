@@ -26,48 +26,52 @@ import jooq.tables.interfaces.ITbComment;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbComment implements VertxPojo, ITbComment {
 
-    private static final long serialVersionUID = -1364008114;
+    private static final long serialVersionUID = 1987861294;
 
     private Long           id;
     private String         authorId;
-    private String         commentId;
+    private String         cid;
     private String         storyId;
     private Integer        possibilitySensitive;
     private String         lang;
     private OffsetDateTime createdAt;
     private String         entities;
+    private String         authorName;
 
     public TbComment() {}
 
     public TbComment(ITbComment value) {
         this.id = value.getId();
         this.authorId = value.getAuthorId();
-        this.commentId = value.getCommentId();
+        this.cid = value.getCid();
         this.storyId = value.getStoryId();
         this.possibilitySensitive = value.getPossibilitySensitive();
         this.lang = value.getLang();
         this.createdAt = value.getCreatedAt();
         this.entities = value.getEntities();
+        this.authorName = value.getAuthorName();
     }
 
     public TbComment(
         Long           id,
         String         authorId,
-        String         commentId,
+        String         cid,
         String         storyId,
         Integer        possibilitySensitive,
         String         lang,
         OffsetDateTime createdAt,
-        String         entities
+        String         entities,
+        String         authorName
     ) {
         this.id = id;
         this.authorId = authorId;
-        this.commentId = commentId;
+        this.cid = cid;
         this.storyId = storyId;
         this.possibilitySensitive = possibilitySensitive;
         this.lang = lang;
         this.createdAt = createdAt;
         this.entities = entities;
+        this.authorName = authorName;
     }
 
     @Override
@@ -93,13 +97,13 @@ public class TbComment implements VertxPojo, ITbComment {
     }
 
     @Override
-    public String getCommentId() {
-        return this.commentId;
+    public String getCid() {
+        return this.cid;
     }
 
     @Override
-    public TbComment setCommentId(String commentId) {
-        this.commentId = commentId;
+    public TbComment setCid(String cid) {
+        this.cid = cid;
         return this;
     }
 
@@ -159,17 +163,29 @@ public class TbComment implements VertxPojo, ITbComment {
     }
 
     @Override
+    public String getAuthorName() {
+        return this.authorName;
+    }
+
+    @Override
+    public TbComment setAuthorName(String authorName) {
+        this.authorName = authorName;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbComment (");
 
         sb.append(id);
         sb.append(", ").append(authorId);
-        sb.append(", ").append(commentId);
+        sb.append(", ").append(cid);
         sb.append(", ").append(storyId);
         sb.append(", ").append(possibilitySensitive);
         sb.append(", ").append(lang);
         sb.append(", ").append(createdAt);
         sb.append(", ").append(entities);
+        sb.append(", ").append(authorName);
 
         sb.append(")");
         return sb.toString();
@@ -186,12 +202,13 @@ public class TbComment implements VertxPojo, ITbComment {
     public void from(ITbComment from) {
         setId(from.getId());
         setAuthorId(from.getAuthorId());
-        setCommentId(from.getCommentId());
+        setCid(from.getCid());
         setStoryId(from.getStoryId());
         setPossibilitySensitive(from.getPossibilitySensitive());
         setLang(from.getLang());
         setCreatedAt(from.getCreatedAt());
         setEntities(from.getEntities());
+        setAuthorName(from.getAuthorName());
     }
 
     /**

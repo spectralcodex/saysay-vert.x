@@ -154,6 +154,20 @@ public class TbUserDao extends AbstractAsyncVertxDAO<TbUserRecord, jooq.tables.p
         return findManyByCondition(TbUser.TB_USER.CREATED_ON.in(values));
     }
 
+    /**
+     * Find records that have <code>role_name IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbUser>> findManyByRoleName(Collection<String> values) {
+        return findManyByCondition(TbUser.TB_USER.ROLE_NAME.in(values));
+    }
+
+    /**
+     * Find records that have <code>uid IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbUser>> findManyByUid(Collection<String> values) {
+        return findManyByCondition(TbUser.TB_USER.UID.in(values));
+    }
+
     @Override
     public AsyncClassicQueryExecutor<TbUserRecord,jooq.tables.pojos.TbUser,Long> queryExecutor(){
         return (AsyncClassicQueryExecutor<TbUserRecord,jooq.tables.pojos.TbUser,Long>) super.queryExecutor();

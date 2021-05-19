@@ -10,8 +10,10 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbSector;
 import jooq.tables.TbStory;
 import jooq.tables.TbUser;
 
@@ -34,12 +36,17 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 917819820;
+    private static final long serialVersionUID = -439919365;
 
     /**
      * The reference instance of <code>public</code>
      */
     public static final Public PUBLIC = new Public();
+
+    /**
+     * The table <code>public.tb_category</code>.
+     */
+    public final TbCategory TB_CATEGORY = jooq.tables.TbCategory.TB_CATEGORY;
 
     /**
      * The table <code>public.tb_comment</code>.
@@ -50,6 +57,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.tb_company</code>.
      */
     public final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
+     * The table <code>public.tb_sector</code>.
+     */
+    public final TbSector TB_SECTOR = jooq.tables.TbSector.TB_SECTOR;
 
     /**
      * The table <code>public.tb_story</code>.
@@ -86,6 +98,8 @@ public class Public extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
+            Sequences.SECTOR_ID_SEQ,
+            Sequences.TB_CATEGORY_ID_SEQ,
             Sequences.TB_COMMENT_ID_SEQ,
             Sequences.TB_COMPANY_ID_SEQ,
             Sequences.TB_STORY_ID_SEQ,
@@ -101,8 +115,10 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            TbCategory.TB_CATEGORY,
             TbComment.TB_COMMENT,
             TbCompany.TB_COMPANY,
+            TbSector.TB_SECTOR,
             TbStory.TB_STORY,
             TbUser.TB_USER);
     }

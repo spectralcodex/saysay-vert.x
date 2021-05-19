@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
 
 public class RestStoryApiVerticle extends RestAPIVerticle {
     public static final String SERVICE_NAME = "story-rest-api";
-    private static final String API_ADD_STORY = "/story";
-    private static final String API_RETRIEVE_STORY = "/story/:storyId";
-    private static final String API_RETRIEVE_STORY_AUTHID = "/:authorId";
-    private static final String API_UPDATE_STORY = "/story/:storyId";
-    private static final String API_DELETE_STORY = "/story/:storyId";
-    private static final String API_RETRIEVE_STORIES= "/story/all/:authorId";
+    private static final String API_ADD = "/";
+    private static final String API_RETRIEVE = "/:sid";
+    private static final String API_UPDATE = "/:sid";
+    private static final String API_DELETE = "/:sid";
+    private static final String API_RETRIEVE_ALL= "/all/:authorId";
+
     protected final static Logger logger = LoggerFactory.getLogger(RestStoryApiVerticle.class);
 
     private final StoryService service;
@@ -31,12 +31,11 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
         super.start();
         final Router router = enableRouteLoggingSupport(Router.router(vertx));
 
-        router.post(API_ADD_STORY).handler(this::putStory);
-        router.get(API_RETRIEVE_STORY).handler(this::getStory);
-        router.patch(API_UPDATE_STORY).handler(this::editStory);
-        router.delete(API_DELETE_STORY).handler(this::removeStory);
-        router.get(API_RETRIEVE_STORIES).handler(this::getStoriesByAuthorId);
-        router.get(API_RETRIEVE_STORY_AUTHID).handler(this::getStoryByAuthorId);
+        router.post(API_ADD).handler(this::putStory);
+        router.get(API_RETRIEVE).handler(this::getStory);
+        router.patch(API_UPDATE).handler(this::editStory);
+        router.delete(API_DELETE).handler(this::removeStory);
+        router.get(API_RETRIEVE_ALL).handler(this::getStoryByAuthorId);
 
         String host = config().getString("story.http.address", "0.0.0.0");
         int port = config().getInteger("story.http.port", 8082);
@@ -61,16 +60,16 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
     }
 
     private void getStory(RoutingContext ctx){
-        String id = ctx.request().getParam("storyId");
-        logger.info("finding story --> {}", id);
-        service.retrieveStory(id, resultHandlerNonEmpty(ctx));
+        String sid = ctx.request().getParam("sid");
+        logger.info("finding story --> {}", sid);
+        service.retrieveStory(sid, resultHandlerNonEmpty(ctx));
 
     }
 
     private void editStory(RoutingContext ctx){
         try{
             StoryBean story = new StoryBean(ctx.getBodyAsJson());
-            story.setStoryId(ctx.request().getParam("storyId"));
+            story.setSid(ctx.request().getParam("sid"));
             service.updateStory(story, resultHandler(ctx, 200));
         } catch (DecodeException e){
             badRequest(ctx, e);
@@ -89,7 +88,7 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
     }
 
     private void removeStory(RoutingContext ctx){
-        String id = ctx.request().getParam("storyId");
-        service.deleteStory(id, deleteResultHandler(ctx));
+        String sid = ctx.request().getParam("sid");
+        service.deleteStory(sid, deleteResultHandler(ctx));
     }
 }

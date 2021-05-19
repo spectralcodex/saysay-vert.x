@@ -19,6 +19,21 @@ public class StoryBeanConverter {
             obj.setAuthorId((String)member.getValue());
           }
           break;
+        case "authorName":
+          if (member.getValue() instanceof String) {
+            obj.setAuthorName((String)member.getValue());
+          }
+          break;
+        case "categoryId":
+          if (member.getValue() instanceof String) {
+            obj.setCategoryId((String)member.getValue());
+          }
+          break;
+        case "categoryName":
+          if (member.getValue() instanceof String) {
+            obj.setCategoryName((String)member.getValue());
+          }
+          break;
         case "cautionCount":
           if (member.getValue() instanceof Number) {
             obj.setCautionCount(((Number)member.getValue()).intValue());
@@ -29,9 +44,19 @@ public class StoryBeanConverter {
             obj.setCommentCount(((Number)member.getValue()).intValue());
           }
           break;
-        case "entries":
+        case "companyId":
+          if (member.getValue() instanceof String) {
+            obj.setCompanyId((String)member.getValue());
+          }
+          break;
+        case "companyNameName":
+          if (member.getValue() instanceof String) {
+            obj.setCompanyNameName((String)member.getValue());
+          }
+          break;
+        case "entities":
           if (member.getValue() instanceof JsonObject) {
-            obj.setEntries(((JsonObject)member.getValue()).copy());
+            obj.setEntities(((JsonObject)member.getValue()).copy());
           }
           break;
         case "id":
@@ -54,6 +79,21 @@ public class StoryBeanConverter {
             obj.setPossiblySensitive(((Number)member.getValue()).intValue());
           }
           break;
+        case "sectorId":
+          if (member.getValue() instanceof String) {
+            obj.setSectorId((String)member.getValue());
+          }
+          break;
+        case "sectorName":
+          if (member.getValue() instanceof String) {
+            obj.setSectorName((String)member.getValue());
+          }
+          break;
+        case "sid":
+          if (member.getValue() instanceof String) {
+            obj.setSid((String)member.getValue());
+          }
+          break;
         case "source":
           if (member.getValue() instanceof String) {
             obj.setSource((String)member.getValue());
@@ -62,11 +102,6 @@ public class StoryBeanConverter {
         case "story":
           if (member.getValue() instanceof String) {
             obj.setStory((String)member.getValue());
-          }
-          break;
-        case "storyId":
-          if (member.getValue() instanceof String) {
-            obj.setStoryId((String)member.getValue());
           }
           break;
       }
@@ -81,14 +116,29 @@ public class StoryBeanConverter {
     if (obj.getAuthorId() != null) {
       json.put("authorId", obj.getAuthorId());
     }
+    if (obj.getAuthorName() != null) {
+      json.put("authorName", obj.getAuthorName());
+    }
+    if (obj.getCategoryId() != null) {
+      json.put("categoryId", obj.getCategoryId());
+    }
+    if (obj.getCategoryName() != null) {
+      json.put("categoryName", obj.getCategoryName());
+    }
     if (obj.getCautionCount() != null) {
       json.put("cautionCount", obj.getCautionCount());
     }
     if (obj.getCommentCount() != null) {
       json.put("commentCount", obj.getCommentCount());
     }
-    if (obj.getEntries() != null) {
-      json.put("entries", obj.getEntries());
+    if (obj.getCompanyId() != null) {
+      json.put("companyId", obj.getCompanyId());
+    }
+    if (obj.getCompanyNameName() != null) {
+      json.put("companyNameName", obj.getCompanyNameName());
+    }
+    if (obj.getEntities() != null) {
+      json.put("entities", obj.getEntities());
     }
     if (obj.getId() != null) {
       json.put("id", obj.getId());
@@ -102,14 +152,20 @@ public class StoryBeanConverter {
     if (obj.getPossiblySensitive() != null) {
       json.put("possiblySensitive", obj.getPossiblySensitive());
     }
+    if (obj.getSectorId() != null) {
+      json.put("sectorId", obj.getSectorId());
+    }
+    if (obj.getSectorName() != null) {
+      json.put("sectorName", obj.getSectorName());
+    }
+    if (obj.getSid() != null) {
+      json.put("sid", obj.getSid());
+    }
     if (obj.getSource() != null) {
       json.put("source", obj.getSource());
     }
     if (obj.getStory() != null) {
       json.put("story", obj.getStory());
-    }
-    if (obj.getStoryId() != null) {
-      json.put("storyId", obj.getStoryId());
     }
   }
 }

@@ -37,17 +37,31 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
     public StoryService addStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler) {
         String sid = UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
         executor.execute(dsl -> dsl.insertInto(TB_STORY,
-                TB_STORY.AUTHOR_ID, TB_STORY.ENTRIES, TB_STORY.STORY_ID,
-                TB_STORY.LANG, TB_STORY.POSSIBLY_SENSITIVE, TB_STORY.SOURCE, TB_STORY.STORY)
-                .values(story.getAuthorId(), story.getEntries().encode(), sid , story.getLang(),
-                        story.getPossiblySensitive(), story.getSource(), story.getStory()))
+                TB_STORY.AUTHOR_ID,
+                TB_STORY.AUTHOR_NAME,
+                TB_STORY.ENTITIES,
+                TB_STORY.SID,
+                TB_STORY.LANG,
+                TB_STORY.POSSIBLY_SENSITIVE,
+                TB_STORY.SOURCE,
+                TB_STORY.STORY,
+                TB_STORY.CATEGORY_ID,
+                TB_STORY.CATEGORY_NAME,
+                TB_STORY.SECTOR_ID,
+                TB_STORY.SECTOR_NAME,
+                TB_STORY.COMPANY_ID
+                //TB_STORY.COMPANY_NAME
+                )
+                .values(story.getAuthorId(),story.getAuthorName(), story.getEntities().encode(), sid , story.getLang(),
+                        story.getPossiblySensitive(), story.getSource(), story.getStory(), story.getCategoryId(),story.getCategoryName(),
+                        story.getSectorId(),story.getSectorName(), story.getCompanyId()))
                 .onComplete(resultHandler);
         return this;
     }
 
     @Override
     public StoryService retrieveStory(String id, Handler<AsyncResult<JsonObject>> resultHandler) {
-        executor.findOneJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.STORY_ID.eq(id)))
+        executor.findOneJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.SID.eq(id)))
                 .onComplete(resultHandler);
         return this;
     }
@@ -76,8 +90,15 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
     public StoryService updateStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler) {
         executor.execute(dsl -> dsl.update(TB_STORY).set(TB_STORY.STORY, story.getStory())
         .set(TB_STORY.SOURCE, story.getSource())
-        .set(TB_STORY.ENTRIES, story.getEntries().encode())
-        .set(TB_STORY.POSSIBLY_SENSITIVE, story.getPossiblySensitive()).where(TB_STORY.STORY_ID.eq(story.getStoryId())))
+        .set(TB_STORY.ENTITIES, story.getEntities().encode())
+        .set(TB_STORY.POSSIBLY_SENSITIVE, story.getPossiblySensitive())
+        .set(TB_STORY.CATEGORY_ID, story.getCategoryId())
+        .set(TB_STORY.CATEGORY_NAME, story.getCategoryName())
+        .set(TB_STORY.SECTOR_ID, story.getSectorId())
+        .set(TB_STORY.SECTOR_NAME, story.getSectorName())
+        .set(TB_STORY.COMPANY_ID, story.getCompanyId())
+        //.set(TB_STORY.COMPANY_NAME, story.getCompanyName())
+                .where(TB_STORY.SID.eq(story.getSid())))
                 .onComplete(resultHandler);
         return this;
     }
@@ -85,7 +106,7 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
     @Override
     public StoryService deleteStory(String id, Handler<AsyncResult<Integer>> resultHandler) {
         executor.execute(dsl -> dsl.deleteFrom(TB_STORY)
-                .where(TB_STORY.STORY_ID.eq(id)))
+                .where(TB_STORY.SID.eq(id)))
                 .onComplete(resultHandler);
         return this;
     }

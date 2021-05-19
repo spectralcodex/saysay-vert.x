@@ -67,14 +67,14 @@ public interface ITbCompany extends VertxPojo, Serializable {
     public String getPhoneNumber();
 
     /**
-     * Setter for <code>public.tb_company.sector</code>.
+     * Setter for <code>public.tb_company.sector_name</code>.
      */
-    public ITbCompany setSector(String value);
+    public ITbCompany setSectorName(String value);
 
     /**
-     * Getter for <code>public.tb_company.sector</code>.
+     * Getter for <code>public.tb_company.sector_name</code>.
      */
-    public String getSector();
+    public String getSectorName();
 
     /**
      * Setter for <code>public.tb_company.rating</code>.
@@ -117,24 +117,24 @@ public interface ITbCompany extends VertxPojo, Serializable {
     public String getEntities();
 
     /**
-     * Setter for <code>public.tb_company.company_id</code>.
+     * Setter for <code>public.tb_company.cid</code>.
      */
-    public ITbCompany setCompanyId(String value);
+    public ITbCompany setCid(String value);
 
     /**
-     * Getter for <code>public.tb_company.company_id</code>.
+     * Getter for <code>public.tb_company.cid</code>.
      */
-    public String getCompanyId();
+    public String getCid();
 
     /**
-     * Setter for <code>public.tb_company.company_code</code>.
+     * Setter for <code>public.tb_company.code</code>.
      */
-    public ITbCompany setCompanyCode(String value);
+    public ITbCompany setCode(String value);
 
     /**
-     * Getter for <code>public.tb_company.company_code</code>.
+     * Getter for <code>public.tb_company.code</code>.
      */
-    public String getCompanyCode();
+    public String getCode();
 
     /**
      * Setter for <code>public.tb_company.created_at</code>.
@@ -186,6 +186,36 @@ public interface ITbCompany extends VertxPojo, Serializable {
      */
     public String getOtherLinks();
 
+    /**
+     * Setter for <code>public.tb_company.category_name</code>.
+     */
+    public ITbCompany setCategoryName(String value);
+
+    /**
+     * Getter for <code>public.tb_company.category_name</code>.
+     */
+    public String getCategoryName();
+
+    /**
+     * Setter for <code>public.tb_company.sector_id</code>.
+     */
+    public ITbCompany setSectorId(String value);
+
+    /**
+     * Getter for <code>public.tb_company.sector_id</code>.
+     */
+    public String getSectorId();
+
+    /**
+     * Setter for <code>public.tb_company.category_id</code>.
+     */
+    public ITbCompany setCategoryId(String value);
+
+    /**
+     * Getter for <code>public.tb_company.category_id</code>.
+     */
+    public String getCategoryId();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -223,9 +253,9 @@ public interface ITbCompany extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("phone_number","java.lang.String",e);
         }
         try {
-            setSector(json.getString("sector"));
+            setSectorName(json.getString("sector_name"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("sector","java.lang.String",e);
+            throw new UnexpectedJsonValueType("sector_name","java.lang.String",e);
         }
         try {
             setRating(json.getInteger("rating"));
@@ -248,14 +278,14 @@ public interface ITbCompany extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("entities","java.lang.String",e);
         }
         try {
-            setCompanyId(json.getString("company_id"));
+            setCid(json.getString("cid"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("company_id","java.lang.String",e);
+            throw new UnexpectedJsonValueType("cid","java.lang.String",e);
         }
         try {
-            setCompanyCode(json.getString("company_code"));
+            setCode(json.getString("code"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("company_code","java.lang.String",e);
+            throw new UnexpectedJsonValueType("code","java.lang.String",e);
         }
         try {
             // Omitting unrecognized type java.time.OffsetTime for column created_at!
@@ -282,6 +312,21 @@ public interface ITbCompany extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("other_links","java.lang.String",e);
         }
+        try {
+            setCategoryName(json.getString("category_name"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("category_name","java.lang.String",e);
+        }
+        try {
+            setSectorId(json.getString("sector_id"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("sector_id","java.lang.String",e);
+        }
+        try {
+            setCategoryId(json.getString("category_id"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("category_id","java.lang.String",e);
+        }
         return this;
     }
 
@@ -293,18 +338,21 @@ public interface ITbCompany extends VertxPojo, Serializable {
         json.put("name",getName());
         json.put("location",getLocation());
         json.put("phone_number",getPhoneNumber());
-        json.put("sector",getSector());
+        json.put("sector_name",getSectorName());
         json.put("rating",getRating());
         json.put("logo",getLogo());
         json.put("background_info",getBackgroundInfo());
         json.put("entities",getEntities());
-        json.put("company_id",getCompanyId());
-        json.put("company_code",getCompanyCode());
+        json.put("cid",getCid());
+        json.put("code",getCode());
         // Omitting unrecognized type java.time.OffsetTime for column created_at!
         json.put("created_by",getCreatedBy());
         json.put("email",getEmail());
         json.put("website",getWebsite());
         json.put("other_links",getOtherLinks());
+        json.put("category_name",getCategoryName());
+        json.put("sector_id",getSectorId());
+        json.put("category_id",getCategoryId());
         return json;
     }
 

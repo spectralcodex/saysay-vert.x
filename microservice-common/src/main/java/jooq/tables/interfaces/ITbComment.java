@@ -47,14 +47,14 @@ public interface ITbComment extends VertxPojo, Serializable {
     public String getAuthorId();
 
     /**
-     * Setter for <code>public.tb_comment.comment_id</code>.
+     * Setter for <code>public.tb_comment.cid</code>.
      */
-    public ITbComment setCommentId(String value);
+    public ITbComment setCid(String value);
 
     /**
-     * Getter for <code>public.tb_comment.comment_id</code>.
+     * Getter for <code>public.tb_comment.cid</code>.
      */
-    public String getCommentId();
+    public String getCid();
 
     /**
      * Setter for <code>public.tb_comment.story_id</code>.
@@ -106,6 +106,16 @@ public interface ITbComment extends VertxPojo, Serializable {
      */
     public String getEntities();
 
+    /**
+     * Setter for <code>public.tb_comment.author_name</code>.
+     */
+    public ITbComment setAuthorName(String value);
+
+    /**
+     * Getter for <code>public.tb_comment.author_name</code>.
+     */
+    public String getAuthorName();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -133,9 +143,9 @@ public interface ITbComment extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("author_id","java.lang.String",e);
         }
         try {
-            setCommentId(json.getString("comment_id"));
+            setCid(json.getString("cid"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("comment_id","java.lang.String",e);
+            throw new UnexpectedJsonValueType("cid","java.lang.String",e);
         }
         try {
             setStoryId(json.getString("story_id"));
@@ -162,6 +172,11 @@ public interface ITbComment extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("entities","java.lang.String",e);
         }
+        try {
+            setAuthorName(json.getString("author_name"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("author_name","java.lang.String",e);
+        }
         return this;
     }
 
@@ -171,12 +186,13 @@ public interface ITbComment extends VertxPojo, Serializable {
         io.vertx.core.json.JsonObject json = new io.vertx.core.json.JsonObject();
         json.put("id",getId());
         json.put("author_id",getAuthorId());
-        json.put("comment_id",getCommentId());
+        json.put("cid",getCid());
         json.put("story_id",getStoryId());
         json.put("possibility_sensitive",getPossibilitySensitive());
         json.put("lang",getLang());
         // Omitting unrecognized type java.time.OffsetDateTime for column created_at!
         json.put("entities",getEntities());
+        json.put("author_name",getAuthorName());
         return json;
     }
 

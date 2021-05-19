@@ -71,10 +71,10 @@ public class TbCompanyDao extends AbstractAsyncVertxDAO<TbCompanyRecord, jooq.ta
     }
 
     /**
-     * Find records that have <code>sector IN (values)</code> asynchronously
+     * Find records that have <code>sector_name IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbCompany>> findManyBySector(Collection<String> values) {
-        return findManyByCondition(TbCompany.TB_COMPANY.SECTOR.in(values));
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyBySectorName(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.SECTOR_NAME.in(values));
     }
 
     /**
@@ -106,17 +106,17 @@ public class TbCompanyDao extends AbstractAsyncVertxDAO<TbCompanyRecord, jooq.ta
     }
 
     /**
-     * Find records that have <code>company_id IN (values)</code> asynchronously
+     * Find records that have <code>cid IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCompanyId(Collection<String> values) {
-        return findManyByCondition(TbCompany.TB_COMPANY.COMPANY_ID.in(values));
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCid(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.CID.in(values));
     }
 
     /**
-     * Find records that have <code>company_code IN (values)</code> asynchronously
+     * Find records that have <code>code IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCompanyCode(Collection<String> values) {
-        return findManyByCondition(TbCompany.TB_COMPANY.COMPANY_CODE.in(values));
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCode(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.CODE.in(values));
     }
 
     /**
@@ -152,6 +152,27 @@ public class TbCompanyDao extends AbstractAsyncVertxDAO<TbCompanyRecord, jooq.ta
      */
     public Future<List<jooq.tables.pojos.TbCompany>> findManyByOtherLinks(Collection<String> values) {
         return findManyByCondition(TbCompany.TB_COMPANY.OTHER_LINKS.in(values));
+    }
+
+    /**
+     * Find records that have <code>category_name IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCategoryName(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.CATEGORY_NAME.in(values));
+    }
+
+    /**
+     * Find records that have <code>sector_id IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyBySectorId(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.SECTOR_ID.in(values));
+    }
+
+    /**
+     * Find records that have <code>category_id IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbCompany>> findManyByCategoryId(Collection<String> values) {
+        return findManyByCondition(TbCompany.TB_COMPANY.CATEGORY_ID.in(values));
     }
 
     @Override

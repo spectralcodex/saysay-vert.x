@@ -6,12 +6,16 @@ package jooq;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbSector;
 import jooq.tables.TbStory;
 import jooq.tables.TbUser;
+import jooq.tables.records.TbCategoryRecord;
 import jooq.tables.records.TbCommentRecord;
 import jooq.tables.records.TbCompanyRecord;
+import jooq.tables.records.TbSectorRecord;
 import jooq.tables.records.TbStoryRecord;
 import jooq.tables.records.TbUserRecord;
 
@@ -38,8 +42,10 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<TbCategoryRecord, Long> IDENTITY_TB_CATEGORY = Identities0.IDENTITY_TB_CATEGORY;
     public static final Identity<TbCommentRecord, Long> IDENTITY_TB_COMMENT = Identities0.IDENTITY_TB_COMMENT;
     public static final Identity<TbCompanyRecord, Long> IDENTITY_TB_COMPANY = Identities0.IDENTITY_TB_COMPANY;
+    public static final Identity<TbSectorRecord, Long> IDENTITY_TB_SECTOR = Identities0.IDENTITY_TB_SECTOR;
     public static final Identity<TbStoryRecord, Long> IDENTITY_TB_STORY = Identities0.IDENTITY_TB_STORY;
     public static final Identity<TbUserRecord, Long> IDENTITY_TB_USER = Identities0.IDENTITY_TB_USER;
 
@@ -47,8 +53,10 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<TbCategoryRecord> TB_CATEGORY_PKEY = UniqueKeys0.TB_CATEGORY_PKEY;
     public static final UniqueKey<TbCommentRecord> TB_COMMENT_PKEY = UniqueKeys0.TB_COMMENT_PKEY;
     public static final UniqueKey<TbCompanyRecord> TB_COMPANY_PKEY = UniqueKeys0.TB_COMPANY_PKEY;
+    public static final UniqueKey<TbSectorRecord> SECTOR_PKEY = UniqueKeys0.SECTOR_PKEY;
     public static final UniqueKey<TbStoryRecord> TB_STORY_PKEY = UniqueKeys0.TB_STORY_PKEY;
     public static final UniqueKey<TbStoryRecord> AUTHOR_ID_UQX = UniqueKeys0.AUTHOR_ID_UQX;
     public static final UniqueKey<TbUserRecord> TB_USER_PKEY = UniqueKeys0.TB_USER_PKEY;
@@ -63,15 +71,19 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 {
+        public static Identity<TbCategoryRecord, Long> IDENTITY_TB_CATEGORY = Internal.createIdentity(TbCategory.TB_CATEGORY, TbCategory.TB_CATEGORY.ID);
         public static Identity<TbCommentRecord, Long> IDENTITY_TB_COMMENT = Internal.createIdentity(TbComment.TB_COMMENT, TbComment.TB_COMMENT.ID);
         public static Identity<TbCompanyRecord, Long> IDENTITY_TB_COMPANY = Internal.createIdentity(TbCompany.TB_COMPANY, TbCompany.TB_COMPANY.ID);
+        public static Identity<TbSectorRecord, Long> IDENTITY_TB_SECTOR = Internal.createIdentity(TbSector.TB_SECTOR, TbSector.TB_SECTOR.ID);
         public static Identity<TbStoryRecord, Long> IDENTITY_TB_STORY = Internal.createIdentity(TbStory.TB_STORY, TbStory.TB_STORY.ID);
         public static Identity<TbUserRecord, Long> IDENTITY_TB_USER = Internal.createIdentity(TbUser.TB_USER, TbUser.TB_USER.ID);
     }
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<TbCategoryRecord> TB_CATEGORY_PKEY = Internal.createUniqueKey(TbCategory.TB_CATEGORY, "tb_category_pkey", TbCategory.TB_CATEGORY.ID);
         public static final UniqueKey<TbCommentRecord> TB_COMMENT_PKEY = Internal.createUniqueKey(TbComment.TB_COMMENT, "tb_comment_pkey", TbComment.TB_COMMENT.ID);
         public static final UniqueKey<TbCompanyRecord> TB_COMPANY_PKEY = Internal.createUniqueKey(TbCompany.TB_COMPANY, "tb_company_pkey", TbCompany.TB_COMPANY.ID);
+        public static final UniqueKey<TbSectorRecord> SECTOR_PKEY = Internal.createUniqueKey(TbSector.TB_SECTOR, "sector_pkey", TbSector.TB_SECTOR.ID);
         public static final UniqueKey<TbStoryRecord> TB_STORY_PKEY = Internal.createUniqueKey(TbStory.TB_STORY, "tb_story_pkey", TbStory.TB_STORY.ID);
         public static final UniqueKey<TbStoryRecord> AUTHOR_ID_UQX = Internal.createUniqueKey(TbStory.TB_STORY, "author_id_uqx", TbStory.TB_STORY.AUTHOR_ID);
         public static final UniqueKey<TbUserRecord> TB_USER_PKEY = Internal.createUniqueKey(TbUser.TB_USER, "tb_user_pkey", TbUser.TB_USER.ID);

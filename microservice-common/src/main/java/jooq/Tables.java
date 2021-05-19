@@ -6,8 +6,10 @@ package jooq;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbSector;
 import jooq.tables.TbStory;
 import jooq.tables.TbUser;
 
@@ -26,6 +28,11 @@ import jooq.tables.TbUser;
 public class Tables {
 
     /**
+     * The table <code>public.tb_category</code>.
+     */
+    public static final TbCategory TB_CATEGORY = jooq.tables.TbCategory.TB_CATEGORY;
+
+    /**
      * The table <code>public.tb_comment</code>.
      */
     public static final TbComment TB_COMMENT = jooq.tables.TbComment.TB_COMMENT;
@@ -34,6 +41,11 @@ public class Tables {
      * The table <code>public.tb_company</code>.
      */
     public static final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
+     * The table <code>public.tb_sector</code>.
+     */
+    public static final TbSector TB_SECTOR = jooq.tables.TbSector.TB_SECTOR;
 
     /**
      * The table <code>public.tb_story</code>.

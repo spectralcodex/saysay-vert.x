@@ -36,9 +36,11 @@ public class BaseUtils {
     }
 
     public static <T>void isNullEmpty(T t, String name) throws DecodeException {
-            // check if string is null
-            if (t == null || String.valueOf(t).isEmpty()) {
-                throw new DecodeException("Empty/Null/Type error -> " + name);
-            }
+            if (t == null)
+                throw new DecodeException("Required parameter cannot be missing -> " + name);
+
+            if(String.valueOf(t).isEmpty())
+                throw new DecodeException("Required parameter cannot be empty -> " + name);
     }
+
 }

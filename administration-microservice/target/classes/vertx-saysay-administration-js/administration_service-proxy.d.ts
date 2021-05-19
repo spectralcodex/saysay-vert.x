@@ -31,5 +31,23 @@ export default class AdministrationService {
 
   addUser(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
-  retrieveUser(userId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
+  retrieveUserById(userId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
+
+  retrieveUserByEmail(email: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
+
+  deleteUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  updateUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveAllUsers(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
+
+  addCompany(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveCompanyById(companyId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
+
+  deleteCompany(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  updateCompanyById(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveCompanyAll(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
 }

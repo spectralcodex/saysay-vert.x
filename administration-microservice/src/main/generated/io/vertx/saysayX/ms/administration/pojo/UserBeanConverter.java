@@ -79,9 +79,19 @@ public class UserBeanConverter {
             obj.setRoleId((String)member.getValue());
           }
           break;
+        case "roleName":
+          if (member.getValue() instanceof String) {
+            obj.setRoleName((String)member.getValue());
+          }
+          break;
         case "salt":
           if (member.getValue() instanceof String) {
             obj.setSalt((String)member.getValue());
+          }
+          break;
+        case "uid":
+          if (member.getValue() instanceof String) {
+            obj.setUid((String)member.getValue());
           }
           break;
         case "website":
@@ -137,8 +147,14 @@ public class UserBeanConverter {
     if (obj.getRoleId() != null) {
       json.put("roleId", obj.getRoleId());
     }
+    if (obj.getRoleName() != null) {
+      json.put("roleName", obj.getRoleName());
+    }
     if (obj.getSalt() != null) {
       json.put("salt", obj.getSalt());
+    }
+    if (obj.getUid() != null) {
+      json.put("uid", obj.getUid());
     }
     if (obj.getWebsite() != null) {
       json.put("website", obj.getWebsite());

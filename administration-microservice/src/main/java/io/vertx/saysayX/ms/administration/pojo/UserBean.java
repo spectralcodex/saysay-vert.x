@@ -25,6 +25,10 @@ public class UserBean {
     private String         otherInfo;
     private String         createdBy;
     private OffsetDateTime createdOn;
+    private String         roleName;
+    private String         uid;
+    
+    
     public UserBean(){}
 
     public UserBean(JsonObject json){
@@ -212,6 +216,28 @@ public class UserBean {
     
     public UserBean setCreatedOn(OffsetDateTime createdOn) {
         this.createdOn = createdOn;
+        return this;
+    }
+
+    
+    public String getRoleName() {
+        return this.roleName;
+    }
+
+    
+    public UserBean setRoleName(String roleName) {
+        this.roleName = roleName;
+        return this;
+    }
+
+    
+    public String getUid() {
+        return this.uid;
+    }
+
+    
+    public UserBean setUid(String uid) {
+        this.uid = uid;
         return this;
     }
 }

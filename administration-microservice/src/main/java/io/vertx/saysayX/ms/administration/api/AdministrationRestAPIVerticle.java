@@ -14,12 +14,12 @@ import org.slf4j.LoggerFactory;
 
 public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     public static final String SERVICE_NAME = "administration-rest-api";
-    private static final String API_ADD_USER = "/add";
+    private static final String API_ADD_USER = "/user";
     private static final String API_RETRIEVE_ALL_USER = "/users";
-    private static final String API_RETRIEVE_USER = "/:userId";
-    private static final String API_UPDATE_USER = "/:userId";
-    private static final String API_DELETE_USER = "/userId";
-    private static final String API_DELETE_ALL_USER = "/all";
+    private static final String API_RETRIEVE_USER = "/user/:uid";
+    private static final String API_UPDATE_USER = "/user/:uid";
+    private static final String API_DELETE_USER = "/user/:uid";
+
     protected final static Logger logger = LoggerFactory.getLogger(AdministrationRestAPIVerticle.class);
 
     private final AdministrationService service;
@@ -67,8 +67,8 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     }
 
     private void apiRetrieveUser(RoutingContext context) {
-        String userId = context.request().getParam("userId");
-        logger.info("finding--> {}", userId);
-        service.retrieveUser(userId, resultHandlerNonEmpty(context));
+        String uid = context.request().getParam("uid");
+        logger.info("finding--> {}", uid);
+        service.retrieveUserById(uid, resultHandlerNonEmpty(context));
     }
 }

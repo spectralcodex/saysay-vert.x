@@ -6,8 +6,10 @@ package jooq;
 
 import javax.annotation.Generated;
 
+import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbSector;
 import jooq.tables.TbStory;
 import jooq.tables.TbUser;
 
@@ -33,8 +35,10 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index TB_CATEGORY_PKEY = Indexes0.TB_CATEGORY_PKEY;
     public static final Index TB_COMMENT_PKEY = Indexes0.TB_COMMENT_PKEY;
     public static final Index TB_COMPANY_PKEY = Indexes0.TB_COMPANY_PKEY;
+    public static final Index SECTOR_PKEY = Indexes0.SECTOR_PKEY;
     public static final Index AUTHOR_ID_UQX = Indexes0.AUTHOR_ID_UQX;
     public static final Index TB_STORY_PKEY = Indexes0.TB_STORY_PKEY;
     public static final Index TB_USER_PKEY = Indexes0.TB_USER_PKEY;
@@ -44,8 +48,10 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
+        public static Index TB_CATEGORY_PKEY = Internal.createIndex("tb_category_pkey", TbCategory.TB_CATEGORY, new OrderField[] { TbCategory.TB_CATEGORY.ID }, true);
         public static Index TB_COMMENT_PKEY = Internal.createIndex("tb_comment_pkey", TbComment.TB_COMMENT, new OrderField[] { TbComment.TB_COMMENT.ID }, true);
         public static Index TB_COMPANY_PKEY = Internal.createIndex("tb_company_pkey", TbCompany.TB_COMPANY, new OrderField[] { TbCompany.TB_COMPANY.ID }, true);
+        public static Index SECTOR_PKEY = Internal.createIndex("sector_pkey", TbSector.TB_SECTOR, new OrderField[] { TbSector.TB_SECTOR.ID }, true);
         public static Index AUTHOR_ID_UQX = Internal.createIndex("author_id_uqx", TbStory.TB_STORY, new OrderField[] { TbStory.TB_STORY.AUTHOR_ID }, true);
         public static Index TB_STORY_PKEY = Internal.createIndex("tb_story_pkey", TbStory.TB_STORY, new OrderField[] { TbStory.TB_STORY.ID }, true);
         public static Index TB_USER_PKEY = Internal.createIndex("tb_user_pkey", TbUser.TB_USER, new OrderField[] { TbUser.TB_USER.ID }, true);

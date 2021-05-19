@@ -57,14 +57,14 @@ public interface ITbStory extends VertxPojo, Serializable {
     public String getEntities();
 
     /**
-     * Setter for <code>public.tb_story.story_id</code>.
+     * Setter for <code>public.tb_story.sid</code>.
      */
-    public ITbStory setStoryId(String value);
+    public ITbStory setSid(String value);
 
     /**
-     * Getter for <code>public.tb_story.story_id</code>.
+     * Getter for <code>public.tb_story.sid</code>.
      */
-    public String getStoryId();
+    public String getSid();
 
     /**
      * Setter for <code>public.tb_story.lang</code>.
@@ -147,24 +147,24 @@ public interface ITbStory extends VertxPojo, Serializable {
     public Integer getCautionCount();
 
     /**
-     * Setter for <code>public.tb_story.category</code>.
+     * Setter for <code>public.tb_story.category_name</code>.
      */
-    public ITbStory setCategory(String value);
+    public ITbStory setCategoryName(String value);
 
     /**
-     * Getter for <code>public.tb_story.category</code>.
+     * Getter for <code>public.tb_story.category_name</code>.
      */
-    public String getCategory();
+    public String getCategoryName();
 
     /**
-     * Setter for <code>public.tb_story.sector</code>.
+     * Setter for <code>public.tb_story.sector_name</code>.
      */
-    public ITbStory setSector(String value);
+    public ITbStory setSectorName(String value);
 
     /**
-     * Getter for <code>public.tb_story.sector</code>.
+     * Getter for <code>public.tb_story.sector_name</code>.
      */
-    public String getSector();
+    public String getSectorName();
 
     /**
      * Setter for <code>public.tb_story.company_id</code>.
@@ -175,6 +175,36 @@ public interface ITbStory extends VertxPojo, Serializable {
      * Getter for <code>public.tb_story.company_id</code>.
      */
     public String getCompanyId();
+
+    /**
+     * Setter for <code>public.tb_story.sector_id</code>.
+     */
+    public ITbStory setSectorId(String value);
+
+    /**
+     * Getter for <code>public.tb_story.sector_id</code>.
+     */
+    public String getSectorId();
+
+    /**
+     * Setter for <code>public.tb_story.category_id</code>.
+     */
+    public ITbStory setCategoryId(String value);
+
+    /**
+     * Getter for <code>public.tb_story.category_id</code>.
+     */
+    public String getCategoryId();
+
+    /**
+     * Setter for <code>public.tb_story.author_name</code>.
+     */
+    public ITbStory setAuthorName(String value);
+
+    /**
+     * Getter for <code>public.tb_story.author_name</code>.
+     */
+    public String getAuthorName();
 
     // -------------------------------------------------------------------------
     // FROM and INTO
@@ -208,9 +238,9 @@ public interface ITbStory extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("entities","java.lang.String",e);
         }
         try {
-            setStoryId(json.getString("story_id"));
+            setSid(json.getString("sid"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("story_id","java.lang.String",e);
+            throw new UnexpectedJsonValueType("sid","java.lang.String",e);
         }
         try {
             setLang(json.getString("lang"));
@@ -253,19 +283,34 @@ public interface ITbStory extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("caution_count","java.lang.Integer",e);
         }
         try {
-            setCategory(json.getString("category"));
+            setCategoryName(json.getString("category_name"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("category","java.lang.String",e);
+            throw new UnexpectedJsonValueType("category_name","java.lang.String",e);
         }
         try {
-            setSector(json.getString("sector"));
+            setSectorName(json.getString("sector_name"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("sector","java.lang.String",e);
+            throw new UnexpectedJsonValueType("sector_name","java.lang.String",e);
         }
         try {
             setCompanyId(json.getString("company_id"));
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("company_id","java.lang.String",e);
+        }
+        try {
+            setSectorId(json.getString("sector_id"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("sector_id","java.lang.String",e);
+        }
+        try {
+            setCategoryId(json.getString("category_id"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("category_id","java.lang.String",e);
+        }
+        try {
+            setAuthorName(json.getString("author_name"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("author_name","java.lang.String",e);
         }
         return this;
     }
@@ -277,7 +322,7 @@ public interface ITbStory extends VertxPojo, Serializable {
         json.put("id",getId());
         json.put("author_id",getAuthorId());
         json.put("entities",getEntities());
-        json.put("story_id",getStoryId());
+        json.put("sid",getSid());
         json.put("lang",getLang());
         json.put("possibly_sensitive",getPossiblySensitive());
         json.put("source",getSource());
@@ -286,9 +331,12 @@ public interface ITbStory extends VertxPojo, Serializable {
         json.put("like_count",getLikeCount());
         json.put("comment_count",getCommentCount());
         json.put("caution_count",getCautionCount());
-        json.put("category",getCategory());
-        json.put("sector",getSector());
+        json.put("category_name",getCategoryName());
+        json.put("sector_name",getSectorName());
         json.put("company_id",getCompanyId());
+        json.put("sector_id",getSectorId());
+        json.put("category_id",getCategoryId());
+        json.put("author_name",getAuthorName());
         return json;
     }
 

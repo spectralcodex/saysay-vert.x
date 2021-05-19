@@ -57,10 +57,10 @@ public class TbCommentDao extends AbstractAsyncVertxDAO<TbCommentRecord, jooq.ta
     }
 
     /**
-     * Find records that have <code>comment_id IN (values)</code> asynchronously
+     * Find records that have <code>cid IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbComment>> findManyByCommentId(Collection<String> values) {
-        return findManyByCondition(TbComment.TB_COMMENT.COMMENT_ID.in(values));
+    public Future<List<jooq.tables.pojos.TbComment>> findManyByCid(Collection<String> values) {
+        return findManyByCondition(TbComment.TB_COMMENT.CID.in(values));
     }
 
     /**
@@ -96,6 +96,13 @@ public class TbCommentDao extends AbstractAsyncVertxDAO<TbCommentRecord, jooq.ta
      */
     public Future<List<jooq.tables.pojos.TbComment>> findManyByEntities(Collection<String> values) {
         return findManyByCondition(TbComment.TB_COMMENT.ENTITIES.in(values));
+    }
+
+    /**
+     * Find records that have <code>author_name IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbComment>> findManyByAuthorName(Collection<String> values) {
+        return findManyByCondition(TbComment.TB_COMMENT.AUTHOR_NAME.in(values));
     }
 
     @Override

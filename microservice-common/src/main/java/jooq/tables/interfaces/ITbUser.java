@@ -186,6 +186,26 @@ public interface ITbUser extends VertxPojo, Serializable {
      */
     public OffsetDateTime getCreatedOn();
 
+    /**
+     * Setter for <code>public.tb_user.role_name</code>.
+     */
+    public ITbUser setRoleName(String value);
+
+    /**
+     * Getter for <code>public.tb_user.role_name</code>.
+     */
+    public String getRoleName();
+
+    /**
+     * Setter for <code>public.tb_user.uid</code>.
+     */
+    public ITbUser setUid(String value);
+
+    /**
+     * Getter for <code>public.tb_user.uid</code>.
+     */
+    public String getUid();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -282,6 +302,16 @@ public interface ITbUser extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("created_on","java.time.OffsetDateTime",e);
         }
+        try {
+            setRoleName(json.getString("role_name"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("role_name","java.lang.String",e);
+        }
+        try {
+            setUid(json.getString("uid"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("uid","java.lang.String",e);
+        }
         return this;
     }
 
@@ -305,6 +335,8 @@ public interface ITbUser extends VertxPojo, Serializable {
         json.put("other_info",getOtherInfo());
         json.put("created_by",getCreatedBy());
         // Omitting unrecognized type java.time.OffsetDateTime for column created_on!
+        json.put("role_name",getRoleName());
+        json.put("uid",getUid());
         return json;
     }
 

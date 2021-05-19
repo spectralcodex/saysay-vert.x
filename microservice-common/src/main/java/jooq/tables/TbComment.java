@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbComment extends TableImpl<TbCommentRecord> {
 
-    private static final long serialVersionUID = -438089392;
+    private static final long serialVersionUID = 26001471;
 
     /**
      * The reference instance of <code>public.tb_comment</code>
@@ -68,9 +68,9 @@ public class TbComment extends TableImpl<TbCommentRecord> {
     public final TableField<TbCommentRecord, String> AUTHOR_ID = createField("author_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
-     * The column <code>public.tb_comment.comment_id</code>.
+     * The column <code>public.tb_comment.cid</code>.
      */
-    public final TableField<TbCommentRecord, String> COMMENT_ID = createField("comment_id", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
+    public final TableField<TbCommentRecord, String> CID = createField("cid", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>public.tb_comment.story_id</code>.
@@ -96,6 +96,11 @@ public class TbComment extends TableImpl<TbCommentRecord> {
      * The column <code>public.tb_comment.entities</code>.
      */
     public final TableField<TbCommentRecord, String> ENTITIES = createField("entities", org.jooq.impl.SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>public.tb_comment.author_name</code>.
+     */
+    public final TableField<TbCommentRecord, String> AUTHOR_NAME = createField("author_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * Create a <code>public.tb_comment</code> table reference

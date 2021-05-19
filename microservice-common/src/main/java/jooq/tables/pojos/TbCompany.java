@@ -26,24 +26,27 @@ import jooq.tables.interfaces.ITbCompany;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbCompany implements VertxPojo, ITbCompany {
 
-    private static final long serialVersionUID = 1487555569;
+    private static final long serialVersionUID = 1572296196;
 
     private Long       id;
     private String     name;
     private String     location;
     private String     phoneNumber;
-    private String     sector;
+    private String     sectorName;
     private Integer    rating;
     private String     logo;
     private String     backgroundInfo;
     private String     entities;
-    private String     companyId;
-    private String     companyCode;
+    private String     cid;
+    private String     code;
     private OffsetTime createdAt;
     private String     createdBy;
     private String     email;
     private String     website;
     private String     otherLinks;
+    private String     categoryName;
+    private String     sectorId;
+    private String     categoryId;
 
     public TbCompany() {}
 
@@ -52,18 +55,21 @@ public class TbCompany implements VertxPojo, ITbCompany {
         this.name = value.getName();
         this.location = value.getLocation();
         this.phoneNumber = value.getPhoneNumber();
-        this.sector = value.getSector();
+        this.sectorName = value.getSectorName();
         this.rating = value.getRating();
         this.logo = value.getLogo();
         this.backgroundInfo = value.getBackgroundInfo();
         this.entities = value.getEntities();
-        this.companyId = value.getCompanyId();
-        this.companyCode = value.getCompanyCode();
+        this.cid = value.getCid();
+        this.code = value.getCode();
         this.createdAt = value.getCreatedAt();
         this.createdBy = value.getCreatedBy();
         this.email = value.getEmail();
         this.website = value.getWebsite();
         this.otherLinks = value.getOtherLinks();
+        this.categoryName = value.getCategoryName();
+        this.sectorId = value.getSectorId();
+        this.categoryId = value.getCategoryId();
     }
 
     public TbCompany(
@@ -71,35 +77,41 @@ public class TbCompany implements VertxPojo, ITbCompany {
         String     name,
         String     location,
         String     phoneNumber,
-        String     sector,
+        String     sectorName,
         Integer    rating,
         String     logo,
         String     backgroundInfo,
         String     entities,
-        String     companyId,
-        String     companyCode,
+        String     cid,
+        String     code,
         OffsetTime createdAt,
         String     createdBy,
         String     email,
         String     website,
-        String     otherLinks
+        String     otherLinks,
+        String     categoryName,
+        String     sectorId,
+        String     categoryId
     ) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.phoneNumber = phoneNumber;
-        this.sector = sector;
+        this.sectorName = sectorName;
         this.rating = rating;
         this.logo = logo;
         this.backgroundInfo = backgroundInfo;
         this.entities = entities;
-        this.companyId = companyId;
-        this.companyCode = companyCode;
+        this.cid = cid;
+        this.code = code;
         this.createdAt = createdAt;
         this.createdBy = createdBy;
         this.email = email;
         this.website = website;
         this.otherLinks = otherLinks;
+        this.categoryName = categoryName;
+        this.sectorId = sectorId;
+        this.categoryId = categoryId;
     }
 
     @Override
@@ -147,13 +159,13 @@ public class TbCompany implements VertxPojo, ITbCompany {
     }
 
     @Override
-    public String getSector() {
-        return this.sector;
+    public String getSectorName() {
+        return this.sectorName;
     }
 
     @Override
-    public TbCompany setSector(String sector) {
-        this.sector = sector;
+    public TbCompany setSectorName(String sectorName) {
+        this.sectorName = sectorName;
         return this;
     }
 
@@ -202,24 +214,24 @@ public class TbCompany implements VertxPojo, ITbCompany {
     }
 
     @Override
-    public String getCompanyId() {
-        return this.companyId;
+    public String getCid() {
+        return this.cid;
     }
 
     @Override
-    public TbCompany setCompanyId(String companyId) {
-        this.companyId = companyId;
+    public TbCompany setCid(String cid) {
+        this.cid = cid;
         return this;
     }
 
     @Override
-    public String getCompanyCode() {
-        return this.companyCode;
+    public String getCode() {
+        return this.code;
     }
 
     @Override
-    public TbCompany setCompanyCode(String companyCode) {
-        this.companyCode = companyCode;
+    public TbCompany setCode(String code) {
+        this.code = code;
         return this;
     }
 
@@ -279,6 +291,39 @@ public class TbCompany implements VertxPojo, ITbCompany {
     }
 
     @Override
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    @Override
+    public TbCompany setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+        return this;
+    }
+
+    @Override
+    public String getSectorId() {
+        return this.sectorId;
+    }
+
+    @Override
+    public TbCompany setSectorId(String sectorId) {
+        this.sectorId = sectorId;
+        return this;
+    }
+
+    @Override
+    public String getCategoryId() {
+        return this.categoryId;
+    }
+
+    @Override
+    public TbCompany setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbCompany (");
 
@@ -286,18 +331,21 @@ public class TbCompany implements VertxPojo, ITbCompany {
         sb.append(", ").append(name);
         sb.append(", ").append(location);
         sb.append(", ").append(phoneNumber);
-        sb.append(", ").append(sector);
+        sb.append(", ").append(sectorName);
         sb.append(", ").append(rating);
         sb.append(", ").append(logo);
         sb.append(", ").append(backgroundInfo);
         sb.append(", ").append(entities);
-        sb.append(", ").append(companyId);
-        sb.append(", ").append(companyCode);
+        sb.append(", ").append(cid);
+        sb.append(", ").append(code);
         sb.append(", ").append(createdAt);
         sb.append(", ").append(createdBy);
         sb.append(", ").append(email);
         sb.append(", ").append(website);
         sb.append(", ").append(otherLinks);
+        sb.append(", ").append(categoryName);
+        sb.append(", ").append(sectorId);
+        sb.append(", ").append(categoryId);
 
         sb.append(")");
         return sb.toString();
@@ -316,18 +364,21 @@ public class TbCompany implements VertxPojo, ITbCompany {
         setName(from.getName());
         setLocation(from.getLocation());
         setPhoneNumber(from.getPhoneNumber());
-        setSector(from.getSector());
+        setSectorName(from.getSectorName());
         setRating(from.getRating());
         setLogo(from.getLogo());
         setBackgroundInfo(from.getBackgroundInfo());
         setEntities(from.getEntities());
-        setCompanyId(from.getCompanyId());
-        setCompanyCode(from.getCompanyCode());
+        setCid(from.getCid());
+        setCode(from.getCode());
         setCreatedAt(from.getCreatedAt());
         setCreatedBy(from.getCreatedBy());
         setEmail(from.getEmail());
         setWebsite(from.getWebsite());
         setOtherLinks(from.getOtherLinks());
+        setCategoryName(from.getCategoryName());
+        setSectorId(from.getSectorId());
+        setCategoryId(from.getCategoryId());
     }
 
     /**
