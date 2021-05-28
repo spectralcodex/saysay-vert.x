@@ -44,6 +44,7 @@ import io.vertx.serviceproxy.HelperUtils;
 import java.util.List;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import io.vertx.saysayX.ms.administration.AdministrationService;
+import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
@@ -141,8 +142,13 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
+        case "activateUser": {
+          service.activateUser((java.lang.String)json.getValue("userId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
         case "updateUser": {
-          service.updateUser((java.lang.String)json.getValue("userId"),
+          service.updateUser(json.getJsonObject("user") == null ? null : new io.vertx.saysayX.ms.administration.pojo.UserBean(json.getJsonObject("user")),
                         HelperUtils.createHandler(msg));
           break;
         }
@@ -151,7 +157,7 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
           break;
         }
         case "addCompany": {
-          service.addCompany((java.lang.String)json.getValue("companyId"),
+          service.addCompany(json.getJsonObject("company") == null ? null : new io.vertx.saysayX.ms.administration.pojo.CompanyBean(json.getJsonObject("company")),
                         HelperUtils.createHandler(msg));
           break;
         }
@@ -165,13 +171,18 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "updateCompanyById": {
-          service.updateCompanyById((java.lang.String)json.getValue("companyId"),
+        case "activateCompany": {
+          service.activateCompany((java.lang.String)json.getValue("companyId"),
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "retrieveCompanyAll": {
-          service.retrieveCompanyAll(HelperUtils.createListHandler(msg));
+        case "updateCompanyById": {
+          service.updateCompanyById(json.getJsonObject("company") == null ? null : new io.vertx.saysayX.ms.administration.pojo.CompanyBean(json.getJsonObject("company")),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveAllCompany": {
+          service.retrieveAllCompany(HelperUtils.createListHandler(msg));
           break;
         }
         default: throw new IllegalStateException("Invalid action: " + action);

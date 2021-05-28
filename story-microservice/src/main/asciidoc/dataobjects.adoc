@@ -8,21 +8,21 @@
 [frame="topbot"]
 |===
 ^|Name | Type ^| Description
-|[[authorId]]`@authorId`|`String`|-
-|[[authorName]]`@authorName`|`String`|-
-|[[categoryId]]`@categoryId`|`String`|-
-|[[categoryName]]`@categoryName`|`String`|-
-|[[cautionCount]]`@cautionCount`|`Number (Integer)`|-
-|[[commentCount]]`@commentCount`|`Number (Integer)`|-
-|[[companyId]]`@companyId`|`String`|-
-|[[companyNameName]]`@companyNameName`|`String`|-
+|[[authorid]]`@authorid`|`String`|-
+|[[authorname]]`@authorname`|`String`|-
+|[[categoryid]]`@categoryid`|`String`|-
+|[[categoryname]]`@categoryname`|`String`|-
+|[[cautioncount]]`@cautioncount`|`Number (Integer)`|-
+|[[commentcount]]`@commentcount`|`Number (Integer)`|-
+|[[companyid]]`@companyid`|`String`|-
+|[[companyname]]`@companyname`|`String`|-
 |[[entities]]`@entities`|`Json object`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[lang]]`@lang`|`String`|-
-|[[likeCount]]`@likeCount`|`Number (Integer)`|-
-|[[possiblySensitive]]`@possiblySensitive`|`Number (Integer)`|-
-|[[sectorId]]`@sectorId`|`String`|-
-|[[sectorName]]`@sectorName`|`String`|-
+|[[likecount]]`@likecount`|`Number (Integer)`|-
+|[[possiblysensitive]]`@possiblysensitive`|`Number (Integer)`|-
+|[[sectorid]]`@sectorid`|`String`|-
+|[[sectorname]]`@sectorname`|`String`|-
 |[[sid]]`@sid`|`String`|-
 |[[source]]`@source`|`String`|-
 |[[story]]`@story`|`String`|-

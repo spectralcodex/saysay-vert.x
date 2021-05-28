@@ -68,7 +68,7 @@ public interface StoryService {
      *                      whether the operation was successful or not.
      */
     @Fluent
-    StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<JsonObject>> resultHandler);
+    StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     /**
      * Retrieve all story accounts.

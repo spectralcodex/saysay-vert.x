@@ -1,11 +1,11 @@
 {
   "api.name": "administration",
   "administration.http.address": "administration-microservice",
-  "administration.http.port": 8082,
+  "administration.http.port": 8083,
   "host": "pg_db",
   "driver_class": "org.postgresql.Driver",
   "username": "postgres",
   "password": "postgres",
   "max_pool_size": 30,
-  "database": "impala"
+  "database": "saysay"
 }

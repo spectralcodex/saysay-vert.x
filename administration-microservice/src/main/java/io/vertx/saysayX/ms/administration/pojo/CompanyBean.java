@@ -17,37 +17,39 @@ public class CompanyBean {
     private Long       id;
     private String     name;
     private String     location;
-    private String     phoneNumber;
-    private String     sectorName;
+    private String     phonenumber;
+    private String     sectorname;
     private Integer    rating;
     private String     logo;
-    private String     backgroundInfo;
+    private String     backgroundinfo;
     private String     entities;
     private String     cid;
     private String     code;
-    private OffsetTime createdAt;
-    private String     createdBy;
+    private OffsetTime createdat;
+    private String     createdby;
     private String     email;
     private String     website;
-    private String     otherLinks;
-    private String     categoryName;
-    private String     sectorId;
-    private String     categoryId;
+    private String     otherlinks;
+    private String     categoryname;
+    private String     sectorid;
+    private String     categoryid;
+    private Integer     active;
 
     public CompanyBean() {
     }
 
     public CompanyBean(JsonObject json) throws DecodeException {
+        CompanyBeanConverter.fromJson(json, this);
         BaseUtils.isNullEmpty(this.name, "name");
         BaseUtils.isNullEmpty(this.location, "location");
-        BaseUtils.isNullEmpty(this.phoneNumber, "phoneNumber");
-        BaseUtils.isNullEmpty(this.sectorId, "sectorId");
-        BaseUtils.isNullEmpty(this.sectorName, "sectorName");
+        BaseUtils.isNullEmpty(this.phonenumber, "phonenumber");
+        BaseUtils.isNullEmpty(this.sectorid, "sectorid");
+        BaseUtils.isNullEmpty(this.sectorname, "sectorname");
         BaseUtils.isNullEmpty(this.logo, "logo");
         BaseUtils.isNullEmpty(this.code, "code");
-        BaseUtils.isNullEmpty(this.categoryId, "categoryId");
-        BaseUtils.isNullEmpty(this.categoryName, "categoryName");
-        BaseUtils.isNullEmpty(this.createdBy, "createdBy");
+        BaseUtils.isNullEmpty(this.categoryid, "categoryid");
+        BaseUtils.isNullEmpty(this.categoryname, "categoryname");
+        BaseUtils.isNullEmpty(this.createdby, "createdby");
     }
 
     public JsonObject toJson() {
@@ -56,212 +58,187 @@ public class CompanyBean {
         return json;
     }
 
-    
     public Long getId() {
         return this.id;
     }
 
-    
     public CompanyBean setId(Long id) {
         this.id = id;
         return this;
     }
 
-    
-    public String getName() {
-        return this.name;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    
+    public String getName() {
+        return name;
+    }
+
     public CompanyBean setName(String name) {
         this.name = name;
         return this;
     }
 
-    
     public String getLocation() {
-        return this.location;
+        return location;
     }
 
-    
     public CompanyBean setLocation(String location) {
         this.location = location;
         return this;
     }
 
-    
-    public String getPhoneNumber() {
-        return this.phoneNumber;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    
-    public CompanyBean setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public CompanyBean setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
         return this;
     }
 
-    
-    public String getSectorName() {
-        return this.sectorName;
+    public String getSectorname() {
+        return sectorname;
     }
 
-    
-    public CompanyBean setSectorName(String sectorName) {
-        this.sectorName = sectorName;
+    public CompanyBean setSectorname(String sectorname) {
+        this.sectorname = sectorname;
         return this;
     }
 
-    
     public Integer getRating() {
-        return this.rating;
+        return rating;
     }
 
-    
     public CompanyBean setRating(Integer rating) {
         this.rating = rating;
         return this;
     }
 
-    
     public String getLogo() {
-        return this.logo;
+        return logo;
     }
 
-    
     public CompanyBean setLogo(String logo) {
         this.logo = logo;
         return this;
     }
 
-    
-    public String getBackgroundInfo() {
-        return this.backgroundInfo;
+    public String getBackgroundinfo() {
+        return backgroundinfo;
     }
 
-    
-    public CompanyBean setBackgroundInfo(String backgroundInfo) {
-        this.backgroundInfo = backgroundInfo;
+    public CompanyBean setBackgroundinfo(String backgroundinfo) {
+        this.backgroundinfo = backgroundinfo;
         return this;
     }
 
-    
     public String getEntities() {
-        return this.entities;
+        return entities;
     }
 
-    
     public CompanyBean setEntities(String entities) {
         this.entities = entities;
         return this;
     }
 
-    
     public String getCid() {
-        return this.cid;
+        return cid;
     }
 
-    
     public CompanyBean setCid(String cid) {
         this.cid = cid;
         return this;
     }
 
-    
     public String getCode() {
-        return this.code;
+        return code;
     }
 
-    
     public CompanyBean setCode(String code) {
         this.code = code;
         return this;
     }
 
-    
-    public OffsetTime getCreatedAt() {
-        return this.createdAt;
+    public OffsetTime getCreatedat() {
+        return createdat;
     }
 
-    
-    public CompanyBean setCreatedAt(OffsetTime createdAt) {
-        this.createdAt = createdAt;
+    public CompanyBean setCreatedat(OffsetTime createdat) {
+        this.createdat = createdat;
         return this;
     }
 
-    
-    public String getCreatedBy() {
-        return this.createdBy;
+    public String getCreatedby() {
+        return createdby;
     }
 
-    
-    public CompanyBean setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public CompanyBean setCreatedby(String createdby) {
+        this.createdby = createdby;
         return this;
     }
 
-    
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
-    
     public CompanyBean setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    
     public String getWebsite() {
-        return this.website;
+        return website;
     }
 
-    
     public CompanyBean setWebsite(String website) {
         this.website = website;
         return this;
     }
 
-    
-    public String getOtherLinks() {
-        return this.otherLinks;
+    public String getOtherlinks() {
+        return otherlinks;
     }
 
-    
-    public CompanyBean setOtherLinks(String otherLinks) {
-        this.otherLinks = otherLinks;
+    public CompanyBean setOtherlinks(String otherlinks) {
+        this.otherlinks = otherlinks;
         return this;
     }
 
-    
-    public String getCategoryName() {
-        return this.categoryName;
+    public String getCategoryname() {
+        return categoryname;
     }
 
-    
-    public CompanyBean setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public CompanyBean setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
         return this;
     }
 
-    
-    public String getSectorId() {
-        return this.sectorId;
+    public String getSectorid() {
+        return sectorid;
     }
 
-    
-    public CompanyBean setSectorId(String sectorId) {
-        this.sectorId = sectorId;
+    public CompanyBean setSectorid(String sectorid) {
+        this.sectorid = sectorid;
         return this;
     }
 
-    
-    public String getCategoryId() {
-        return this.categoryId;
+    public String getCategoryid() {
+        return categoryid;
     }
 
-    
-    public CompanyBean setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public CompanyBean setCategoryid(String categoryid) {
+        this.categoryid = categoryid;
+        return this;
+    }
+
+    public Integer getActive() {
+        return active;
+    }
+
+    public CompanyBean setActive(Integer active) {
+        this.active = active;
         return this;
     }
 }

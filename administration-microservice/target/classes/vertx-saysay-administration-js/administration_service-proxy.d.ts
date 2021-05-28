@@ -37,17 +37,21 @@ export default class AdministrationService {
 
   deleteUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
-  updateUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+  activateUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  updateUser(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
   retrieveAllUsers(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
 
-  addCompany(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+  addCompany(company: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
   retrieveCompanyById(companyId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
 
   deleteCompany(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
-  updateCompanyById(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+  activateCompany(companyId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
-  retrieveCompanyAll(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
+  updateCompanyById(company: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveAllCompany(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
 }

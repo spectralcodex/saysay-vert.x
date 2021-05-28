@@ -14,14 +14,19 @@ public class UserBeanConverter {
   public static void fromJson(Iterable<java.util.Map.Entry<String, Object>> json, UserBean obj) {
     for (java.util.Map.Entry<String, Object> member : json) {
       switch (member.getKey()) {
-        case "backgroundInfo":
-          if (member.getValue() instanceof String) {
-            obj.setBackgroundInfo((String)member.getValue());
+        case "active":
+          if (member.getValue() instanceof Number) {
+            obj.setActive(((Number)member.getValue()).intValue());
           }
           break;
-        case "createdBy":
+        case "backgroundinfo":
           if (member.getValue() instanceof String) {
-            obj.setCreatedBy((String)member.getValue());
+            obj.setBackgroundinfo((String)member.getValue());
+          }
+          break;
+        case "createdby":
+          if (member.getValue() instanceof String) {
+            obj.setCreatedby((String)member.getValue());
           }
           break;
         case "dob":
@@ -34,19 +39,19 @@ public class UserBeanConverter {
             obj.setEmail((String)member.getValue());
           }
           break;
-        case "firstName":
+        case "firstname":
           if (member.getValue() instanceof String) {
-            obj.setFirstName((String)member.getValue());
+            obj.setFirstname((String)member.getValue());
           }
           break;
-        case "gpsLocation":
+        case "gpslocation":
           if (member.getValue() instanceof String) {
-            obj.setGpsLocation((String)member.getValue());
+            obj.setGpslocation((String)member.getValue());
           }
           break;
-        case "hashedPassword":
+        case "hashedpassword":
           if (member.getValue() instanceof String) {
-            obj.setHashedPassword((String)member.getValue());
+            obj.setHashedpassword((String)member.getValue());
           }
           break;
         case "id":
@@ -54,9 +59,9 @@ public class UserBeanConverter {
             obj.setId(((Number)member.getValue()).longValue());
           }
           break;
-        case "lastName":
+        case "lastname":
           if (member.getValue() instanceof String) {
-            obj.setLastName((String)member.getValue());
+            obj.setLastname((String)member.getValue());
           }
           break;
         case "mobile":
@@ -64,24 +69,24 @@ public class UserBeanConverter {
             obj.setMobile((String)member.getValue());
           }
           break;
-        case "otherInfo":
+        case "otherinfo":
           if (member.getValue() instanceof String) {
-            obj.setOtherInfo((String)member.getValue());
+            obj.setOtherinfo((String)member.getValue());
           }
           break;
-        case "profilePic":
+        case "profilepic":
           if (member.getValue() instanceof String) {
-            obj.setProfilePic((String)member.getValue());
+            obj.setProfilepic((String)member.getValue());
           }
           break;
-        case "roleId":
+        case "roleid":
           if (member.getValue() instanceof String) {
-            obj.setRoleId((String)member.getValue());
+            obj.setRoleid((String)member.getValue());
           }
           break;
-        case "roleName":
+        case "rolename":
           if (member.getValue() instanceof String) {
-            obj.setRoleName((String)member.getValue());
+            obj.setRolename((String)member.getValue());
           }
           break;
         case "salt":
@@ -108,11 +113,14 @@ public class UserBeanConverter {
   }
 
   public static void toJson(UserBean obj, java.util.Map<String, Object> json) {
-    if (obj.getBackgroundInfo() != null) {
-      json.put("backgroundInfo", obj.getBackgroundInfo());
+    if (obj.getActive() != null) {
+      json.put("active", obj.getActive());
     }
-    if (obj.getCreatedBy() != null) {
-      json.put("createdBy", obj.getCreatedBy());
+    if (obj.getBackgroundinfo() != null) {
+      json.put("backgroundinfo", obj.getBackgroundinfo());
+    }
+    if (obj.getCreatedby() != null) {
+      json.put("createdby", obj.getCreatedby());
     }
     if (obj.getDob() != null) {
       json.put("dob", obj.getDob());
@@ -120,35 +128,35 @@ public class UserBeanConverter {
     if (obj.getEmail() != null) {
       json.put("email", obj.getEmail());
     }
-    if (obj.getFirstName() != null) {
-      json.put("firstName", obj.getFirstName());
+    if (obj.getFirstname() != null) {
+      json.put("firstname", obj.getFirstname());
     }
-    if (obj.getGpsLocation() != null) {
-      json.put("gpsLocation", obj.getGpsLocation());
+    if (obj.getGpslocation() != null) {
+      json.put("gpslocation", obj.getGpslocation());
     }
-    if (obj.getHashedPassword() != null) {
-      json.put("hashedPassword", obj.getHashedPassword());
+    if (obj.getHashedpassword() != null) {
+      json.put("hashedpassword", obj.getHashedpassword());
     }
     if (obj.getId() != null) {
       json.put("id", obj.getId());
     }
-    if (obj.getLastName() != null) {
-      json.put("lastName", obj.getLastName());
+    if (obj.getLastname() != null) {
+      json.put("lastname", obj.getLastname());
     }
     if (obj.getMobile() != null) {
       json.put("mobile", obj.getMobile());
     }
-    if (obj.getOtherInfo() != null) {
-      json.put("otherInfo", obj.getOtherInfo());
+    if (obj.getOtherinfo() != null) {
+      json.put("otherinfo", obj.getOtherinfo());
     }
-    if (obj.getProfilePic() != null) {
-      json.put("profilePic", obj.getProfilePic());
+    if (obj.getProfilepic() != null) {
+      json.put("profilepic", obj.getProfilepic());
     }
-    if (obj.getRoleId() != null) {
-      json.put("roleId", obj.getRoleId());
+    if (obj.getRoleid() != null) {
+      json.put("roleid", obj.getRoleid());
     }
-    if (obj.getRoleName() != null) {
-      json.put("roleName", obj.getRoleName());
+    if (obj.getRolename() != null) {
+      json.put("rolename", obj.getRolename());
     }
     if (obj.getSalt() != null) {
       json.put("salt", obj.getSalt());

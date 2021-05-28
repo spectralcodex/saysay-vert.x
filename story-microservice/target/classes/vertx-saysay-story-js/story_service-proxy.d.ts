@@ -33,7 +33,7 @@ export default class StoryService {
 
   retrieveStory(id: string, resultHandler: (err: any, result: Object) => any) : StoryService;
 
-  retrieveStoryByAuthorId(authorId: string, resultHandler: (err: any, result: Object) => any) : StoryService;
+  retrieveStoryByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
 
   retrieveAllStoriesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
 

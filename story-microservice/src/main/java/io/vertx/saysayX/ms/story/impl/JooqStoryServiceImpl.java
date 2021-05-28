@@ -35,26 +35,26 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
 
     @Override
     public StoryService addStory(StoryBean story, Handler<AsyncResult<Integer>> resultHandler) {
-        String sid = UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
+        String sid = "S"+UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
         executor.execute(dsl -> dsl.insertInto(TB_STORY,
-                TB_STORY.AUTHOR_ID,
-                TB_STORY.AUTHOR_NAME,
+                TB_STORY.AUTHORID,
+                TB_STORY.AUTHORNAME,
                 TB_STORY.ENTITIES,
                 TB_STORY.SID,
                 TB_STORY.LANG,
-                TB_STORY.POSSIBLY_SENSITIVE,
+                TB_STORY.POSSIBLYSENSITIVE,
                 TB_STORY.SOURCE,
                 TB_STORY.STORY,
-                TB_STORY.CATEGORY_ID,
-                TB_STORY.CATEGORY_NAME,
-                TB_STORY.SECTOR_ID,
-                TB_STORY.SECTOR_NAME,
-                TB_STORY.COMPANY_ID
+                TB_STORY.CATEGORYID,
+                TB_STORY.CATEGORYNAME,
+                TB_STORY.SECTORID,
+                TB_STORY.SECTORNAME,
+                TB_STORY.COMPANYID
                 //TB_STORY.COMPANY_NAME
                 )
-                .values(story.getAuthorId(),story.getAuthorName(), story.getEntities().encode(), sid , story.getLang(),
-                        story.getPossiblySensitive(), story.getSource(), story.getStory(), story.getCategoryId(),story.getCategoryName(),
-                        story.getSectorId(),story.getSectorName(), story.getCompanyId()))
+                .values(story.getAuthorid(),story.getAuthorname(), story.getEntities().encode(), sid , story.getLang(),
+                        story.getPossiblysensitive(), story.getSource(), story.getStory(), story.getCategoryid(),story.getCategoryname(),
+                        story.getSectorid(),story.getSectorname(), story.getCompanyid()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -67,15 +67,15 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
     }
 
     @Override
-    public StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<JsonObject>> resultHandler) {
-        executor.findOneJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.AUTHOR_ID.eq(authorId)))
+    public StoryService retrieveStoryByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+        executor.findManyJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.AUTHORID.eq(authorId)))
                 .onComplete(resultHandler);
         return this;
     }
 
     @Override
     public StoryService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
-        executor.findManyJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.AUTHOR_ID.eq(authorId)))
+        executor.findManyJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.AUTHORID.eq(authorId)))
                 .onComplete(resultHandler);
         return this;
     }
@@ -91,13 +91,13 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
         executor.execute(dsl -> dsl.update(TB_STORY).set(TB_STORY.STORY, story.getStory())
         .set(TB_STORY.SOURCE, story.getSource())
         .set(TB_STORY.ENTITIES, story.getEntities().encode())
-        .set(TB_STORY.POSSIBLY_SENSITIVE, story.getPossiblySensitive())
-        .set(TB_STORY.CATEGORY_ID, story.getCategoryId())
-        .set(TB_STORY.CATEGORY_NAME, story.getCategoryName())
-        .set(TB_STORY.SECTOR_ID, story.getSectorId())
-        .set(TB_STORY.SECTOR_NAME, story.getSectorName())
-        .set(TB_STORY.COMPANY_ID, story.getCompanyId())
-        //.set(TB_STORY.COMPANY_NAME, story.getCompanyName())
+        .set(TB_STORY.POSSIBLYSENSITIVE, story.getPossiblysensitive())
+        .set(TB_STORY.CATEGORYID, story.getCategoryid())
+        .set(TB_STORY.CATEGORYNAME, story.getCategoryname())
+        .set(TB_STORY.SECTORID, story.getSectorid())
+        .set(TB_STORY.SECTORNAME, story.getSectorname())
+        .set(TB_STORY.COMPANYID, story.getCompanyid())
+        .set(TB_STORY.COMPANYNAME, story.getCompanyname())
                 .where(TB_STORY.SID.eq(story.getSid())))
                 .onComplete(resultHandler);
         return this;
@@ -110,6 +110,4 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
                 .onComplete(resultHandler);
         return this;
     }
-
-
 }

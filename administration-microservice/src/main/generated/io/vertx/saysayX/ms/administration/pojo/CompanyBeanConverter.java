@@ -14,19 +14,24 @@ public class CompanyBeanConverter {
   public static void fromJson(Iterable<java.util.Map.Entry<String, Object>> json, CompanyBean obj) {
     for (java.util.Map.Entry<String, Object> member : json) {
       switch (member.getKey()) {
-        case "backgroundInfo":
-          if (member.getValue() instanceof String) {
-            obj.setBackgroundInfo((String)member.getValue());
+        case "active":
+          if (member.getValue() instanceof Number) {
+            obj.setActive(((Number)member.getValue()).intValue());
           }
           break;
-        case "categoryId":
+        case "backgroundinfo":
           if (member.getValue() instanceof String) {
-            obj.setCategoryId((String)member.getValue());
+            obj.setBackgroundinfo((String)member.getValue());
           }
           break;
-        case "categoryName":
+        case "categoryid":
           if (member.getValue() instanceof String) {
-            obj.setCategoryName((String)member.getValue());
+            obj.setCategoryid((String)member.getValue());
+          }
+          break;
+        case "categoryname":
+          if (member.getValue() instanceof String) {
+            obj.setCategoryname((String)member.getValue());
           }
           break;
         case "cid":
@@ -39,9 +44,9 @@ public class CompanyBeanConverter {
             obj.setCode((String)member.getValue());
           }
           break;
-        case "createdBy":
+        case "createdby":
           if (member.getValue() instanceof String) {
-            obj.setCreatedBy((String)member.getValue());
+            obj.setCreatedby((String)member.getValue());
           }
           break;
         case "email":
@@ -74,14 +79,14 @@ public class CompanyBeanConverter {
             obj.setName((String)member.getValue());
           }
           break;
-        case "otherLinks":
+        case "otherlinks":
           if (member.getValue() instanceof String) {
-            obj.setOtherLinks((String)member.getValue());
+            obj.setOtherlinks((String)member.getValue());
           }
           break;
-        case "phoneNumber":
+        case "phonenumber":
           if (member.getValue() instanceof String) {
-            obj.setPhoneNumber((String)member.getValue());
+            obj.setPhonenumber((String)member.getValue());
           }
           break;
         case "rating":
@@ -89,14 +94,14 @@ public class CompanyBeanConverter {
             obj.setRating(((Number)member.getValue()).intValue());
           }
           break;
-        case "sectorId":
+        case "sectorid":
           if (member.getValue() instanceof String) {
-            obj.setSectorId((String)member.getValue());
+            obj.setSectorid((String)member.getValue());
           }
           break;
-        case "sectorName":
+        case "sectorname":
           if (member.getValue() instanceof String) {
-            obj.setSectorName((String)member.getValue());
+            obj.setSectorname((String)member.getValue());
           }
           break;
         case "website":
@@ -113,14 +118,17 @@ public class CompanyBeanConverter {
   }
 
   public static void toJson(CompanyBean obj, java.util.Map<String, Object> json) {
-    if (obj.getBackgroundInfo() != null) {
-      json.put("backgroundInfo", obj.getBackgroundInfo());
+    if (obj.getActive() != null) {
+      json.put("active", obj.getActive());
     }
-    if (obj.getCategoryId() != null) {
-      json.put("categoryId", obj.getCategoryId());
+    if (obj.getBackgroundinfo() != null) {
+      json.put("backgroundinfo", obj.getBackgroundinfo());
     }
-    if (obj.getCategoryName() != null) {
-      json.put("categoryName", obj.getCategoryName());
+    if (obj.getCategoryid() != null) {
+      json.put("categoryid", obj.getCategoryid());
+    }
+    if (obj.getCategoryname() != null) {
+      json.put("categoryname", obj.getCategoryname());
     }
     if (obj.getCid() != null) {
       json.put("cid", obj.getCid());
@@ -128,8 +136,8 @@ public class CompanyBeanConverter {
     if (obj.getCode() != null) {
       json.put("code", obj.getCode());
     }
-    if (obj.getCreatedBy() != null) {
-      json.put("createdBy", obj.getCreatedBy());
+    if (obj.getCreatedby() != null) {
+      json.put("createdby", obj.getCreatedby());
     }
     if (obj.getEmail() != null) {
       json.put("email", obj.getEmail());
@@ -149,20 +157,20 @@ public class CompanyBeanConverter {
     if (obj.getName() != null) {
       json.put("name", obj.getName());
     }
-    if (obj.getOtherLinks() != null) {
-      json.put("otherLinks", obj.getOtherLinks());
+    if (obj.getOtherlinks() != null) {
+      json.put("otherlinks", obj.getOtherlinks());
     }
-    if (obj.getPhoneNumber() != null) {
-      json.put("phoneNumber", obj.getPhoneNumber());
+    if (obj.getPhonenumber() != null) {
+      json.put("phonenumber", obj.getPhonenumber());
     }
     if (obj.getRating() != null) {
       json.put("rating", obj.getRating());
     }
-    if (obj.getSectorId() != null) {
-      json.put("sectorId", obj.getSectorId());
+    if (obj.getSectorid() != null) {
+      json.put("sectorid", obj.getSectorid());
     }
-    if (obj.getSectorName() != null) {
-      json.put("sectorName", obj.getSectorName());
+    if (obj.getSectorname() != null) {
+      json.put("sectorname", obj.getSectorname());
     }
     if (obj.getWebsite() != null) {
       json.put("website", obj.getWebsite());

@@ -21,6 +21,7 @@ var io = Packages.io;
 var JsonObject = io.vertx.core.json.JsonObject;
 var JAdministrationService = Java.type('io.vertx.saysayX.ms.administration.AdministrationService');
 var UserBean = Java.type('io.vertx.saysayX.ms.administration.pojo.UserBean');
+var CompanyBean = Java.type('io.vertx.saysayX.ms.administration.pojo.CompanyBean');
 
 /**
  A service interface managing Users.
@@ -40,13 +41,15 @@ var AdministrationService = function(j_val) {
   var __super_retrieveUserById = this.retrieveUserById;
   var __super_retrieveUserByEmail = this.retrieveUserByEmail;
   var __super_deleteUser = this.deleteUser;
+  var __super_activateUser = this.activateUser;
   var __super_updateUser = this.updateUser;
   var __super_retrieveAllUsers = this.retrieveAllUsers;
   var __super_addCompany = this.addCompany;
   var __super_retrieveCompanyById = this.retrieveCompanyById;
   var __super_deleteCompany = this.deleteCompany;
+  var __super_activateCompany = this.activateCompany;
   var __super_updateCompanyById = this.updateCompanyById;
-  var __super_retrieveCompanyAll = this.retrieveCompanyAll;
+  var __super_retrieveAllCompany = this.retrieveAllCompany;
   /**
 
    @public
@@ -170,14 +173,38 @@ var AdministrationService = function(j_val) {
   /**
 
    @public
-   @param userId {string} userId we want to query for 
+   @param userId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.activateUser =  function(userId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["activateUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_activateUser != 'undefined') {
+      return __super_activateUser.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param user {Object} userId we want to query for 
    @param resultHandler {function} this handler will return as soon as update is complete. The jooq.async result * indicates whether the operation was successful or not. 
    @return {AdministrationService} 
    */
-  this.updateUser =  function(userId, resultHandler) {
+  this.updateUser =  function(user, resultHandler) {
     var __args = arguments;
-    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_administrationService["updateUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["updateUser(io.vertx.saysayX.ms.administration.pojo.UserBean,io.vertx.core.Handler)"](__args[0]  != null ? new UserBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
           __args[1](ar.result(), null);
         } else {
@@ -218,14 +245,14 @@ var AdministrationService = function(j_val) {
    Add a Company to the persistence.
 
    @public
-   @param companyId {string} 
+   @param company {Object} 
    @param resultHandler {function} 
    @return {AdministrationService} 
    */
-  this.addCompany =  function(companyId, resultHandler) {
+  this.addCompany =  function(company, resultHandler) {
     var __args = arguments;
-    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_administrationService["addCompany(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["addCompany(io.vertx.saysayX.ms.administration.pojo.CompanyBean,io.vertx.core.Handler)"](__args[0]  != null ? new CompanyBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
           __args[1](ar.result(), null);
         } else {
@@ -294,10 +321,34 @@ var AdministrationService = function(j_val) {
    @param resultHandler {function} 
    @return {AdministrationService}
    */
-  this.updateCompanyById =  function(companyId, resultHandler) {
+  this.activateCompany =  function(companyId, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_administrationService["updateCompanyById(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+      j_administrationService["activateCompany(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_activateCompany != 'undefined') {
+      return __super_activateCompany.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param company {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.updateCompanyById =  function(company, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["updateCompanyById(io.vertx.saysayX.ms.administration.pojo.CompanyBean,io.vertx.core.Handler)"](__args[0]  != null ? new CompanyBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
           __args[1](ar.result(), null);
         } else {
@@ -317,10 +368,10 @@ var AdministrationService = function(j_val) {
    @param resultHandler {function} 
    @return {AdministrationService}
    */
-  this.retrieveCompanyAll =  function(resultHandler) {
+  this.retrieveAllCompany =  function(resultHandler) {
     var __args = arguments;
     if (__args.length === 1 && typeof __args[0] === 'function') {
-      j_administrationService["retrieveCompanyAll(io.vertx.core.Handler)"](function(ar) {
+      j_administrationService["retrieveAllCompany(io.vertx.core.Handler)"](function(ar) {
         if (ar.succeeded()) {
           __args[0](utils.convReturnListSetJson(ar.result()), null);
         } else {
@@ -328,8 +379,8 @@ var AdministrationService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveCompanyAll != 'undefined') {
-      return __super_retrieveCompanyAll.apply(this, __args);
+    } else if (typeof __super_retrieveAllCompany != 'undefined') {
+      return __super_retrieveAllCompany.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

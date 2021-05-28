@@ -143,17 +143,35 @@
     /**
 
      @public
-     @param userId {string} userId we want to query for 
-     @param resultHandler {function} this handler will return as soon as update is complete. The jooq.async result * indicates whether the operation was successful or not. 
-     @return {AdministrationService} 
+     @param userId {string} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
      */
-    this.updateUser =  function(userId, resultHandler) {
+    this.activateUser =  function(userId, resultHandler) {
       var __args = arguments;
       if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"userId":__args[0]}, {"action":"updateUser"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"userId":__args[0]}, {"action":"activateUser"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param user {Object} userId we want to query for 
+     @param resultHandler {function} this handler will return as soon as update is complete. The jooq.async result * indicates whether the operation was successful or not. 
+     @return {AdministrationService} 
+     */
+    this.updateUser =  function(user, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"user":__args[0]}, {"action":"updateUser"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };
@@ -179,17 +197,17 @@
      Add a Company to the persistence.
 
      @public
-     @param companyId {string} 
+     @param company {Object} 
      @param resultHandler {function} 
      @return {AdministrationService} 
      */
-    this.addCompany =  function(companyId, resultHandler) {
+    this.addCompany =  function(company, resultHandler) {
       var __args = arguments;
-      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"companyId":__args[0]}, {"action":"addCompany"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"company":__args[0]}, {"action":"addCompany"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };
@@ -237,13 +255,31 @@
      @param resultHandler {function} 
      @return {AdministrationService}
      */
-    this.updateCompanyById =  function(companyId, resultHandler) {
+    this.activateCompany =  function(companyId, resultHandler) {
       var __args = arguments;
       if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"companyId":__args[0]}, {"action":"updateCompanyById"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"companyId":__args[0]}, {"action":"activateCompany"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param company {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.updateCompanyById =  function(company, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"company":__args[0]}, {"action":"updateCompanyById"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };
@@ -254,13 +290,13 @@
      @param resultHandler {function} 
      @return {AdministrationService}
      */
-    this.retrieveCompanyAll =  function(resultHandler) {
+    this.retrieveAllCompany =  function(resultHandler) {
       var __args = arguments;
       if (__args.length === 1 && typeof __args[0] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {}, {"action":"retrieveCompanyAll"}, function(err, result) { __args[0](err, result && result.body); });
+        j_eb.send(j_address, {}, {"action":"retrieveAllCompany"}, function(err, result) { __args[0](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };

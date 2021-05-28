@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class RestStoryApiVerticle extends RestAPIVerticle {
     public static final String SERVICE_NAME = "story-rest-api";
-    private static final String API_ADD = "/";
+    private static final String API_ADD = "/post";
     private static final String API_RETRIEVE = "/:sid";
     private static final String API_UPDATE = "/:sid";
     private static final String API_DELETE = "/:sid";
@@ -47,14 +47,16 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
 
     private void putStory(RoutingContext ctx) {
         try {
+            logger.info("{}", ctx.getBodyAsJson());
             StoryBean story = new StoryBean(ctx.getBodyAsJson());
-            service.addStory(story, resultHandler(ctx, r -> {
+           /* service.addStory(story, resultHandler(ctx, r -> {
                 String result = new JsonObject().put("message", "user_added").encodePrettily();
                 ctx.response().setStatusCode(201)
                         .putHeader("content-type", "application/json")
                         .end(result);
-            }));
-        } catch (DecodeException e) {
+            }));*/
+            service.addStory(story, resultHandler(ctx, 201, "user_added"));
+        } catch (Exception e) {
             badRequest(ctx, e);
         }
     }
@@ -62,6 +64,7 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
     private void getStory(RoutingContext ctx){
         String sid = ctx.request().getParam("sid");
         logger.info("finding story --> {}", sid);
+        logger.info("{}", new StoryBean().toJson());
         service.retrieveStory(sid, resultHandlerNonEmpty(ctx));
 
     }
@@ -71,7 +74,8 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
             StoryBean story = new StoryBean(ctx.getBodyAsJson());
             story.setSid(ctx.request().getParam("sid"));
             service.updateStory(story, resultHandler(ctx, 200));
-        } catch (DecodeException e){
+        } catch (Exception e){
+            logger.error("{}", e.getMessage());
             badRequest(ctx, e);
         }
     }
@@ -88,7 +92,12 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
     }
 
     private void removeStory(RoutingContext ctx){
-        String sid = ctx.request().getParam("sid");
-        service.deleteStory(sid, deleteResultHandler(ctx));
+        try {
+            String sid = ctx.request().getParam("sid");
+            service.deleteStory(sid, deleteResultHandler(ctx));
+        } catch (Exception e){
+            logger.error("{}", e.getMessage());
+            internalError(ctx, e);
+        }
     }
 }

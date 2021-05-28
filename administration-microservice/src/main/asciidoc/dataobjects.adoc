@@ -8,23 +8,24 @@
 [frame="topbot"]
 |===
 ^|Name | Type ^| Description
-|[[backgroundInfo]]`@backgroundInfo`|`String`|-
-|[[categoryId]]`@categoryId`|`String`|-
-|[[categoryName]]`@categoryName`|`String`|-
+|[[active]]`@active`|`Number (Integer)`|-
+|[[backgroundinfo]]`@backgroundinfo`|`String`|-
+|[[categoryid]]`@categoryid`|`String`|-
+|[[categoryname]]`@categoryname`|`String`|-
 |[[cid]]`@cid`|`String`|-
 |[[code]]`@code`|`String`|-
-|[[createdBy]]`@createdBy`|`String`|-
+|[[createdby]]`@createdby`|`String`|-
 |[[email]]`@email`|`String`|-
 |[[entities]]`@entities`|`String`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[location]]`@location`|`String`|-
 |[[logo]]`@logo`|`String`|-
 |[[name]]`@name`|`String`|-
-|[[otherLinks]]`@otherLinks`|`String`|-
-|[[phoneNumber]]`@phoneNumber`|`String`|-
+|[[otherlinks]]`@otherlinks`|`String`|-
+|[[phonenumber]]`@phonenumber`|`String`|-
 |[[rating]]`@rating`|`Number (Integer)`|-
-|[[sectorId]]`@sectorId`|`String`|-
-|[[sectorName]]`@sectorName`|`String`|-
+|[[sectorid]]`@sectorid`|`String`|-
+|[[sectorname]]`@sectorname`|`String`|-
 |[[website]]`@website`|`String`|-
 |===
 
@@ -36,20 +37,21 @@
 [frame="topbot"]
 |===
 ^|Name | Type ^| Description
-|[[backgroundInfo]]`@backgroundInfo`|`String`|-
-|[[createdBy]]`@createdBy`|`String`|-
+|[[active]]`@active`|`Number (Integer)`|-
+|[[backgroundinfo]]`@backgroundinfo`|`String`|-
+|[[createdby]]`@createdby`|`String`|-
 |[[dob]]`@dob`|`String`|-
 |[[email]]`@email`|`String`|-
-|[[firstName]]`@firstName`|`String`|-
-|[[gpsLocation]]`@gpsLocation`|`String`|-
-|[[hashedPassword]]`@hashedPassword`|`String`|-
+|[[firstname]]`@firstname`|`String`|-
+|[[gpslocation]]`@gpslocation`|`String`|-
+|[[hashedpassword]]`@hashedpassword`|`String`|-
 |[[id]]`@id`|`Number (Long)`|-
-|[[lastName]]`@lastName`|`String`|-
+|[[lastname]]`@lastname`|`String`|-
 |[[mobile]]`@mobile`|`String`|-
-|[[otherInfo]]`@otherInfo`|`String`|-
-|[[profilePic]]`@profilePic`|`String`|-
-|[[roleId]]`@roleId`|`String`|-
-|[[roleName]]`@roleName`|`String`|-
+|[[otherinfo]]`@otherinfo`|`String`|-
+|[[profilepic]]`@profilepic`|`String`|-
+|[[roleid]]`@roleid`|`String`|-
+|[[rolename]]`@rolename`|`String`|-
 |[[salt]]`@salt`|`String`|-
 |[[uid]]`@uid`|`String`|-
 |[[website]]`@website`|`String`|-

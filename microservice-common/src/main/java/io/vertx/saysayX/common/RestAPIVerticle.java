@@ -45,7 +45,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         return httpServerPromise.future().map(r -> null);
     }
 
-    protected Router enableRouteLoggingSupport(Router router){
+    protected Router enableRouteLoggingSupport(Router router) {
         Router route = router;
         // set router options
         route.route().handler(BodyHandler.create().setBodyLimit(10 * 1024 * 1024)); // 10MB max body size
@@ -126,7 +126,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         } else {
             context.response()
                     .setStatusCode(401)
-                    .end(new JsonObject().put("message", "need_auth").encode());
+                    .end(new JsonObject().put("msg", "need_auth").encode());
         }
     }
 
@@ -150,7 +150,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
                 T res = ar.result();
                 context.response().putHeader("Content-type", "application/json")
                         .end(res == null ? "{}" : res.toString());
-            }else {
+            } else {
                 internalError(context, ar.cause());
                 ar.cause().printStackTrace();
             }
@@ -158,18 +158,43 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     }
 
     protected <T> Handler<AsyncResult<T>> resultHandler(RoutingContext context, int status) {
-            return ar -> {
-                if (ar.succeeded()) {
-                    T res = ar.result();
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                if (res == null)
+                    serviceUnavailable(context, "invalid_result");
+                else if (res.toString().equals("0")) {
+                    notFound(context);
+                } else {
                     context.response()
                             .setStatusCode(status == 0 ? 200 : status)
                             .putHeader("Content-type", "application/json")
-                            .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
-                } else {
-                    internalError(context, ar.cause());
-                    ar.cause().printStackTrace();
+                            //res must always be > 0
+                            .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                    //.end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
                 }
-            };
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
+
+    }
+
+    protected <T> Handler<AsyncResult<T>> resultHandler(RoutingContext context, int status, String msg) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                context.response()
+                        .setStatusCode(status == 0 ? 200 : status)
+                        .putHeader("Content-type", "application/json")
+                        .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
 
     }
 
@@ -270,7 +295,6 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     }
 
 
-
     protected Handler<AsyncResult<Void>> resultVoidHandler(RoutingContext context, int status) {
         return ar -> {
             if (ar.succeeded()) {
@@ -298,20 +322,19 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
      * @return generated handler
      */
 
-    protected<T> Handler<AsyncResult<T>> deleteResultHandler(RoutingContext context) {
-        return res -> {
-            if (res.succeeded()) {
+    protected <T> Handler<AsyncResult<T>> deleteResultHandler(RoutingContext context) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
                 context.response().setStatusCode(200)
                         .putHeader("content-type", "application/json")
-                        .end(new JsonObject().put("message", "delete_success")
-                                .put("deleted", res).encodePrettily());
+                        .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
             } else {
-                internalError(context, res.cause());
-                res.cause().printStackTrace();
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
             }
         };
     }
-
 
 
     // helper method dealing with failure

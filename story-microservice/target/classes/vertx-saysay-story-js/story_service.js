@@ -129,7 +129,7 @@ var StoryService = function(j_val) {
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
       j_storyService["retrieveStoryByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
-          __args[1](utils.convReturnJson(ar.result()), null);
+          __args[1](utils.convReturnListSetJson(ar.result()), null);
         } else {
           __args[1](null, ar.cause());
         }

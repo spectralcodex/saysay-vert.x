@@ -6,6 +6,7 @@ import io.vertx.codegen.annotations.VertxGen;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.json.JsonObject;
+import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 
 import java.util.List;
@@ -73,14 +74,17 @@ public interface AdministrationService{
     @Fluent
     AdministrationService deleteUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
 
+    @Fluent
+    AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
+
     /**
-     * @param userId userId we want to query for
+     * @param user userId we want to query for
      * @param resultHandler this handler will return as soon as update is complete. The jooq.async result
      *      *                      indicates whether the operation was successful or not.
      * @return
      */
     @Fluent
-    AdministrationService updateUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
+    AdministrationService updateUser(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
 
     /**
      * @param resultHandler for all users
@@ -93,12 +97,12 @@ public interface AdministrationService{
 
     /**
      * Add a Company to the persistence.
-     * @param companyId
+     * @param company
      * @param resultHandler
      * @return
      */
     @Fluent
-    AdministrationService addCompany(String companyId, Handler<AsyncResult<Integer>> resultHandler);
+    AdministrationService addCompany(CompanyBean company, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
     AdministrationService retrieveCompanyById(String companyId, Handler<AsyncResult<JsonObject>> resultHandler);
@@ -107,8 +111,11 @@ public interface AdministrationService{
     AdministrationService deleteCompany(String companyId, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
-    AdministrationService updateCompanyById(String companyId, Handler<AsyncResult<Integer>> resultHandler);
+    AdministrationService activateCompany(String companyId, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
-    AdministrationService retrieveCompanyAll(Handler<AsyncResult<List<JsonObject>>> resultHandler);
+    AdministrationService updateCompanyById(CompanyBean company, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService retrieveAllCompany(Handler<AsyncResult<List<JsonObject>>> resultHandler);
 }

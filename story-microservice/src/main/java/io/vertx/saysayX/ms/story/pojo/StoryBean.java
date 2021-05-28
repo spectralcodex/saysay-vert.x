@@ -11,24 +11,24 @@ import java.time.OffsetDateTime;
 public class StoryBean {
 
     private Long           id;
-    private String         authorId;
+    private String         authorid;
     private JsonObject         entities;
     private String         sid;
     private String         lang;
-    private Integer        possiblySensitive;
+    private Integer        possiblysensitive;
     private String         source;
     private String         story;
-    private OffsetDateTime createdAt;
-    private Integer        likeCount;
-    private Integer        commentCount;
-    private Integer        cautionCount;
-    private String         categoryName;
-    private String         sectorName;
-    private String         companyId;
-    private String         sectorId;
-    private String         categoryId;
-    private String         authorName;
-    private String         companyName;
+    private OffsetDateTime createdat;
+    private Integer        likecount;
+    private Integer        commentcount;
+    private Integer        cautioncount;
+    private String         categoryname;
+    private String         sectorname;
+    private String         companyid;
+    private String         sectorid;
+    private String         categoryid;
+    private String         authorname;
+    private String         companyname;
 
     public StoryBean() {
     }
@@ -36,18 +36,22 @@ public class StoryBean {
 
     public StoryBean(JsonObject json) throws DecodeException {
         StoryBeanConverter.fromJson(json, this);
-        BaseUtils.isNullEmpty(this.authorId, "authorId");
+        BaseUtils.isNullEmpty(this.authorid, "authorid");
+        BaseUtils.isNullEmpty(this.authorname, "authorname");
         BaseUtils.isNullEmpty(this.story, "story");
-        BaseUtils.isNullEmpty(this.entities.encode(), "entries");
+        /*
+         * A story may not have vidoes or images therefore entities not mandatory
+        BaseUtils.isNullEmpty(this.entities.encode(), "entities");
+         */
+        BaseUtils.isNullEmpty(this.categoryid, "categoryid");
+        BaseUtils.isNullEmpty(this.categoryname, "categoryname");
+        BaseUtils.isNullEmpty(this.sectorid, "sectorid");
+        BaseUtils.isNullEmpty(this.sectorname, "sectorname");
+        BaseUtils.isNullEmpty(this.companyid, "companyid");
+        BaseUtils.isNullEmpty(this.companyname, "companyname");
         BaseUtils.isNullEmpty(this.lang, "lang");
         BaseUtils.isNullEmpty(this.source, "source");
-        BaseUtils.isNullEmpty(this.possiblySensitive, "possiblySensitive");
-        BaseUtils.isNullEmpty(this.categoryId, "categoryId");
-        BaseUtils.isNullEmpty(this.categoryName, "categoryName");
-        BaseUtils.isNullEmpty(this.sectorId, "sectorId");
-        BaseUtils.isNullEmpty(this.sectorName, "sectorName");
-        BaseUtils.isNullEmpty(this.companyId, "companyId");
-        BaseUtils.isNullEmpty(this.companyName, "companyName");
+        BaseUtils.isNullEmpty(this.possiblysensitive, "possiblysensitive");
     }
 
     public JsonObject toJson() {
@@ -56,211 +60,176 @@ public class StoryBean {
         return json;
     }
 
-    
+
     public Long getId() {
         return this.id;
     }
 
-    
+
     public StoryBean setId(Long id) {
         this.id = id;
         return this;
     }
 
-    
-    public String getAuthorId() {
-        return this.authorId;
+    public String getAuthorid() {
+        return authorid;
     }
 
-    
-    public StoryBean setAuthorId(String authorId) {
-        this.authorId = authorId;
+    public StoryBean setAuthorid(String authorid) {
+        this.authorid = authorid;
         return this;
     }
 
-    
     public JsonObject getEntities() {
-        return this.entities;
+        return entities;
     }
 
-    
     public StoryBean setEntities(JsonObject entities) {
         this.entities = entities;
         return this;
     }
 
-    
     public String getSid() {
-        return this.sid;
+        return sid;
     }
 
-    
     public StoryBean setSid(String sid) {
         this.sid = sid;
         return this;
     }
 
-    
     public String getLang() {
-        return this.lang;
+        return lang;
     }
 
-    
     public StoryBean setLang(String lang) {
         this.lang = lang;
         return this;
     }
 
-    
-    public Integer getPossiblySensitive() {
-        return this.possiblySensitive;
+    public Integer getPossiblysensitive() {
+        return possiblysensitive;
     }
 
-    
-    public StoryBean setPossiblySensitive(Integer possiblySensitive) {
-        this.possiblySensitive = possiblySensitive;
+    public StoryBean setPossiblysensitive(Integer possiblysensitive) {
+        this.possiblysensitive = possiblysensitive;
         return this;
     }
 
-    
     public String getSource() {
-        return this.source;
+        return source;
     }
 
-    
     public StoryBean setSource(String source) {
         this.source = source;
         return this;
     }
 
-    
     public String getStory() {
-        return this.story;
+        return story;
     }
 
-    
     public StoryBean setStory(String story) {
         this.story = story;
         return this;
     }
 
-    
-    public OffsetDateTime getCreatedAt() {
-        return this.createdAt;
+    public OffsetDateTime getCreatedat() {
+        return createdat;
     }
 
-    
-    public StoryBean setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+    public StoryBean setCreatedat(OffsetDateTime createdat) {
+        this.createdat = createdat;
         return this;
     }
 
-    
-    public Integer getLikeCount() {
-        return this.likeCount;
+    public Integer getLikecount() {
+        return likecount;
     }
 
-    
-    public StoryBean setLikeCount(Integer likeCount) {
-        this.likeCount = likeCount;
+    public StoryBean setLikecount(Integer likecount) {
+        this.likecount = likecount;
         return this;
     }
 
-    
-    public Integer getCommentCount() {
-        return this.commentCount;
+    public Integer getCommentcount() {
+        return commentcount;
     }
 
-    
-    public StoryBean setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
+    public StoryBean setCommentcount(Integer commentcount) {
+        this.commentcount = commentcount;
         return this;
     }
 
-    
-    public Integer getCautionCount() {
-        return this.cautionCount;
+    public Integer getCautioncount() {
+        return cautioncount;
     }
 
-    
-    public StoryBean setCautionCount(Integer cautionCount) {
-        this.cautionCount = cautionCount;
+    public StoryBean setCautioncount(Integer cautioncount) {
+        this.cautioncount = cautioncount;
         return this;
     }
 
-    
-    public String getCategoryName() {
-        return this.categoryName;
+    public String getCategoryname() {
+        return categoryname;
     }
 
-    
-    public StoryBean setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public StoryBean setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
         return this;
     }
 
-    
-    public String getSectorName() {
-        return this.sectorName;
+    public String getSectorname() {
+        return sectorname;
     }
 
-    
-    public StoryBean setSectorName(String sectorName) {
-        this.sectorName = sectorName;
+    public StoryBean setSectorname(String sectorname) {
+        this.sectorname = sectorname;
         return this;
     }
 
-    
-    public String getCompanyId() {
-        return this.companyId;
+    public String getCompanyid() {
+        return companyid;
     }
 
-    
-    public StoryBean setCompanyId(String companyId) {
-        this.companyId = companyId;
+    public StoryBean setCompanyid(String companyid) {
+        this.companyid = companyid;
         return this;
     }
 
-    
-    public String getSectorId() {
-        return this.sectorId;
+    public String getSectorid() {
+        return sectorid;
     }
 
-    
-    public StoryBean setSectorId(String sectorId) {
-        this.sectorId = sectorId;
+    public StoryBean setSectorid(String sectorid) {
+        this.sectorid = sectorid;
         return this;
     }
 
-    
-    public String getCategoryId() {
-        return this.categoryId;
+    public String getCategoryid() {
+        return categoryid;
     }
 
-    
-    public StoryBean setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public StoryBean setCategoryid(String categoryid) {
+        this.categoryid = categoryid;
         return this;
     }
 
-    
-    public String getAuthorName() {
-        return this.authorName;
+    public String getAuthorname() {
+        return authorname;
     }
 
-    
-    public StoryBean setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public StoryBean setAuthorname(String authorname) {
+        this.authorname = authorname;
         return this;
     }
 
-    public String getCompanyNameName() {
-        return this.companyName;
+    public String getCompanyname() {
+        return companyname;
     }
 
-
-    public StoryBean setCompanyNameName(String companyName) {
-        this.companyName = companyName;
+    public StoryBean setCompanyname(String companyname) {
+        this.companyname = companyname;
         return this;
     }
 }

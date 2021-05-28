@@ -14,44 +14,44 @@ public class StoryBeanConverter {
   public static void fromJson(Iterable<java.util.Map.Entry<String, Object>> json, StoryBean obj) {
     for (java.util.Map.Entry<String, Object> member : json) {
       switch (member.getKey()) {
-        case "authorId":
+        case "authorid":
           if (member.getValue() instanceof String) {
-            obj.setAuthorId((String)member.getValue());
+            obj.setAuthorid((String)member.getValue());
           }
           break;
-        case "authorName":
+        case "authorname":
           if (member.getValue() instanceof String) {
-            obj.setAuthorName((String)member.getValue());
+            obj.setAuthorname((String)member.getValue());
           }
           break;
-        case "categoryId":
+        case "categoryid":
           if (member.getValue() instanceof String) {
-            obj.setCategoryId((String)member.getValue());
+            obj.setCategoryid((String)member.getValue());
           }
           break;
-        case "categoryName":
+        case "categoryname":
           if (member.getValue() instanceof String) {
-            obj.setCategoryName((String)member.getValue());
+            obj.setCategoryname((String)member.getValue());
           }
           break;
-        case "cautionCount":
+        case "cautioncount":
           if (member.getValue() instanceof Number) {
-            obj.setCautionCount(((Number)member.getValue()).intValue());
+            obj.setCautioncount(((Number)member.getValue()).intValue());
           }
           break;
-        case "commentCount":
+        case "commentcount":
           if (member.getValue() instanceof Number) {
-            obj.setCommentCount(((Number)member.getValue()).intValue());
+            obj.setCommentcount(((Number)member.getValue()).intValue());
           }
           break;
-        case "companyId":
+        case "companyid":
           if (member.getValue() instanceof String) {
-            obj.setCompanyId((String)member.getValue());
+            obj.setCompanyid((String)member.getValue());
           }
           break;
-        case "companyNameName":
+        case "companyname":
           if (member.getValue() instanceof String) {
-            obj.setCompanyNameName((String)member.getValue());
+            obj.setCompanyname((String)member.getValue());
           }
           break;
         case "entities":
@@ -69,24 +69,24 @@ public class StoryBeanConverter {
             obj.setLang((String)member.getValue());
           }
           break;
-        case "likeCount":
+        case "likecount":
           if (member.getValue() instanceof Number) {
-            obj.setLikeCount(((Number)member.getValue()).intValue());
+            obj.setLikecount(((Number)member.getValue()).intValue());
           }
           break;
-        case "possiblySensitive":
+        case "possiblysensitive":
           if (member.getValue() instanceof Number) {
-            obj.setPossiblySensitive(((Number)member.getValue()).intValue());
+            obj.setPossiblysensitive(((Number)member.getValue()).intValue());
           }
           break;
-        case "sectorId":
+        case "sectorid":
           if (member.getValue() instanceof String) {
-            obj.setSectorId((String)member.getValue());
+            obj.setSectorid((String)member.getValue());
           }
           break;
-        case "sectorName":
+        case "sectorname":
           if (member.getValue() instanceof String) {
-            obj.setSectorName((String)member.getValue());
+            obj.setSectorname((String)member.getValue());
           }
           break;
         case "sid":
@@ -113,29 +113,29 @@ public class StoryBeanConverter {
   }
 
   public static void toJson(StoryBean obj, java.util.Map<String, Object> json) {
-    if (obj.getAuthorId() != null) {
-      json.put("authorId", obj.getAuthorId());
+    if (obj.getAuthorid() != null) {
+      json.put("authorid", obj.getAuthorid());
     }
-    if (obj.getAuthorName() != null) {
-      json.put("authorName", obj.getAuthorName());
+    if (obj.getAuthorname() != null) {
+      json.put("authorname", obj.getAuthorname());
     }
-    if (obj.getCategoryId() != null) {
-      json.put("categoryId", obj.getCategoryId());
+    if (obj.getCategoryid() != null) {
+      json.put("categoryid", obj.getCategoryid());
     }
-    if (obj.getCategoryName() != null) {
-      json.put("categoryName", obj.getCategoryName());
+    if (obj.getCategoryname() != null) {
+      json.put("categoryname", obj.getCategoryname());
     }
-    if (obj.getCautionCount() != null) {
-      json.put("cautionCount", obj.getCautionCount());
+    if (obj.getCautioncount() != null) {
+      json.put("cautioncount", obj.getCautioncount());
     }
-    if (obj.getCommentCount() != null) {
-      json.put("commentCount", obj.getCommentCount());
+    if (obj.getCommentcount() != null) {
+      json.put("commentcount", obj.getCommentcount());
     }
-    if (obj.getCompanyId() != null) {
-      json.put("companyId", obj.getCompanyId());
+    if (obj.getCompanyid() != null) {
+      json.put("companyid", obj.getCompanyid());
     }
-    if (obj.getCompanyNameName() != null) {
-      json.put("companyNameName", obj.getCompanyNameName());
+    if (obj.getCompanyname() != null) {
+      json.put("companyname", obj.getCompanyname());
     }
     if (obj.getEntities() != null) {
       json.put("entities", obj.getEntities());
@@ -146,17 +146,17 @@ public class StoryBeanConverter {
     if (obj.getLang() != null) {
       json.put("lang", obj.getLang());
     }
-    if (obj.getLikeCount() != null) {
-      json.put("likeCount", obj.getLikeCount());
+    if (obj.getLikecount() != null) {
+      json.put("likecount", obj.getLikecount());
     }
-    if (obj.getPossiblySensitive() != null) {
-      json.put("possiblySensitive", obj.getPossiblySensitive());
+    if (obj.getPossiblysensitive() != null) {
+      json.put("possiblysensitive", obj.getPossiblysensitive());
     }
-    if (obj.getSectorId() != null) {
-      json.put("sectorId", obj.getSectorId());
+    if (obj.getSectorid() != null) {
+      json.put("sectorid", obj.getSectorid());
     }
-    if (obj.getSectorName() != null) {
-      json.put("sectorName", obj.getSectorName());
+    if (obj.getSectorname() != null) {
+      json.put("sectorname", obj.getSectorname());
     }
     if (obj.getSid() != null) {
       json.put("sid", obj.getSid());
