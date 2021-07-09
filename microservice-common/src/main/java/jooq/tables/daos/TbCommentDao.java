@@ -104,6 +104,13 @@ public class TbCommentDao extends AbstractAsyncVertxDAO<TbCommentRecord, jooq.ta
         return findManyByCondition(TbComment.TB_COMMENT.CREATEDON.in(values));
     }
 
+    /**
+     * Find records that have <code>comment IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbComment>> findManyByComment(Collection<String> values) {
+        return findManyByCondition(TbComment.TB_COMMENT.COMMENT.in(values));
+    }
+
     @Override
     public AsyncClassicQueryExecutor<TbCommentRecord,jooq.tables.pojos.TbComment,Long> queryExecutor(){
         return (AsyncClassicQueryExecutor<TbCommentRecord,jooq.tables.pojos.TbComment,Long>) super.queryExecutor();

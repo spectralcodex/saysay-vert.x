@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbLikes;
 import jooq.tables.TbSector;
 import jooq.tables.TbStory;
 import jooq.tables.TbUser;
@@ -41,6 +42,11 @@ public class Tables {
      * The table <code>public.tb_company</code>.
      */
     public static final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
+     * The table <code>public.tb_likes</code>.
+     */
+    public static final TbLikes TB_LIKES = jooq.tables.TbLikes.TB_LIKES;
 
     /**
      * The table <code>public.tb_sector</code>.

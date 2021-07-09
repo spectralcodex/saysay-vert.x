@@ -115,6 +115,16 @@ public interface ITbComment extends VertxPojo, Serializable {
      */
     public String getCreatedon();
 
+    /**
+     * Setter for <code>public.tb_comment.comment</code>.
+     */
+    public ITbComment setComment(String value);
+
+    /**
+     * Getter for <code>public.tb_comment.comment</code>.
+     */
+    public String getComment();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -176,6 +186,11 @@ public interface ITbComment extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("createdon","java.lang.String",e);
         }
+        try {
+            setComment(json.getString("comment"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("comment","java.lang.String",e);
+        }
         return this;
     }
 
@@ -192,6 +207,7 @@ public interface ITbComment extends VertxPojo, Serializable {
         json.put("entities",getEntities());
         json.put("authorname",getAuthorname());
         json.put("createdon",getCreatedon());
+        json.put("comment",getComment());
         return json;
     }
 

@@ -1,12 +1,22 @@
 = Cheatsheets
 
-[[RateBean]]
-== RateBean
+[[CommentBean]]
+== CommentBean
 
 
 [cols=">25%,25%,50%"]
 [frame="topbot"]
 |===
 ^|Name | Type ^| Description
+|[[authorid]]`@authorid`|`String`|-
+|[[authorname]]`@authorname`|`String`|-
+|[[cid]]`@cid`|`String`|-
+|[[comment]]`@comment`|`String`|-
+|[[createdon]]`@createdon`|`String`|-
+|[[entities]]`@entities`|`Json object`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[lang]]`@lang`|`String`|-
+|[[possibilitysensitive]]`@possibilitysensitive`|`Number (Integer)`|-
+|[[storyid]]`@storyid`|`String`|-
 |===
 

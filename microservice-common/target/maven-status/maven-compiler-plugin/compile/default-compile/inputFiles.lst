@@ -15,7 +15,9 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/converters/Bindings.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbUserRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbCompany.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbLikes.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbUserDao.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbLikesDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbComment.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/PropertiesCache.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/BaseUtils.java
@@ -30,9 +32,11 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/ConfigRetrieverHelper.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/Tables.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbCommentDao.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/MailUtils.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbCategoryRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbSector.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbComment.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbLikesRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/Public.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbSectorDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbCategory.java
@@ -42,8 +46,10 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbCompany.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbCategory.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbCategory.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbLikes.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbStoryRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/BaseMicroserviceVerticle.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/Slf4jRequestLogger.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbLikes.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbStory.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbSectorRecord.java

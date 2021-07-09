@@ -24,7 +24,7 @@ import jooq.tables.interfaces.ITbComment;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbComment implements VertxPojo, ITbComment {
 
-    private static final long serialVersionUID = 1627443807;
+    private static final long serialVersionUID = 835006450;
 
     private Long    id;
     private String  authorid;
@@ -35,6 +35,7 @@ public class TbComment implements VertxPojo, ITbComment {
     private String  entities;
     private String  authorname;
     private String  createdon;
+    private String  comment;
 
     public TbComment() {}
 
@@ -48,6 +49,7 @@ public class TbComment implements VertxPojo, ITbComment {
         this.entities = value.getEntities();
         this.authorname = value.getAuthorname();
         this.createdon = value.getCreatedon();
+        this.comment = value.getComment();
     }
 
     public TbComment(
@@ -59,7 +61,8 @@ public class TbComment implements VertxPojo, ITbComment {
         String  lang,
         String  entities,
         String  authorname,
-        String  createdon
+        String  createdon,
+        String  comment
     ) {
         this.id = id;
         this.authorid = authorid;
@@ -70,6 +73,7 @@ public class TbComment implements VertxPojo, ITbComment {
         this.entities = entities;
         this.authorname = authorname;
         this.createdon = createdon;
+        this.comment = comment;
     }
 
     @Override
@@ -172,6 +176,17 @@ public class TbComment implements VertxPojo, ITbComment {
     }
 
     @Override
+    public String getComment() {
+        return this.comment;
+    }
+
+    @Override
+    public TbComment setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbComment (");
 
@@ -184,6 +199,7 @@ public class TbComment implements VertxPojo, ITbComment {
         sb.append(", ").append(entities);
         sb.append(", ").append(authorname);
         sb.append(", ").append(createdon);
+        sb.append(", ").append(comment);
 
         sb.append(")");
         return sb.toString();
@@ -207,6 +223,7 @@ public class TbComment implements VertxPojo, ITbComment {
         setEntities(from.getEntities());
         setAuthorname(from.getAuthorname());
         setCreatedon(from.getCreatedon());
+        setComment(from.getComment());
     }
 
     /**

@@ -1,4 +1,5 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/package-info.java
-/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/pojo/RateBean.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/CommentService.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/CommentVerticle.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/pojo/CommentBean.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/comment-microservice/src/main/java/io/vertx/saysayX/ms/comment/impl/JooqCommentServiceImpl.java

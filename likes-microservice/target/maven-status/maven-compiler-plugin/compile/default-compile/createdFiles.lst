@@ -1,0 +1,11 @@
+io/vertx/saysayX/ms/likes/pojo/LikesBeanConverter.class
+io/vertx/saysayX/ms/likes/LikesServiceVertxProxyHandler.class
+io/vertx/saysayX/ms/likes/package-info.class
+io/vertx/saysayX/ms/likes/LikesServiceVertxEBProxy.class
+io/vertx/saysayX/ms/likes/pojo/LikesBean.class
+vertx-saysay-likes-js/likes_service.js
+io/vertx/saysayX/ms/likes/LikesVerticle.class
+vertx-saysay-likes-js/likes_service-proxy.js
+io/vertx/saysayX/ms/likes/LikesService.class
+io/vertx/saysayX/ms/likes/impl/JooqLikesServiceImpl.class
+vertx-saysay-likes-js/likes_service-proxy.d.ts

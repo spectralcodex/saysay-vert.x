@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbComment extends TableImpl<TbCommentRecord> {
 
-    private static final long serialVersionUID = -901820894;
+    private static final long serialVersionUID = -1451509244;
 
     /**
      * The reference instance of <code>public.tb_comment</code>
@@ -100,6 +100,11 @@ public class TbComment extends TableImpl<TbCommentRecord> {
      * The column <code>public.tb_comment.createdon</code>.
      */
     public final TableField<TbCommentRecord, String> CREATEDON = createField("createdon", org.jooq.impl.SQLDataType.VARCHAR.defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>public.tb_comment.comment</code>.
+     */
+    public final TableField<TbCommentRecord, String> COMMENT = createField("comment", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * Create a <code>public.tb_comment</code> table reference

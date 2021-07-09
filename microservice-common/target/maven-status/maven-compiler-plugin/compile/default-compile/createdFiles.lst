@@ -1,9 +1,13 @@
 jooq/Keys$Identities0.class
+jooq/tables/pojos/TbLikes.class
 jooq/tables/daos/TbCategoryDao.class
 jooq/tables/interfaces/ITbCategory.class
 io/vertx/saysayX/common/config/PropertiesCache.class
+jooq/tables/daos/TbLikesDao.class
 jooq/tables/interfaces/ITbSector.class
 jooq/tables/pojos/TbComment.class
+jooq/tables/interfaces/ITbLikes.class
+io/vertx/saysayX/common/config/MailUtils.class
 jooq/tables/converters/Bindings.class
 jooq/tables/TbStory.class
 jooq/tables/records/TbCommentRecord.class
@@ -24,6 +28,7 @@ jooq/tables/TbCompany.class
 jooq/tables/daos/TbCommentDao.class
 io/vertx/saysayX/common/RestAPIVerticle.class
 jooq/Public.class
+jooq/tables/records/TbLikesRecord.class
 io/vertx/saysayX/common/config/RequestLogHandler.class
 io/vertx/saysayX/common/config/ConfigRetrieverHelper.class
 io/vertx/saysayX/common/config/BaseUtils.class
@@ -36,6 +41,7 @@ jooq/tables/records/TbStoryRecord.class
 jooq/tables/TbCategory.class
 jooq/tables/daos/TbCompanyDao.class
 jooq/tables/records/TbCompanyRecord.class
+jooq/tables/TbLikes.class
 jooq/tables/TbSector.class
 jooq/tables/daos/TbStoryDao.class
 io/vertx/saysayX/common/service/JdbcRepositoryWrapper.class

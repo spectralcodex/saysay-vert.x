@@ -1,8 +1,6 @@
 package io.vertx.saysayX.ms.story.api;
 
 import io.vertx.core.Promise;
-import io.vertx.core.json.DecodeException;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.saysayX.common.RestAPIVerticle;
@@ -17,7 +15,8 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
     private static final String API_RETRIEVE = "/:sid";
     private static final String API_UPDATE = "/:sid";
     private static final String API_DELETE = "/:sid";
-    private static final String API_RETRIEVE_ALL= "/all/:authorId";
+    private static final String API_RETRIEVE_ALL_BY_ID= "/get/:authorId";
+    private static final String API_RETRIEVE_ALL= "/all";
 
     protected final static Logger logger = LoggerFactory.getLogger(RestStoryApiVerticle.class);
 
@@ -35,6 +34,7 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
         router.get(API_RETRIEVE).handler(this::getStory);
         router.patch(API_UPDATE).handler(this::editStory);
         router.delete(API_DELETE).handler(this::removeStory);
+        router.get(API_RETRIEVE_ALL_BY_ID).handler(this::getStoryByAuthorId);
         router.get(API_RETRIEVE_ALL).handler(this::getStoryByAuthorId);
 
         String host = config().getString("story.http.address", "0.0.0.0");
@@ -85,9 +85,8 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
         service.retrieveStoryByAuthorId(authorId, resultHandlerNonEmpty(ctx));
     }
 
-    private void getStoriesByAuthorId(RoutingContext ctx){
-        //String authorId = ctx.request().getParam("authorId");
-        //service.retrieveAllStoriesByAuthorId(authorId, resultHandler(ctx, Json::encodePrettily));
+    private void getStories(RoutingContext ctx){
+        service.retrieveAllStories(resultHandlerNonEmpty(ctx));
         notImplemented(ctx);
     }
 

@@ -2,9 +2,11 @@ package io.vertx.saysayX.ms.administration.api;
 
 
 import io.vertx.core.Promise;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.saysayX.common.RestAPIVerticle;
+import io.vertx.saysayX.common.config.MailUtils;
 import io.vertx.saysayX.ms.administration.AdministrationService;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
@@ -21,7 +23,6 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private static final String API_UPDATE_USER = "/user/:uid";
     private static final String API_DELETE_USER = "/user/:uid";
     private static final String API_ACTIVATE_USER = "/user/on/:uid";
-
 
     //Company endpoints
     private static final String API_ADD_COMPANY = "/company";
@@ -69,13 +70,32 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
                 .onComplete(startPromise);
     }
 
-
     //User APIs
     private void apiAddUser(RoutingContext context) {
         try {
-            logger.info("{}", context.getBodyAsJson());
             UserBean user = new UserBean(context.getBodyAsJson());
-            service.addUser(user, resultHandler(context, 201, "add"));
+            //service.addUser(user, resultHandler(context, 201, "add"));
+            service.addUser(user, ar -> {
+                if (ar.succeeded()) {
+                    Integer res = ar.result();
+                    MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail()), mailRes -> {
+                        if (mailRes.succeeded()) {
+                            context.response()
+                                    .setStatusCode(201)
+                                    .putHeader("Content-type", "application/json")
+                                    .end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
+                                            .put("mailMsg", mailRes.result()).encodePrettily());
+                            //{"messageId":"<msg.1622978709033.vertxmail.0@localhost>","recipients":["lightskinnedwarrior30@gmail.com"]}
+                        } else {
+                            internalError(context, mailRes.cause());
+                            mailRes.cause().printStackTrace();
+                        }
+                    });
+                } else {
+                    internalError(context, ar.cause());
+                    ar.cause().printStackTrace();
+                }
+            });
         } catch (Exception e) {
             badRequest(context, e);
         }
@@ -86,69 +106,68 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         service.retrieveUserById(uid, resultHandlerNonEmpty(context));
     }
 
-    private void apiRetrieveAllUser(RoutingContext ctx){
+    private void apiRetrieveAllUser(RoutingContext ctx) {
         service.retrieveAllUsers(resultHandlerNonEmpty(ctx));
     }
 
-    private void apiUpdateUser(RoutingContext ctx){
-        try{
+    private void apiUpdateUser(RoutingContext ctx) {
+        try {
             UserBean user = new UserBean(ctx.getBodyAsJson());
 
             user.setUid(ctx.request().getParam("uid"));
             service.updateUser(user, resultHandler(ctx, 200));
-        } catch(Exception e){
+        } catch (Exception e) {
             badRequest(ctx, e);
         }
     }
 
-    private void apiDeleteUser(RoutingContext ctx){
+    private void apiDeleteUser(RoutingContext ctx) {
         String uid = ctx.request().getParam("uid");
         logger.info("{}", new UserBean().toJson());
         service.deleteUser(uid, deleteResultHandler(ctx));
     }
 
-    private void apiActivateUser(RoutingContext ctx){
+    private void apiActivateUser(RoutingContext ctx) {
         String uid = ctx.request().getParam("uid");
         service.activateUser(uid, resultHandler(ctx, 200));
     }
 
     //Company APIs
-    private void apiAddCompany(RoutingContext ctx){
-        try{
+    private void apiAddCompany(RoutingContext ctx) {
+        try {
             CompanyBean company = new CompanyBean(ctx.getBodyAsJson());
             service.addCompany(company, resultHandler(ctx, 201, "success"));
-        } catch (Exception e){
+        } catch (Exception e) {
             badRequest(ctx, e);
         }
     }
 
-
-    private void apiRetrieveCompany(RoutingContext ctx){
+    private void apiRetrieveCompany(RoutingContext ctx) {
         String cid = ctx.request().getParam("cid");
         service.retrieveCompanyById(cid, resultHandlerNonEmpty(ctx));
     }
 
-    private void apiRetrieveAllCompany(RoutingContext ctx){
+    private void apiRetrieveAllCompany(RoutingContext ctx) {
         String cid = ctx.request().getParam("cid");
         service.retrieveAllCompany(resultHandlerNonEmpty(ctx));
     }
 
-    private void apiUpdateCompany(RoutingContext ctx){
-        try{
+    private void apiUpdateCompany(RoutingContext ctx) {
+        try {
             CompanyBean company = new CompanyBean(ctx.getBodyAsJson());
             company.setCid(ctx.request().getParam("cid"));
             service.updateCompanyById(company, resultHandler(ctx, 200));
-        } catch (Exception e){
+        } catch (Exception e) {
             badRequest(ctx, e);
         }
     }
 
-    private void apiDeleteCompany(RoutingContext ctx){
+    private void apiDeleteCompany(RoutingContext ctx) {
         String cid = ctx.request().getParam("cid");
         service.deleteCompany(cid, deleteResultHandler(ctx));
     }
 
-    private void apiActivateCompany(RoutingContext ctx){
+    private void apiActivateCompany(RoutingContext ctx) {
         String cid = ctx.request().getParam("cid");
         service.activateCompany(cid, resultHandler(ctx, 200));
     }

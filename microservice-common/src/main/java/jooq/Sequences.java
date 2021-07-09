@@ -44,6 +44,11 @@ public class Sequences {
     public static final Sequence<Long> TB_COMPANY_ID_SEQ = new SequenceImpl<Long>("tb_company_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>public.tb_likes_id_seq</code>
+     */
+    public static final Sequence<Long> TB_LIKES_ID_SEQ = new SequenceImpl<Long>("tb_likes_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.tb_story_id_seq</code>
      */
     public static final Sequence<Long> TB_STORY_ID_SEQ = new SequenceImpl<Long>("tb_story_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
