@@ -67,10 +67,10 @@ public interface LikesService {
      *                      whether the operation was successful or not.
      */
     @Fluent
-    LikesService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler);
+    LikesService retrieveAllLikesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     @Fluent
-    LikesService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler);
+    LikesService retrieveAllLikes(Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     /**
      * Update Likes account info.

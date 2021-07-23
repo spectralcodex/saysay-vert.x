@@ -144,27 +144,7 @@ public class CommentServiceVertxEBProxy implements CommentService {
     return this;
   }
   @Override
-  public  CommentService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler){
-    if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
-      return this;
-    }
-    JsonObject _json = new JsonObject();
-    _json.put("authorId", authorId);
-
-    DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveAllStoriesByAuthorId");
-    _vertx.eventBus().<JsonArray>request(_address, _json, _deliveryOptions, res -> {
-      if (res.failed()) {
-        resultHandler.handle(Future.failedFuture(res.cause()));
-      } else {
-        resultHandler.handle(Future.succeededFuture(ProxyUtils.convertList(res.result().body().getList())));
-      }
-    });
-    return this;
-  }
-  @Override
-  public  CommentService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler){
+  public  CommentService retrieveAllComments(Handler<AsyncResult<List<JsonObject>>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -172,7 +152,7 @@ public class CommentServiceVertxEBProxy implements CommentService {
     JsonObject _json = new JsonObject();
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveAllStories");
+    _deliveryOptions.addHeader("action", "retrieveAllComments");
     _vertx.eventBus().<JsonArray>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));

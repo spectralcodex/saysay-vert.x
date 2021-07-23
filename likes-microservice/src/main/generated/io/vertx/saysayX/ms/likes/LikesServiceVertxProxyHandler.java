@@ -136,13 +136,13 @@ public class LikesServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createListHandler(msg));
           break;
         }
-        case "retrieveAllStoriesByAuthorId": {
-          service.retrieveAllStoriesByAuthorId((java.lang.String)json.getValue("authorId"),
+        case "retrieveAllLikesByAuthorId": {
+          service.retrieveAllLikesByAuthorId((java.lang.String)json.getValue("authorId"),
                         HelperUtils.createListHandler(msg));
           break;
         }
-        case "retrieveAllStories": {
-          service.retrieveAllStories(HelperUtils.createListHandler(msg));
+        case "retrieveAllLikes": {
+          service.retrieveAllLikes(HelperUtils.createListHandler(msg));
           break;
         }
         case "updateLikes": {

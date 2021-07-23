@@ -144,7 +144,7 @@ public class LikesServiceVertxEBProxy implements LikesService {
     return this;
   }
   @Override
-  public  LikesService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler){
+  public  LikesService retrieveAllLikesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -153,7 +153,7 @@ public class LikesServiceVertxEBProxy implements LikesService {
     _json.put("authorId", authorId);
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveAllStoriesByAuthorId");
+    _deliveryOptions.addHeader("action", "retrieveAllLikesByAuthorId");
     _vertx.eventBus().<JsonArray>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
@@ -164,7 +164,7 @@ public class LikesServiceVertxEBProxy implements LikesService {
     return this;
   }
   @Override
-  public  LikesService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler){
+  public  LikesService retrieveAllLikes(Handler<AsyncResult<List<JsonObject>>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -172,7 +172,7 @@ public class LikesServiceVertxEBProxy implements LikesService {
     JsonObject _json = new JsonObject();
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "retrieveAllStories");
+    _deliveryOptions.addHeader("action", "retrieveAllLikes");
     _vertx.eventBus().<JsonArray>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));

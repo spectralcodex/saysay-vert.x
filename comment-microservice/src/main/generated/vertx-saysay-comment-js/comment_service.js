@@ -34,8 +34,7 @@ var CommentService = function(j_val) {
   var __super_addComment = this.addComment;
   var __super_retrieveComment = this.retrieveComment;
   var __super_retrieveCommentByAuthorId = this.retrieveCommentByAuthorId;
-  var __super_retrieveAllStoriesByAuthorId = this.retrieveAllStoriesByAuthorId;
-  var __super_retrieveAllStories = this.retrieveAllStories;
+  var __super_retrieveAllComments = this.retrieveAllComments;
   var __super_updateComment = this.updateComment;
   var __super_deleteComment = this.deleteComment;
   /**
@@ -140,37 +139,13 @@ var CommentService = function(j_val) {
    Retrieve all Comment accounts.
 
    @public
-   @param authorId {string} 
    @param resultHandler {function} the result handler will be called as soon as the stories have been retrieved. The async result indicates whether the operation was successful or not. 
    @return {CommentService}
    */
-  this.retrieveAllStoriesByAuthorId =  function(authorId, resultHandler) {
-    var __args = arguments;
-    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_commentService["retrieveAllStoriesByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
-        if (ar.succeeded()) {
-          __args[1](utils.convReturnListSetJson(ar.result()), null);
-        } else {
-          __args[1](null, ar.cause());
-        }
-      }) ;
-      return that;
-    } else if (typeof __super_retrieveAllStoriesByAuthorId != 'undefined') {
-      return __super_retrieveAllStoriesByAuthorId.apply(this, __args);
-    }
-    else throw new TypeError('function invoked with invalid arguments');
-  };
-
-  /**
-
-   @public
-   @param resultHandler {function} 
-   @return {CommentService}
-   */
-  this.retrieveAllStories =  function(resultHandler) {
+  this.retrieveAllComments =  function(resultHandler) {
     var __args = arguments;
     if (__args.length === 1 && typeof __args[0] === 'function') {
-      j_commentService["retrieveAllStories(io.vertx.core.Handler)"](function(ar) {
+      j_commentService["retrieveAllComments(io.vertx.core.Handler)"](function(ar) {
         if (ar.succeeded()) {
           __args[0](utils.convReturnListSetJson(ar.result()), null);
         } else {
@@ -178,8 +153,8 @@ var CommentService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveAllStories != 'undefined') {
-      return __super_retrieveAllStories.apply(this, __args);
+    } else if (typeof __super_retrieveAllComments != 'undefined') {
+      return __super_retrieveAllComments.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

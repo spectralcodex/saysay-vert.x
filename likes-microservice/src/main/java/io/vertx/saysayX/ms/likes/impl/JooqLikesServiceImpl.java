@@ -38,20 +38,21 @@ public class JooqLikesServiceImpl extends JooqRepositoryWrapper implements Likes
 
 
     @Override
-    public LikesService addLikes(LikesBean Likes, Handler<AsyncResult<Integer>> resultHandler) {
-        String cid = "L"+UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
+    public LikesService addLikes(LikesBean likes, Handler<AsyncResult<Integer>> resultHandler) {
+        String lid = "L"+UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
         executor.execute(dsl -> dsl.insertInto(TB_LIKES,
                 TB_LIKES.AUTHORID,
                 TB_LIKES.AUTHORNAME,
                 TB_LIKES.ENTITIES,
+                TB_LIKES.COMMENT_ID,
                 TB_LIKES.LID,
                 TB_LIKES.LANG,
                 TB_LIKES.POSSIBILITYSENSITIVE,
                 TB_LIKES.STORYID,
                 TB_LIKES.STATUS
         )
-                .values(Likes.getAuthorid(),Likes.getAuthorname(), Likes.getEntities().encode(), cid , Likes.getLang(),
-                        Likes.getPossibilitysensitive(), Likes.getStoryid(), Likes.getStatus()))
+                .values(likes.getAuthorid(),likes.getAuthorname(), likes.getEntities().encode(), likes.getCommentid(), lid , likes.getLang(),
+                        likes.getPossiblysensitive(), likes.getStoryid(), likes.getStatus()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -71,7 +72,7 @@ public class JooqLikesServiceImpl extends JooqRepositoryWrapper implements Likes
     }
 
     @Override
-    public LikesService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+    public LikesService retrieveAllLikesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
         executor.findManyJson(dsl-> dsl.selectFrom(TB_LIKES).where(TB_LIKES.AUTHORID.eq(authorId)))
                 .onComplete(resultHandler);
         return this;
@@ -79,7 +80,7 @@ public class JooqLikesServiceImpl extends JooqRepositoryWrapper implements Likes
 
 
     @Override
-    public LikesService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+    public LikesService retrieveAllLikes(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
         executor.findManyJson(dsl-> dsl.selectFrom(TB_LIKES))
                 .onComplete(resultHandler);
         return this;
@@ -89,8 +90,8 @@ public class JooqLikesServiceImpl extends JooqRepositoryWrapper implements Likes
     public LikesService updateLikes(LikesBean Likes, Handler<AsyncResult<Integer>> resultHandler) {
         executor.execute(dsl -> dsl.update(TB_LIKES).set(TB_LIKES.STATUS, Likes.getStatus())
         .set(TB_LIKES.ENTITIES, Likes.getEntities().encode())
-        .set(TB_LIKES.POSSIBILITYSENSITIVE, Likes.getPossibilitysensitive())
-                .where(TB_LIKES.LID.eq(Likes.getCid())))
+        .set(TB_LIKES.POSSIBILITYSENSITIVE, Likes.getPossiblysensitive())
+                .where(TB_LIKES.LID.eq(Likes.getLid())))
                 .onComplete(resultHandler);
         return this;
     }

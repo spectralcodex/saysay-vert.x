@@ -1,7 +1,7 @@
 {
-  "api.name": "rate",
-  "story.http.address": "rate-microservice",
-  "story.http.port": 8084,
+  "api.name": "likes",
+  "likes.http.address": "likes-microservice",
+  "likes.http.port": 8085,
   "host": "pg_db",
   "driver_class": "org.postgresql.Driver",
   "username": "postgres",

@@ -54,9 +54,9 @@ public class CommentBeanConverter {
             obj.setLang((String)member.getValue());
           }
           break;
-        case "possibilitysensitive":
+        case "possiblysensitive":
           if (member.getValue() instanceof Number) {
-            obj.setPossibilitysensitive(((Number)member.getValue()).intValue());
+            obj.setPossiblysensitive(((Number)member.getValue()).intValue());
           }
           break;
         case "storyid":
@@ -97,8 +97,8 @@ public class CommentBeanConverter {
     if (obj.getLang() != null) {
       json.put("lang", obj.getLang());
     }
-    if (obj.getPossibilitysensitive() != null) {
-      json.put("possibilitysensitive", obj.getPossibilitysensitive());
+    if (obj.getPossiblysensitive() != null) {
+      json.put("possiblysensitive", obj.getPossiblysensitive());
     }
     if (obj.getStoryid() != null) {
       json.put("storyid", obj.getStoryid());

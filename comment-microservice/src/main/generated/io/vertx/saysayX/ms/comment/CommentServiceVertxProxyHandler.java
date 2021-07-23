@@ -136,13 +136,8 @@ public class CommentServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createListHandler(msg));
           break;
         }
-        case "retrieveAllStoriesByAuthorId": {
-          service.retrieveAllStoriesByAuthorId((java.lang.String)json.getValue("authorId"),
-                        HelperUtils.createListHandler(msg));
-          break;
-        }
-        case "retrieveAllStories": {
-          service.retrieveAllStories(HelperUtils.createListHandler(msg));
+        case "retrieveAllComments": {
+          service.retrieveAllComments(HelperUtils.createListHandler(msg));
           break;
         }
         case "updateComment": {

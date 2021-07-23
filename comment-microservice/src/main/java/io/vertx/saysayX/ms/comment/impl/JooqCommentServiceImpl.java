@@ -51,7 +51,7 @@ public class JooqCommentServiceImpl extends JooqRepositoryWrapper implements Com
                 TB_COMMENT.COMMENT
         )
                 .values(Comment.getAuthorid(),Comment.getAuthorname(), Comment.getEntities().encode(), cid , Comment.getLang(),
-                        Comment.getPossibilitysensitive(), Comment.getStoryid(), Comment.getComment()))
+                        Comment.getPossiblysensitive(), Comment.getStoryid(), Comment.getComment()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -71,15 +71,7 @@ public class JooqCommentServiceImpl extends JooqRepositoryWrapper implements Com
     }
 
     @Override
-    public CommentService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
-        executor.findManyJson(dsl-> dsl.selectFrom(TB_COMMENT).where(TB_COMMENT.AUTHORID.eq(authorId)))
-                .onComplete(resultHandler);
-        return this;
-    }
-
-
-    @Override
-    public CommentService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+    public CommentService retrieveAllComments(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
         executor.findManyJson(dsl-> dsl.selectFrom(TB_COMMENT))
                 .onComplete(resultHandler);
         return this;
@@ -89,7 +81,7 @@ public class JooqCommentServiceImpl extends JooqRepositoryWrapper implements Com
     public CommentService updateComment(CommentBean Comment, Handler<AsyncResult<Integer>> resultHandler) {
         executor.execute(dsl -> dsl.update(TB_COMMENT).set(TB_COMMENT.COMMENT, Comment.getComment())
         .set(TB_COMMENT.ENTITIES, Comment.getEntities().encode())
-        .set(TB_COMMENT.POSSIBILITYSENSITIVE, Comment.getPossibilitysensitive())
+        .set(TB_COMMENT.POSSIBILITYSENSITIVE, Comment.getPossiblysensitive())
                 .where(TB_COMMENT.CID.eq(Comment.getCid())))
                 .onComplete(resultHandler);
         return this;

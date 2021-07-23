@@ -16,7 +16,7 @@
 |[[entities]]`@entities`|`Json object`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[lang]]`@lang`|`String`|-
-|[[possibilitysensitive]]`@possibilitysensitive`|`Number (Integer)`|-
+|[[possiblysensitive]]`@possiblysensitive`|`Number (Integer)`|-
 |[[storyid]]`@storyid`|`String`|-
 |===
 

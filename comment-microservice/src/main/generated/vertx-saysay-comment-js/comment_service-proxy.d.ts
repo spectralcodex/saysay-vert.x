@@ -30,9 +30,7 @@ export default class CommentService {
 
   retrieveCommentByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : CommentService;
 
-  retrieveAllStoriesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : CommentService;
-
-  retrieveAllStories(resultHandler: (err: any, result: Array<Object>) => any) : CommentService;
+  retrieveAllComments(resultHandler: (err: any, result: Array<Object>) => any) : CommentService;
 
   updateComment(Comment: any, resultHandler: (err: any, result: any) => any) : CommentService;
 

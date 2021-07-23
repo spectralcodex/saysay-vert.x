@@ -123,34 +123,16 @@
      Retrieve all Comment accounts.
 
      @public
-     @param authorId {string} 
      @param resultHandler {function} the result handler will be called as soon as the stories have been retrieved. The async result indicates whether the operation was successful or not. 
      @return {CommentService}
      */
-    this.retrieveAllStoriesByAuthorId =  function(authorId, resultHandler) {
-      var __args = arguments;
-      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-        if (closed) {
-          throw new Error('Proxy is closed');
-        }
-        j_eb.send(j_address, {"authorId":__args[0]}, {"action":"retrieveAllStoriesByAuthorId"}, function(err, result) { __args[1](err, result && result.body); });
-        return that;
-      } else throw new TypeError('function invoked with invalid arguments');
-    };
-
-    /**
-
-     @public
-     @param resultHandler {function} 
-     @return {CommentService}
-     */
-    this.retrieveAllStories =  function(resultHandler) {
+    this.retrieveAllComments =  function(resultHandler) {
       var __args = arguments;
       if (__args.length === 1 && typeof __args[0] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {}, {"action":"retrieveAllStories"}, function(err, result) { __args[0](err, result && result.body); });
+        j_eb.send(j_address, {}, {"action":"retrieveAllComments"}, function(err, result) { __args[0](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };

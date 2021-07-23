@@ -34,8 +34,8 @@ var LikesService = function(j_val) {
   var __super_addLikes = this.addLikes;
   var __super_retrieveLikes = this.retrieveLikes;
   var __super_retrieveLikesByAuthorId = this.retrieveLikesByAuthorId;
-  var __super_retrieveAllStoriesByAuthorId = this.retrieveAllStoriesByAuthorId;
-  var __super_retrieveAllStories = this.retrieveAllStories;
+  var __super_retrieveAllLikesByAuthorId = this.retrieveAllLikesByAuthorId;
+  var __super_retrieveAllLikes = this.retrieveAllLikes;
   var __super_updateLikes = this.updateLikes;
   var __super_deleteLikes = this.deleteLikes;
   /**
@@ -144,10 +144,10 @@ var LikesService = function(j_val) {
    @param resultHandler {function} the result handler will be called as soon as the stories have been retrieved. The async result indicates whether the operation was successful or not. 
    @return {LikesService}
    */
-  this.retrieveAllStoriesByAuthorId =  function(authorId, resultHandler) {
+  this.retrieveAllLikesByAuthorId =  function(authorId, resultHandler) {
     var __args = arguments;
     if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_likesService["retrieveAllStoriesByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+      j_likesService["retrieveAllLikesByAuthorId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
         if (ar.succeeded()) {
           __args[1](utils.convReturnListSetJson(ar.result()), null);
         } else {
@@ -155,8 +155,8 @@ var LikesService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveAllStoriesByAuthorId != 'undefined') {
-      return __super_retrieveAllStoriesByAuthorId.apply(this, __args);
+    } else if (typeof __super_retrieveAllLikesByAuthorId != 'undefined') {
+      return __super_retrieveAllLikesByAuthorId.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };
@@ -167,10 +167,10 @@ var LikesService = function(j_val) {
    @param resultHandler {function} 
    @return {LikesService}
    */
-  this.retrieveAllStories =  function(resultHandler) {
+  this.retrieveAllLikes =  function(resultHandler) {
     var __args = arguments;
     if (__args.length === 1 && typeof __args[0] === 'function') {
-      j_likesService["retrieveAllStories(io.vertx.core.Handler)"](function(ar) {
+      j_likesService["retrieveAllLikes(io.vertx.core.Handler)"](function(ar) {
         if (ar.succeeded()) {
           __args[0](utils.convReturnListSetJson(ar.result()), null);
         } else {
@@ -178,8 +178,8 @@ var LikesService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_retrieveAllStories != 'undefined') {
-      return __super_retrieveAllStories.apply(this, __args);
+    } else if (typeof __super_retrieveAllLikes != 'undefined') {
+      return __super_retrieveAllLikes.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

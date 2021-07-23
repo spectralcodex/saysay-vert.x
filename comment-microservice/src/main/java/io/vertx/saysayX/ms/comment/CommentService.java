@@ -66,11 +66,9 @@ public interface CommentService {
      * @param resultHandler the result handler will be called as soon as the stories have been retrieved. The async result indicates
      *                      whether the operation was successful or not.
      */
-    @Fluent
-    CommentService retrieveAllStoriesByAuthorId(String authorId, Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     @Fluent
-    CommentService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler);
+    CommentService retrieveAllComments(Handler<AsyncResult<List<JsonObject>>> resultHandler);
 
     /**
      * Update Comment account info.
@@ -100,7 +98,5 @@ public interface CommentService {
      * @param resultHandler the result handler will be called as soon as the stories have been removed. The async result indicates
      *                      whether the operation was successful or not.
      */
-    /*@Fluent
-    CommentService deleteAllAccounts(Handler<AsyncResult<Void>> resultHandler);
-    */
+
 }

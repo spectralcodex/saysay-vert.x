@@ -2,76 +2,44 @@ package io.vertx.saysayX.ms.likes.pojo;
 
 import io.vertx.codegen.annotations.DataObject;
 import io.vertx.core.json.JsonObject;
+import io.vertx.saysayX.common.config.BaseUtils;
 
 
 @DataObject(generateConverter = true)
 public class LikesBean {
-
-    
-
-    public LikesBean(JsonObject json){
-
-    }
-
-    public JsonObject toJson() {
-        JsonObject json = new JsonObject();
-        //StoryConverter.toJson(this, json);
-        return json;
-    }
-
-
     private Long    id;
     private String  authorid;
-    private String  cid;
+    private String  lid;
+    private String  commentid;
     private String  storyid;
-    private Integer possibilitysensitive;
+    private Integer possiblysensitive;
     private String  lang;
     private JsonObject  entities;
     private String  authorname;
     private String  createdon;
     private String  status;
 
-   
-
-    public LikesBean(LikesBean value) {
-        this.id = value.getId();
-        this.authorid = value.getAuthorid();
-        this.cid = value.getCid();
-        this.storyid = value.getStoryid();
-        this.possibilitysensitive = value.getPossibilitysensitive();
-        this.lang = value.getLang();
-        this.entities = value.getEntities();
-        this.authorname = value.getAuthorname();
-        this.createdon = value.getCreatedon();
-        this.status = value.getStatus();
+    public LikesBean(JsonObject json){
+        LikesBeanConverter.fromJson(json, this);
+        BaseUtils.isNullEmpty(this.authorid, "authorid");
+        BaseUtils.isNullEmpty(this.authorname, "authorname");
+        BaseUtils.isNullEmpty(this.status, "status");
+        BaseUtils.isNullEmpty(this.storyid, "storyid");
+        BaseUtils.isNullEmpty(this.lang, "lang");
+        BaseUtils.isNullEmpty(this.possiblysensitive, "possiblysensitive");
     }
 
-    public LikesBean(
-            Long    id,
-            String  authorid,
-            String  cid,
-            String  storyid,
-            Integer possibilitysensitive,
-            String  lang,
-            JsonObject  entities,
-            String  authorname,
-            String  createdon,
-            String  status
-    ) {
-        this.id = id;
-        this.authorid = authorid;
-        this.cid = cid;
-        this.storyid = storyid;
-        this.possibilitysensitive = possibilitysensitive;
-        this.lang = lang;
-        this.entities = entities;
-        this.authorname = authorname;
-        this.createdon = createdon;
-        this.status = status;
+    public JsonObject toJson() {
+        JsonObject json = new JsonObject();
+        LikesBeanConverter.toJson(this, json);
+        return json;
+    }
+
+    public LikesBean(){
 
     }
 
-    
+
     public Long getId() {
         return this.id;
     }
@@ -94,13 +62,13 @@ public class LikesBean {
     }
 
     
-    public String getCid() {
-        return this.cid;
+    public String getLid() {
+        return this.lid;
     }
 
     
-    public LikesBean setCid(String cid) {
-        this.cid = cid;
+    public LikesBean setLid(String lid) {
+        this.lid = lid;
         return this;
     }
 
@@ -116,13 +84,13 @@ public class LikesBean {
     }
 
     
-    public Integer getPossibilitysensitive() {
-        return this.possibilitysensitive;
+    public Integer getPossiblysensitive() {
+        return this.possiblysensitive;
     }
 
     
-    public LikesBean setPossibilitysensitive(Integer possibilitysensitive) {
-        this.possibilitysensitive = possibilitysensitive;
+    public LikesBean setPossiblysensitive(Integer possiblysensitive) {
+        this.possiblysensitive = possiblysensitive;
         return this;
     }
 
@@ -171,7 +139,7 @@ public class LikesBean {
     }
 
     public String getStatus() {
-        return this.createdon;
+        return this.status;
     }
 
 
@@ -180,15 +148,22 @@ public class LikesBean {
         return this;
     }
 
-    
+    public String getCommentid() {
+        return commentid;
+    }
+
+    public void setCommentid(String commentid) {
+        this.commentid = commentid;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder("LikesBean (");
 
         sb.append(id);
         sb.append(", ").append(authorid);
-        sb.append(", ").append(cid);
+        sb.append(", ").append(lid);
         sb.append(", ").append(storyid);
-        sb.append(", ").append(possibilitysensitive);
+        sb.append(", ").append(possiblysensitive);
         sb.append(", ").append(lang);
         sb.append(", ").append(entities);
         sb.append(", ").append(authorname);

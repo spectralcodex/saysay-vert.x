@@ -30,9 +30,9 @@ export default class LikesService {
 
   retrieveLikesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : LikesService;
 
-  retrieveAllStoriesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : LikesService;
+  retrieveAllLikesByAuthorId(authorId: string, resultHandler: (err: any, result: Array<Object>) => any) : LikesService;
 
-  retrieveAllStories(resultHandler: (err: any, result: Array<Object>) => any) : LikesService;
+  retrieveAllLikes(resultHandler: (err: any, result: Array<Object>) => any) : LikesService;
 
   updateLikes(Likes: any, resultHandler: (err: any, result: any) => any) : LikesService;
 

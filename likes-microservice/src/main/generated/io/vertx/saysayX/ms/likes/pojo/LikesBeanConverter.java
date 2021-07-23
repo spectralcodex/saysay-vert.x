@@ -24,9 +24,9 @@ public class LikesBeanConverter {
             obj.setAuthorname((String)member.getValue());
           }
           break;
-        case "cid":
+        case "commentid":
           if (member.getValue() instanceof String) {
-            obj.setCid((String)member.getValue());
+            obj.setCommentid((String)member.getValue());
           }
           break;
         case "createdon":
@@ -49,9 +49,14 @@ public class LikesBeanConverter {
             obj.setLang((String)member.getValue());
           }
           break;
-        case "possibilitysensitive":
+        case "lid":
+          if (member.getValue() instanceof String) {
+            obj.setLid((String)member.getValue());
+          }
+          break;
+        case "possiblysensitive":
           if (member.getValue() instanceof Number) {
-            obj.setPossibilitysensitive(((Number)member.getValue()).intValue());
+            obj.setPossiblysensitive(((Number)member.getValue()).intValue());
           }
           break;
         case "status":
@@ -79,8 +84,8 @@ public class LikesBeanConverter {
     if (obj.getAuthorname() != null) {
       json.put("authorname", obj.getAuthorname());
     }
-    if (obj.getCid() != null) {
-      json.put("cid", obj.getCid());
+    if (obj.getCommentid() != null) {
+      json.put("commentid", obj.getCommentid());
     }
     if (obj.getCreatedon() != null) {
       json.put("createdon", obj.getCreatedon());
@@ -94,8 +99,11 @@ public class LikesBeanConverter {
     if (obj.getLang() != null) {
       json.put("lang", obj.getLang());
     }
-    if (obj.getPossibilitysensitive() != null) {
-      json.put("possibilitysensitive", obj.getPossibilitysensitive());
+    if (obj.getLid() != null) {
+      json.put("lid", obj.getLid());
+    }
+    if (obj.getPossiblysensitive() != null) {
+      json.put("possiblysensitive", obj.getPossiblysensitive());
     }
     if (obj.getStatus() != null) {
       json.put("status", obj.getStatus());

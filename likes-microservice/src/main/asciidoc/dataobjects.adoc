@@ -10,12 +10,13 @@
 ^|Name | Type ^| Description
 |[[authorid]]`@authorid`|`String`|-
 |[[authorname]]`@authorname`|`String`|-
-|[[cid]]`@cid`|`String`|-
+|[[commentid]]`@commentid`|`String`|-
 |[[createdon]]`@createdon`|`String`|-
 |[[entities]]`@entities`|`Json object`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[lang]]`@lang`|`String`|-
-|[[possibilitysensitive]]`@possibilitysensitive`|`Number (Integer)`|-
+|[[lid]]`@lid`|`String`|-
+|[[possiblysensitive]]`@possiblysensitive`|`Number (Integer)`|-
 |[[status]]`@status`|`String`|-
 |[[storyid]]`@storyid`|`String`|-
 |===
