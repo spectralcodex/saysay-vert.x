@@ -69,7 +69,6 @@ public class CommentRestAPIVerticle extends RestAPIVerticle {
         logger.info("finding comment --> {}", cid);
         logger.info("{}", new CommentBean().toJson());
         service.retrieveComment(cid, resultHandlerNonEmpty(ctx));
-
     }
 
     private void editComment(RoutingContext ctx){
