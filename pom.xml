@@ -11,15 +11,16 @@
 
     <modules>
         <!-- infrastructure components-->
-        <!--<module>api-gateway</module>-->
         <module>microservice-common</module>
         <module>api-gateway</module>
+
+        <!-- service components -->
         <module>administration-microservice</module>
         <module>story-microservice</module>
         <module>comment-microservice</module>
         <module>likes-microservice</module>
 
-        <!-- service components -->
+
         <!--<module>administration-microservice</module>-->
         <!--<module>property-management-microservice</module>-->
         <!--<module>property-configuration-microservice</module>-->

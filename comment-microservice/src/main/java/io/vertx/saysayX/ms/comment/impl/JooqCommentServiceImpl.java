@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static jooq.tables.TbComment.TB_COMMENT;
 
-
 public class JooqCommentServiceImpl extends JooqRepositoryWrapper implements CommentService {
     private final BaseUtils authProviderHelper;
     protected final static Logger logger = LoggerFactory.getLogger(JooqCommentServiceImpl.class);
@@ -34,8 +33,6 @@ public class JooqCommentServiceImpl extends JooqRepositoryWrapper implements Com
                 .onComplete(resultHandler);
         return this;
     }
-
-
 
     @Override
     public CommentService addComment(CommentBean Comment, Handler<AsyncResult<Integer>> resultHandler) {
