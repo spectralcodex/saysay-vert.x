@@ -32,6 +32,24 @@ services:
     expose:
       - "8083"
 
+  comment-microservice:
+    image: ms-saysay/comment-microservice
+    links:
+      - pg_db
+    depends_on:
+      - pg_db
+    expose:
+      - "8084"
+
+  likes-microservice:
+    image: ms-saysay/likes-microservice
+    links:
+      - pg_db
+    depends_on:
+      - pg_db
+    expose:
+      - "8085"
+
   api-gateway:
     image: ms-saysay/api-gateway
     ports:
@@ -41,6 +59,8 @@ services:
     links:
       - story-microservice
       - administration-microservice
+      - comment-microservice
+      - likes-microservice
 
 volumes:
   esdata1:
