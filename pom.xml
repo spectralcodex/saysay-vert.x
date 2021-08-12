@@ -186,6 +186,13 @@
             <version>3.0.2</version>
             <scope>test</scope>
         </dependency>
+     <!-- Base Security-->
+        <dependency>
+            <groupId>com.lambdaworks</groupId>
+            <artifactId>scrypt</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
 
     </dependencies>
 

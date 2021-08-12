@@ -161,6 +161,24 @@
     /**
 
      @public
+     @param userVerifyCode {string} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.verifyUser =  function(userVerifyCode, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"userVerifyCode":__args[0]}, {"action":"verifyUser"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
      @param user {Object} userId we want to query for 
      @param resultHandler {function} this handler will return as soon as update is complete. The jooq.async result * indicates whether the operation was successful or not. 
      @return {AdministrationService} 

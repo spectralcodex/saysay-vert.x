@@ -6,6 +6,7 @@ package jooq.tables.daos;
 
 import io.github.jklingsporn.vertx.jooq.shared.async.AbstractAsyncVertxDAO;
 
+import java.time.OffsetDateTime;
 import java.util.Collection;
 
 import javax.annotation.Generated;
@@ -168,9 +169,23 @@ public class TbUserDao extends AbstractAsyncVertxDAO<TbUserRecord, jooq.tables.p
     }
 
     /**
+     * Find records that have <code>verified IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbUser>> findManyByVerified(Collection<Integer> values) {
+        return findManyByCondition(TbUser.TB_USER.VERIFIED.in(values));
+    }
+
+    /**
+     * Find records that have <code>verificationcode IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbUser>> findManyByVerificationcode(Collection<String> values) {
+        return findManyByCondition(TbUser.TB_USER.VERIFICATIONCODE.in(values));
+    }
+
+    /**
      * Find records that have <code>createdon IN (values)</code> asynchronously
      */
-    public Future<List<jooq.tables.pojos.TbUser>> findManyByCreatedon(Collection<String> values) {
+    public Future<List<jooq.tables.pojos.TbUser>> findManyByCreatedon(Collection<OffsetDateTime> values) {
         return findManyByCondition(TbUser.TB_USER.CREATEDON.in(values));
     }
 

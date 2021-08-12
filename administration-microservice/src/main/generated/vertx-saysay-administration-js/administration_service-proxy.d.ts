@@ -39,6 +39,8 @@ export default class AdministrationService {
 
   activateUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
+  verifyUser(userVerifyCode: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
   updateUser(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
   retrieveAllUsers(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;

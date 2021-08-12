@@ -8,6 +8,7 @@ import io.github.jklingsporn.vertx.jooq.shared.UnexpectedJsonValueType;
 import io.github.jklingsporn.vertx.jooq.shared.internal.VertxPojo;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 import javax.annotation.Generated;
 
@@ -206,14 +207,34 @@ public interface ITbUser extends VertxPojo, Serializable {
     public Integer getActive();
 
     /**
+     * Setter for <code>public.tb_user.verified</code>.
+     */
+    public ITbUser setVerified(Integer value);
+
+    /**
+     * Getter for <code>public.tb_user.verified</code>.
+     */
+    public Integer getVerified();
+
+    /**
+     * Setter for <code>public.tb_user.verificationcode</code>.
+     */
+    public ITbUser setVerificationcode(String value);
+
+    /**
+     * Getter for <code>public.tb_user.verificationcode</code>.
+     */
+    public String getVerificationcode();
+
+    /**
      * Setter for <code>public.tb_user.createdon</code>.
      */
-    public ITbUser setCreatedon(String value);
+    public ITbUser setCreatedon(OffsetDateTime value);
 
     /**
      * Getter for <code>public.tb_user.createdon</code>.
      */
-    public String getCreatedon();
+    public OffsetDateTime getCreatedon();
 
     // -------------------------------------------------------------------------
     // FROM and INTO
@@ -322,9 +343,19 @@ public interface ITbUser extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("active","java.lang.Integer",e);
         }
         try {
-            setCreatedon(json.getString("createdon"));
+            setVerified(json.getInteger("verified"));
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("createdon","java.lang.String",e);
+            throw new UnexpectedJsonValueType("verified","java.lang.Integer",e);
+        }
+        try {
+            setVerificationcode(json.getString("verificationcode"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("verificationcode","java.lang.String",e);
+        }
+        try {
+            // Omitting unrecognized type java.time.OffsetDateTime for column createdon!
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("createdon","java.time.OffsetDateTime",e);
         }
         return this;
     }
@@ -351,7 +382,9 @@ public interface ITbUser extends VertxPojo, Serializable {
         json.put("rolename",getRolename());
         json.put("uid",getUid());
         json.put("active",getActive());
-        json.put("createdon",getCreatedon());
+        json.put("verified",getVerified());
+        json.put("verificationcode",getVerificationcode());
+        // Omitting unrecognized type java.time.OffsetDateTime for column createdon!
         return json;
     }
 

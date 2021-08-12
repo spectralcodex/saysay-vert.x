@@ -15,6 +15,7 @@ import org.jooq.Record;
 import org.jooq.ResultQuery;
 import org.jooq.User;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +27,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     //protected final static Logger logger = LoggerFactory.getLogger(AdministrationImpl.class);
     private BaseUtils authProviderHelper;
+
 
     public AdministrationImpl(Vertx vertx, JsonObject config) {
         super(vertx, config);
@@ -42,24 +44,22 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService addUser(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
-        final String salt = authProviderHelper.generateSalt();
-        final String generatedPassword = authProviderHelper.generatingRandomAlphanumeric();
-        final String hash_password = authProviderHelper.computeHash(generatedPassword, salt);
+        String verifyCode = authProviderHelper.getVerifyCode();
         String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
 
         executor.execute(dsl -> dsl.insertInto(TB_USER,
 
                 TB_USER.ROLEID, TB_USER.ROLENAME, TB_USER.FIRSTNAME, TB_USER.LASTNAME,
-                TB_USER.EMAIL, TB_USER.MOBILE, TB_USER.HASHEDPASSWORD,
-                TB_USER.SALT, TB_USER.PROFILEPIC, TB_USER.BACKGROUNDINFO,
+                TB_USER.EMAIL, TB_USER.MOBILE,
+                TB_USER.PROFILEPIC, TB_USER.BACKGROUNDINFO,
                 TB_USER.WEBSITE, TB_USER.GPSLOCATION, TB_USER.DOB,
-                TB_USER.OTHERINFO, TB_USER.CREATEDBY,
+                TB_USER.OTHERINFO, TB_USER.CREATEDBY, TB_USER.VERIFICATIONCODE,
                 TB_USER.UID)
                 .values(user.getRoleid(), user.getRolename(), user.getFirstname(), user.getLastname(),
-                        user.getEmail(), user.getMobile(), hash_password,
-                        salt, user.getProfilepic(), user.getBackgroundinfo(),
+                        user.getEmail(), user.getMobile(),
+                        user.getProfilepic(), user.getBackgroundinfo(),
                         user.getWebsite(), user.getGpslocation(), user.getDob(),
-                        user.getOtherinfo(), user.getCreatedby(), uid))
+                        user.getOtherinfo(), user.getCreatedby(),verifyCode , uid))
                 .onComplete(resultHandler);
         return this;
     }
@@ -68,6 +68,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     public AdministrationService retrieveUserById(String userId, Handler<AsyncResult<JsonObject>> resultHandler) {
         executor.findOneJson(
                 dsl -> dsl.selectFrom(TB_USER).where(TB_USER.UID.eq(userId)))
+                //dsl -> dsl.selectFrom("SELECT * FROM tb_user WHERE createdon > NOW() - INTERVAL '20 minutes'"))
                .onComplete(resultHandler);
         return this;
     }
@@ -90,6 +91,15 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     public AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler) {
         executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 0) //1 means disable
                 .where(TB_USER.UID.eq(userId))).onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
+    public AdministrationService verifyUser(String userVerifyCode, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(
+                dsl -> dsl.update(TB_USER).set(TB_USER.VERIFIED, 1)
+                        .where(TB_USER.VERIFICATIONCODE.eq(userVerifyCode)
+                                .and(TB_USER.CREATEDON.greaterThan(OffsetDateTime.now().minusMinutes(15))))).onComplete(resultHandler);
         return this;
     }
 

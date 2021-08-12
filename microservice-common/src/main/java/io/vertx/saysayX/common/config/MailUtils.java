@@ -14,7 +14,7 @@ public class MailUtils {
     protected final static Logger logger = LoggerFactory.getLogger(MailUtils.class);
 
     public static void mailLocal(Vertx vertx, JsonObject msgConf, Handler<AsyncResult<MailResult>> handler) {
-        Promise<MailResult> promise = Promise.promise();
+        //Promise<MailResult> promise = Promise.promise();
         MailClient mailClient = MailClient.createShared(vertx, new MailConfig()
                 .setStarttls(StartTLSOptions.REQUIRED)
                 .setHostname(msgConf.getString("em.hostname", "smtp.gmail.com"))

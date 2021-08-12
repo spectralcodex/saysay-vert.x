@@ -42,6 +42,7 @@ var AdministrationService = function(j_val) {
   var __super_retrieveUserByEmail = this.retrieveUserByEmail;
   var __super_deleteUser = this.deleteUser;
   var __super_activateUser = this.activateUser;
+  var __super_verifyUser = this.verifyUser;
   var __super_updateUser = this.updateUser;
   var __super_retrieveAllUsers = this.retrieveAllUsers;
   var __super_addCompany = this.addCompany;
@@ -190,6 +191,30 @@ var AdministrationService = function(j_val) {
       return that;
     } else if (typeof __super_activateUser != 'undefined') {
       return __super_activateUser.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param userVerifyCode {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.verifyUser =  function(userVerifyCode, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["verifyUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_verifyUser != 'undefined') {
+      return __super_verifyUser.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

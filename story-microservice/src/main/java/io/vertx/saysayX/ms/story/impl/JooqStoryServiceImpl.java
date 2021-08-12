@@ -80,7 +80,6 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
         return this;
     }
 
-
     @Override
     public StoryService retrieveAllStories(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
         executor.findManyJson(dsl-> dsl.selectFrom(TB_STORY))

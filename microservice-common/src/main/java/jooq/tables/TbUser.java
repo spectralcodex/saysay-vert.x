@@ -4,6 +4,7 @@
 package jooq.tables;
 
 
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbUser extends TableImpl<TbUserRecord> {
 
-    private static final long serialVersionUID = 918235960;
+    private static final long serialVersionUID = 494463637;
 
     /**
      * The reference instance of <code>public.tb_user</code>
@@ -147,9 +148,19 @@ public class TbUser extends TableImpl<TbUserRecord> {
     public final TableField<TbUserRecord, Integer> ACTIVE = createField("active", org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.field("1", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
+     * The column <code>public.tb_user.verified</code>.
+     */
+    public final TableField<TbUserRecord, Integer> VERIFIED = createField("verified", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.field("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+
+    /**
+     * The column <code>public.tb_user.verificationcode</code>.
+     */
+    public final TableField<TbUserRecord, String> VERIFICATIONCODE = createField("verificationcode", org.jooq.impl.SQLDataType.CLOB, this, "");
+
+    /**
      * The column <code>public.tb_user.createdon</code>.
      */
-    public final TableField<TbUserRecord, String> CREATEDON = createField("createdon", org.jooq.impl.SQLDataType.VARCHAR.defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+    public final TableField<TbUserRecord, OffsetDateTime> CREATEDON = createField("createdon", org.jooq.impl.SQLDataType.TIMESTAMPWITHTIMEZONE, this, "");
 
     /**
      * Create a <code>public.tb_user</code> table reference

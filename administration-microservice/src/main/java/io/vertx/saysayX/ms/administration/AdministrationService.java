@@ -5,6 +5,7 @@ import io.vertx.codegen.annotations.ProxyGen;
 import io.vertx.codegen.annotations.VertxGen;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
+import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
@@ -76,6 +77,9 @@ public interface AdministrationService{
 
     @Fluent
     AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService verifyUser(String userVerifyCode, Handler<AsyncResult<Integer>> resultHandler);
 
     /**
      * @param user userId we want to query for

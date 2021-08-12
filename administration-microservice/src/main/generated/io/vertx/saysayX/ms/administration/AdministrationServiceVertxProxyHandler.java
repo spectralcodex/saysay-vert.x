@@ -147,6 +147,11 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
+        case "verifyUser": {
+          service.verifyUser((java.lang.String)json.getValue("userVerifyCode"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
         case "updateUser": {
           service.updateUser(json.getJsonObject("user") == null ? null : new io.vertx.saysayX.ms.administration.pojo.UserBean(json.getJsonObject("user")),
                         HelperUtils.createHandler(msg));
