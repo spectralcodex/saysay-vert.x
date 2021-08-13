@@ -165,16 +165,36 @@ public class AdministrationServiceVertxEBProxy implements AdministrationService 
     return this;
   }
   @Override
-  public  AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler){
+  public  AdministrationService activateUserByUid(UserBean user, Handler<AsyncResult<Integer>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
-    _json.put("userId", userId);
+    _json.put("user", user == null ? null : user.toJson());
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "activateUser");
+    _deliveryOptions.addHeader("action", "activateUserByUid");
+    _vertx.eventBus().<Integer>request(_address, _json, _deliveryOptions, res -> {
+      if (res.failed()) {
+        resultHandler.handle(Future.failedFuture(res.cause()));
+      } else {
+        resultHandler.handle(Future.succeededFuture(res.result().body()));
+      }
+    });
+    return this;
+  }
+  @Override
+  public  AdministrationService activateUserByMail(UserBean user, Handler<AsyncResult<Integer>> resultHandler){
+    if (closed) {
+      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+      return this;
+    }
+    JsonObject _json = new JsonObject();
+    _json.put("user", user == null ? null : user.toJson());
+
+    DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
+    _deliveryOptions.addHeader("action", "activateUserByMail");
     _vertx.eventBus().<Integer>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));

@@ -44,16 +44,16 @@
 |[[email]]`@email`|`String`|-
 |[[firstname]]`@firstname`|`String`|-
 |[[gpslocation]]`@gpslocation`|`String`|-
-|[[hashedpassword]]`@hashedpassword`|`String`|-
 |[[id]]`@id`|`Number (Long)`|-
 |[[lastname]]`@lastname`|`String`|-
 |[[mobile]]`@mobile`|`String`|-
 |[[otherinfo]]`@otherinfo`|`String`|-
+|[[password]]`@password`|`String`|-
 |[[profilepic]]`@profilepic`|`String`|-
 |[[roleid]]`@roleid`|`String`|-
 |[[rolename]]`@rolename`|`String`|-
-|[[salt]]`@salt`|`String`|-
 |[[uid]]`@uid`|`String`|-
+|[[verificationCode]]`@verificationCode`|`String`|-
 |[[website]]`@website`|`String`|-
 |===
 

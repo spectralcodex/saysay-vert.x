@@ -143,17 +143,35 @@
     /**
 
      @public
-     @param userId {string} 
+     @param user {Object} 
      @param resultHandler {function} 
      @return {AdministrationService}
      */
-    this.activateUser =  function(userId, resultHandler) {
+    this.activateUserByUid =  function(user, resultHandler) {
       var __args = arguments;
-      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
         if (closed) {
           throw new Error('Proxy is closed');
         }
-        j_eb.send(j_address, {"userId":__args[0]}, {"action":"activateUser"}, function(err, result) { __args[1](err, result && result.body); });
+        j_eb.send(j_address, {"user":__args[0]}, {"action":"activateUserByUid"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param user {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.activateUserByMail =  function(user, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"user":__args[0]}, {"action":"activateUserByMail"}, function(err, result) { __args[1](err, result && result.body); });
         return that;
       } else throw new TypeError('function invoked with invalid arguments');
     };

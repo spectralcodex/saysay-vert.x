@@ -49,11 +49,6 @@ public class UserBeanConverter {
             obj.setGpslocation((String)member.getValue());
           }
           break;
-        case "hashedpassword":
-          if (member.getValue() instanceof String) {
-            obj.setHashedpassword((String)member.getValue());
-          }
-          break;
         case "id":
           if (member.getValue() instanceof Number) {
             obj.setId(((Number)member.getValue()).longValue());
@@ -74,6 +69,11 @@ public class UserBeanConverter {
             obj.setOtherinfo((String)member.getValue());
           }
           break;
+        case "password":
+          if (member.getValue() instanceof String) {
+            obj.setPassword((String)member.getValue());
+          }
+          break;
         case "profilepic":
           if (member.getValue() instanceof String) {
             obj.setProfilepic((String)member.getValue());
@@ -89,14 +89,14 @@ public class UserBeanConverter {
             obj.setRolename((String)member.getValue());
           }
           break;
-        case "salt":
-          if (member.getValue() instanceof String) {
-            obj.setSalt((String)member.getValue());
-          }
-          break;
         case "uid":
           if (member.getValue() instanceof String) {
             obj.setUid((String)member.getValue());
+          }
+          break;
+        case "verificationCode":
+          if (member.getValue() instanceof String) {
+            obj.setVerificationCode((String)member.getValue());
           }
           break;
         case "website":
@@ -134,9 +134,6 @@ public class UserBeanConverter {
     if (obj.getGpslocation() != null) {
       json.put("gpslocation", obj.getGpslocation());
     }
-    if (obj.getHashedpassword() != null) {
-      json.put("hashedpassword", obj.getHashedpassword());
-    }
     if (obj.getId() != null) {
       json.put("id", obj.getId());
     }
@@ -149,6 +146,9 @@ public class UserBeanConverter {
     if (obj.getOtherinfo() != null) {
       json.put("otherinfo", obj.getOtherinfo());
     }
+    if (obj.getPassword() != null) {
+      json.put("password", obj.getPassword());
+    }
     if (obj.getProfilepic() != null) {
       json.put("profilepic", obj.getProfilepic());
     }
@@ -158,11 +158,11 @@ public class UserBeanConverter {
     if (obj.getRolename() != null) {
       json.put("rolename", obj.getRolename());
     }
-    if (obj.getSalt() != null) {
-      json.put("salt", obj.getSalt());
-    }
     if (obj.getUid() != null) {
       json.put("uid", obj.getUid());
+    }
+    if (obj.getVerificationCode() != null) {
+      json.put("verificationCode", obj.getVerificationCode());
     }
     if (obj.getWebsite() != null) {
       json.put("website", obj.getWebsite());

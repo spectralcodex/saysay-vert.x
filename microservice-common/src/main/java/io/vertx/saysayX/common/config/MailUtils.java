@@ -14,7 +14,6 @@ public class MailUtils {
     protected final static Logger logger = LoggerFactory.getLogger(MailUtils.class);
 
     public static void mailLocal(Vertx vertx, JsonObject msgConf, Handler<AsyncResult<MailResult>> handler) {
-        //Promise<MailResult> promise = Promise.promise();
         MailClient mailClient = MailClient.createShared(vertx, new MailConfig()
                 .setStarttls(StartTLSOptions.REQUIRED)
                 .setHostname(msgConf.getString("em.hostname", "smtp.gmail.com"))
@@ -23,12 +22,12 @@ public class MailUtils {
                 .setAuthMethods("PLAIN")
                 .setPort(msgConf.getInteger("em.port", 587)));
 
-        
         MailMessage email = new MailMessage()
                 .setFrom(msgConf.getString("em.username"))
                 .setTo(msgConf.getString("em.to"))
-                .setSubject(msgConf.getString("subject", "SaySay Verify"))
-                .setHtml("");
+                .setSubject(msgConf.getString("em.verification.subject", "The SaySay Team"))
+                .setHtml("verify email <a href=\"https://sayworx.com/identity/verification?vid="
+                        + msgConf.getString("verifyCode") + "\"><img src=\"cid:image1@example.com\"></a>");
         mailClient.sendMail(email, handler);
     }
 
@@ -53,46 +52,5 @@ public class MailUtils {
         return promise.future();
     }
 
-    protected <T> Future<MailResult> mailImages(Vertx vertx, JsonObject msgConfig) {
-        Promise<MailResult> promise = Promise.promise();
 
-        MailClient mailClient = MailClient.createShared(vertx, new MailConfig());
-        MailMessage email = new MailMessage()
-                .setFrom("user@example.com (Sender)")
-                .setTo("user@example.com (User Name)")
-                .setSubject("Test email")
-                .setText("full message is readable as html only")
-                .setHtml("visit vert.x <a href=\"http://vertx.io/\"><img src=\"cid:image1@example.com\"></a>");
-
-        MailAttachment attachment = new MailAttachment()
-                .setData(vertx.fileSystem().readFileBlocking("logo-white-big.png"))
-                .setContentType("image/png")
-                .setName("logo-white-big.png")
-                .setDisposition("inline")
-                .addHeader("Content-ID", "<image1@example.com>");
-
-        List<MailAttachment> list = new ArrayList<>();
-        list.add(attachment);
-        email.setInlineAttachment(list);
-
-        mailClient.sendMail(email, promise);
-        return promise.future();
-    }
-
-    protected <T> Future<MailResult> mailHeaders(Vertx vertx, JsonObject msgConfig) {
-        Promise<MailResult> promise = Promise.promise();
-        MailClient mailClient = MailClient.createShared(vertx, new MailConfig());
-        MailMessage email = new MailMessage()
-                .setFrom("user1@example.com")
-                .setTo(Arrays.asList("user2@example.com", "user3@example.com", "user4@example.com"))
-                .addHeader("X-Mailer", "Vert.x Mail-Client 4.1.0")
-                .addHeader("Message-ID", "12345@example.com")
-                .addHeader("Reply-To", "reply@example.com")
-                .addHeader("Received", "by vertx mail service")
-                .addHeader("Received", "from [192.168.1.1] by localhost")
-                .setText("This message should have a custom Message-ID");
-
-        mailClient.sendMail(email, promise);
-        return promise.future();
-    }
 }

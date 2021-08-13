@@ -142,8 +142,13 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
-        case "activateUser": {
-          service.activateUser((java.lang.String)json.getValue("userId"),
+        case "activateUserByUid": {
+          service.activateUserByUid(json.getJsonObject("user") == null ? null : new io.vertx.saysayX.ms.administration.pojo.UserBean(json.getJsonObject("user")),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "activateUserByMail": {
+          service.activateUserByMail(json.getJsonObject("user") == null ? null : new io.vertx.saysayX.ms.administration.pojo.UserBean(json.getJsonObject("user")),
                         HelperUtils.createHandler(msg));
           break;
         }

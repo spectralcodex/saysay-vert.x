@@ -10,8 +10,11 @@ import io.vertx.saysayX.common.config.MailUtils;
 import io.vertx.saysayX.ms.administration.AdministrationService;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.UUID;
 
 public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     public static final String SERVICE_NAME = "administration-rest-api";
@@ -23,6 +26,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private static final String API_UPDATE_USER = "/user/:uid";
     private static final String API_DELETE_USER = "/user/:uid";
     private static final String API_ACTIVATE_USER = "/user/on/:uid";
+    private static final String API_VERIFY_USER = "/user/verify/:vid";
 
     //Company endpoints
     private static final String API_ADD_COMPANY = "/company";
@@ -53,6 +57,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         router.patch(API_UPDATE_USER).handler(this::apiUpdateUser);
         router.delete(API_DELETE_USER).handler(this::apiDeleteUser);
         router.patch(API_ACTIVATE_USER).handler(this::apiActivateUser);
+        router.patch(API_VERIFY_USER).handler(this::apiVerifyUser);
 
         //Company routes
         router.post(API_ADD_COMPANY).handler(this::apiAddCompany);
@@ -75,16 +80,22 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         try {
             UserBean user = new UserBean(context.getBodyAsJson());
             //service.addUser(user, resultHandler(context, 201, "add"));
+
+            final String verifyCode = RandomStringUtils.randomAlphanumeric(11, 21);
+            final String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
+            user.setVerificationCode(verifyCode);
+            user.setUid(uid);
+
             service.addUser(user, ar -> {
                 if (ar.succeeded()) {
                     Integer res = ar.result();
-                    MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail()), mailRes -> {
+                    MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail())
+                            .put("verifyCode", verifyCode), mailRes -> {
                         if (mailRes.succeeded()) {
-                            context.response()
-                                    .setStatusCode(201)
+                            context.response().setStatusCode(201)
                                     .putHeader("Content-type", "application/json")
                                     .end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
-                                            .put("mailMsg", mailRes.result()).encodePrettily());
+                                            .put("mailMsg", mailRes.result()).put("uid", uid).encodePrettily());
                             //{"messageId":"<msg.1622978709033.vertxmail.0@localhost>","recipients":["lightskinnedwarrior30@gmail.com"]}
                         } else {
                             internalError(context, mailRes.cause());
@@ -113,7 +124,6 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private void apiUpdateUser(RoutingContext ctx) {
         try {
             UserBean user = new UserBean(ctx.getBodyAsJson());
-
             user.setUid(ctx.request().getParam("uid"));
             service.updateUser(user, resultHandler(ctx, 200));
         } catch (Exception e) {
@@ -129,7 +139,14 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
 
     private void apiActivateUser(RoutingContext ctx) {
         String uid = ctx.request().getParam("uid");
-        service.activateUser(uid, resultHandler(ctx, 200));
+        UserBean user = new UserBean(ctx.getBodyAsJson());
+        user.setUid(uid);
+        service.activateUserByUid(user, resultHandler(ctx, 200));
+    }
+
+    private void apiVerifyUser(RoutingContext ctx) {
+        String verifyCode = ctx.request().getParam("vid");
+        service.verifyUser(verifyCode, resultHandler(ctx, 200));
     }
 
     //Company APIs
@@ -148,7 +165,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     }
 
     private void apiRetrieveAllCompany(RoutingContext ctx) {
-        String cid = ctx.request().getParam("cid");
+        //String cid = ctx.request().getParam("cid");
         service.retrieveAllCompany(resultHandlerNonEmpty(ctx));
     }
 

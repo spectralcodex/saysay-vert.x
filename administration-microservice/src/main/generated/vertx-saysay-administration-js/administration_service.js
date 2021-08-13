@@ -41,7 +41,8 @@ var AdministrationService = function(j_val) {
   var __super_retrieveUserById = this.retrieveUserById;
   var __super_retrieveUserByEmail = this.retrieveUserByEmail;
   var __super_deleteUser = this.deleteUser;
-  var __super_activateUser = this.activateUser;
+  var __super_activateUserByUid = this.activateUserByUid;
+  var __super_activateUserByMail = this.activateUserByMail;
   var __super_verifyUser = this.verifyUser;
   var __super_updateUser = this.updateUser;
   var __super_retrieveAllUsers = this.retrieveAllUsers;
@@ -174,14 +175,14 @@ var AdministrationService = function(j_val) {
   /**
 
    @public
-   @param userId {string} 
+   @param user {Object} 
    @param resultHandler {function} 
    @return {AdministrationService}
    */
-  this.activateUser =  function(userId, resultHandler) {
+  this.activateUserByUid =  function(user, resultHandler) {
     var __args = arguments;
-    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
-      j_administrationService["activateUser(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["activateUserByUid(io.vertx.saysayX.ms.administration.pojo.UserBean,io.vertx.core.Handler)"](__args[0]  != null ? new UserBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
         if (ar.succeeded()) {
           __args[1](ar.result(), null);
         } else {
@@ -189,8 +190,32 @@ var AdministrationService = function(j_val) {
         }
       }) ;
       return that;
-    } else if (typeof __super_activateUser != 'undefined') {
-      return __super_activateUser.apply(this, __args);
+    } else if (typeof __super_activateUserByUid != 'undefined') {
+      return __super_activateUserByUid.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param user {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.activateUserByMail =  function(user, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["activateUserByMail(io.vertx.saysayX.ms.administration.pojo.UserBean,io.vertx.core.Handler)"](__args[0]  != null ? new UserBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_activateUserByMail != 'undefined') {
+      return __super_activateUserByMail.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

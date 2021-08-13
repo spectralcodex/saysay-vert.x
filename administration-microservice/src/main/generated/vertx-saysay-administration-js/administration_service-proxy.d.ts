@@ -37,7 +37,9 @@ export default class AdministrationService {
 
   deleteUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
-  activateUser(userId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+  activateUserByUid(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  activateUserByMail(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
   verifyUser(userVerifyCode: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
 

@@ -76,7 +76,10 @@ public interface AdministrationService{
     AdministrationService deleteUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
-    AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler);
+    AdministrationService activateUserByUid(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService activateUserByMail(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
     AdministrationService verifyUser(String userVerifyCode, Handler<AsyncResult<Integer>> resultHandler);

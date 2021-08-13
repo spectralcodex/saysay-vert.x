@@ -28,7 +28,6 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     //protected final static Logger logger = LoggerFactory.getLogger(AdministrationImpl.class);
     private BaseUtils authProviderHelper;
 
-
     public AdministrationImpl(Vertx vertx, JsonObject config) {
         super(vertx, config);
         authProviderHelper = new BaseUtils(vertx);
@@ -44,11 +43,9 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService addUser(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
-        String verifyCode = authProviderHelper.getVerifyCode();
-        String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
-
+        //String verifyCode = authProviderHelper.getVerifyCode();
+        //String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
         executor.execute(dsl -> dsl.insertInto(TB_USER,
-
                 TB_USER.ROLEID, TB_USER.ROLENAME, TB_USER.FIRSTNAME, TB_USER.LASTNAME,
                 TB_USER.EMAIL, TB_USER.MOBILE,
                 TB_USER.PROFILEPIC, TB_USER.BACKGROUNDINFO,
@@ -59,7 +56,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                         user.getEmail(), user.getMobile(),
                         user.getProfilepic(), user.getBackgroundinfo(),
                         user.getWebsite(), user.getGpslocation(), user.getDob(),
-                        user.getOtherinfo(), user.getCreatedby(),verifyCode , uid))
+                        user.getOtherinfo(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -82,15 +79,24 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService deleteUser(String userId, Handler<AsyncResult<Integer>> resultHandler) {
-        executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 1) //1 means disable
+        executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 0) //0 means disable
                 .where(TB_USER.UID.eq(userId))).onComplete(resultHandler);
         return this;
     }
 
     @Override
-    public AdministrationService activateUser(String userId, Handler<AsyncResult<Integer>> resultHandler) {
-        executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 0) //1 means disable
-                .where(TB_USER.UID.eq(userId))).onComplete(resultHandler);
+    public AdministrationService activateUserByUid(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 1)//0 means disable
+                .set(TB_USER.HASHEDPASSWORD, authProviderHelper.hashPassword(user.getPassword()))
+                .where(TB_USER.UID.eq(user.getUid())).and(TB_USER.VERIFIED.eq(1))).onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
+    public AdministrationService activateUserByMail(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 1)//0 means disable
+                .set(TB_USER.HASHEDPASSWORD, authProviderHelper.hashPassword(user.getPassword()))
+                .where(TB_USER.EMAIL.eq(user.getEmail())).and(TB_USER.VERIFIED.eq(1))).onComplete(resultHandler);
         return this;
     }
 
@@ -202,8 +208,6 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
         return this;
     }
-
-
 
 
    /* @Override

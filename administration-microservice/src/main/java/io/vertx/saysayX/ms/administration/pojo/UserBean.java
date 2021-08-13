@@ -16,8 +16,7 @@ public class UserBean {
     private String         lastname;
     private String         email;
     private String         mobile;
-    private String         hashedpassword;
-    private String         salt;
+    private String         password;
     private String         profilepic;
     private String         backgroundinfo;
     private String         website;
@@ -28,7 +27,9 @@ public class UserBean {
     private OffsetDateTime createdon;
     private String         rolename;
     private String         uid;
-    private Integer         active;
+    private String         verificationCode;
+    private Integer        active;
+
     
     
     public UserBean(){}
@@ -104,23 +105,16 @@ public class UserBean {
         return this;
     }
 
-    public String getHashedpassword() {
-        return hashedpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public UserBean setHashedpassword(String hashedpassword) {
-        this.hashedpassword = hashedpassword;
+    public UserBean setPassword(String password) {
+        this.password = password;
         return this;
     }
 
-    public String getSalt() {
-        return salt;
-    }
 
-    public UserBean setSalt(String salt) {
-        this.salt = salt;
-        return this;
-    }
 
     public String getProfilepic() {
         return profilepic;
@@ -218,6 +212,15 @@ public class UserBean {
 
     public UserBean setActive(Integer active) {
         this.active = active;
+        return this;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public UserBean setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
         return this;
     }
 }

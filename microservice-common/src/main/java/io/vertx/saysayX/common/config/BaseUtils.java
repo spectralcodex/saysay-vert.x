@@ -44,7 +44,7 @@ public class BaseUtils {
                 throw new DecodeException("Required parameter cannot be empty -> " + name);
     }
 
-    public String generateHashedPassword(String plainPwd){
+    public String hashPassword(String plainPwd){
         return SCryptUtil.scrypt(plainPwd,16, 16, 16);
     }
 
