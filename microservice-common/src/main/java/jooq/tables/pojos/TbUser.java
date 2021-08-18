@@ -6,7 +6,7 @@ package jooq.tables.pojos;
 
 import io.github.jklingsporn.vertx.jooq.shared.internal.VertxPojo;
 
-import java.time.OffsetDateTime;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -26,29 +26,30 @@ import jooq.tables.interfaces.ITbUser;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbUser implements VertxPojo, ITbUser {
 
-    private static final long serialVersionUID = 671400807;
+    private static final long serialVersionUID = 761038911;
 
-    private Long           id;
-    private String         roleid;
-    private String         firstname;
-    private String         lastname;
-    private String         email;
-    private String         mobile;
-    private String         hashedpassword;
-    private String         salt;
-    private String         profilepic;
-    private String         backgroundinfo;
-    private String         website;
-    private String         gpslocation;
-    private String         dob;
-    private String         otherinfo;
-    private String         createdby;
-    private String         rolename;
-    private String         uid;
-    private Integer        active;
-    private Integer        verified;
-    private String         verificationcode;
-    private OffsetDateTime createdon;
+    private Long      id;
+    private String    roleid;
+    private String    firstname;
+    private String    lastname;
+    private String    email;
+    private String    mobile;
+    private String    hashedpassword;
+    private String    salt;
+    private String    profilepic;
+    private String    backgroundinfo;
+    private String    website;
+    private String    gpslocation;
+    private String    dob;
+    private String    otherinfo;
+    private String    createdby;
+    private String    rolename;
+    private String    uid;
+    private Integer   active;
+    private Integer   verified;
+    private String    verificationcode;
+    private Timestamp createdon;
+    private Timestamp verifiedon;
 
     public TbUser() {}
 
@@ -74,30 +75,32 @@ public class TbUser implements VertxPojo, ITbUser {
         this.verified = value.getVerified();
         this.verificationcode = value.getVerificationcode();
         this.createdon = value.getCreatedon();
+        this.verifiedon = value.getVerifiedon();
     }
 
     public TbUser(
-        Long           id,
-        String         roleid,
-        String         firstname,
-        String         lastname,
-        String         email,
-        String         mobile,
-        String         hashedpassword,
-        String         salt,
-        String         profilepic,
-        String         backgroundinfo,
-        String         website,
-        String         gpslocation,
-        String         dob,
-        String         otherinfo,
-        String         createdby,
-        String         rolename,
-        String         uid,
-        Integer        active,
-        Integer        verified,
-        String         verificationcode,
-        OffsetDateTime createdon
+        Long      id,
+        String    roleid,
+        String    firstname,
+        String    lastname,
+        String    email,
+        String    mobile,
+        String    hashedpassword,
+        String    salt,
+        String    profilepic,
+        String    backgroundinfo,
+        String    website,
+        String    gpslocation,
+        String    dob,
+        String    otherinfo,
+        String    createdby,
+        String    rolename,
+        String    uid,
+        Integer   active,
+        Integer   verified,
+        String    verificationcode,
+        Timestamp createdon,
+        Timestamp verifiedon
     ) {
         this.id = id;
         this.roleid = roleid;
@@ -120,6 +123,7 @@ public class TbUser implements VertxPojo, ITbUser {
         this.verified = verified;
         this.verificationcode = verificationcode;
         this.createdon = createdon;
+        this.verifiedon = verifiedon;
     }
 
     @Override
@@ -343,13 +347,24 @@ public class TbUser implements VertxPojo, ITbUser {
     }
 
     @Override
-    public OffsetDateTime getCreatedon() {
+    public Timestamp getCreatedon() {
         return this.createdon;
     }
 
     @Override
-    public TbUser setCreatedon(OffsetDateTime createdon) {
+    public TbUser setCreatedon(Timestamp createdon) {
         this.createdon = createdon;
+        return this;
+    }
+
+    @Override
+    public Timestamp getVerifiedon() {
+        return this.verifiedon;
+    }
+
+    @Override
+    public TbUser setVerifiedon(Timestamp verifiedon) {
+        this.verifiedon = verifiedon;
         return this;
     }
 
@@ -378,6 +393,7 @@ public class TbUser implements VertxPojo, ITbUser {
         sb.append(", ").append(verified);
         sb.append(", ").append(verificationcode);
         sb.append(", ").append(createdon);
+        sb.append(", ").append(verifiedon);
 
         sb.append(")");
         return sb.toString();
@@ -413,6 +429,7 @@ public class TbUser implements VertxPojo, ITbUser {
         setVerified(from.getVerified());
         setVerificationcode(from.getVerificationcode());
         setCreatedon(from.getCreatedon());
+        setVerifiedon(from.getVerifiedon());
     }
 
     /**

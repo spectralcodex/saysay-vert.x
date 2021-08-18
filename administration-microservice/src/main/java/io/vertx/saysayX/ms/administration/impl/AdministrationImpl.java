@@ -15,9 +15,12 @@ import org.jooq.Record;
 import org.jooq.ResultQuery;
 import org.jooq.User;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import static jooq.Tables.TB_COMPANY;
 import static jooq.Tables.TB_USER;
@@ -62,6 +65,30 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     }
 
     @Override
+    public AdministrationService updateUserVerificationCode(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(dsl -> dsl.update(TB_USER)
+                .set(TB_USER.VERIFICATIONCODE, user.getVerificationCode())
+                .set(TB_USER.VERIFIEDON, new Timestamp(System.currentTimeMillis()))
+                .where(TB_USER.UID.eq(user.getUid()))).onComplete(resultHandler);
+        return this;
+    }
+    @Override
+    public AdministrationService addUserByEmailOrMobile(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+        //String verifyCode = authProviderHelper.getVerifyCode();
+        //String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
+        executor.execute(dsl -> dsl.insertInto(TB_USER,
+                TB_USER.ROLEID, TB_USER.ROLENAME,
+                TB_USER.EMAIL,
+                TB_USER.MOBILE,
+                TB_USER.CREATEDBY, TB_USER.VERIFICATIONCODE,
+                TB_USER.UID)
+                .values(user.getRoleid(), user.getRolename(),
+                        user.getEmail(),user.getMobile(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
+                .onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
     public AdministrationService retrieveUserById(String userId, Handler<AsyncResult<JsonObject>> resultHandler) {
         executor.findOneJson(
                 dsl -> dsl.selectFrom(TB_USER).where(TB_USER.UID.eq(userId)))
@@ -86,8 +113,10 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService activateUserByUid(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+        final String salt  = authProviderHelper.generateSalt();
         executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 1)//0 means disable
-                .set(TB_USER.HASHEDPASSWORD, authProviderHelper.hashPassword(user.getPassword()))
+                .set(TB_USER.HASHEDPASSWORD, authProviderHelper.computeHash(user.getPassword(), salt))
+                .set(TB_USER.SALT, salt)
                 .where(TB_USER.UID.eq(user.getUid())).and(TB_USER.VERIFIED.eq(1))).onComplete(resultHandler);
         return this;
     }
@@ -102,10 +131,12 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService verifyUser(String userVerifyCode, Handler<AsyncResult<Integer>> resultHandler) {
+        final Timestamp expireTime = new Timestamp(System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(5));
         executor.execute(
                 dsl -> dsl.update(TB_USER).set(TB_USER.VERIFIED, 1)
-                        .where(TB_USER.VERIFICATIONCODE.eq(userVerifyCode)
-                                .and(TB_USER.CREATEDON.greaterThan(OffsetDateTime.now().minusMinutes(15))))).onComplete(resultHandler);
+                        .set(TB_USER.VERIFIEDON, new Timestamp(System.currentTimeMillis()))
+                        .where(TB_USER.VERIFICATIONCODE.eq(userVerifyCode)).and(TB_USER.CREATEDON.greaterThan(expireTime)))
+                                .onComplete(resultHandler);
         return this;
     }
 
@@ -115,7 +146,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                 .set(TB_USER.ROLEID, user.getRoleid())
                 .set(TB_USER.FIRSTNAME, user.getFirstname())
                 .set(TB_USER.LASTNAME, user.getLastname())
-                .set(TB_USER.EMAIL, user.getEmail())
+                //.set(TB_USER.EMAIL, user.getEmail())
                 .set(TB_USER.MOBILE, user.getMobile())
                 .set(TB_USER.PROFILEPIC, user.getProfilepic())
                 .set(TB_USER.BACKGROUNDINFO, user.getBackgroundinfo())

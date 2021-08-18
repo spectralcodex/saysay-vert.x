@@ -7,5 +7,6 @@
   "username": "postgres",
   "password": "postgres",
   "max_pool_size": 30,
-  "database": "saysay"
+  "database": "saysay",
+  "em.username": "saysayapp1@gmail.com"
 }

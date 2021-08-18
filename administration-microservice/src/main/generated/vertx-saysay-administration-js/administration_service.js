@@ -38,6 +38,8 @@ var AdministrationService = function(j_val) {
 
   var __super_initializePersistence = this.initializePersistence;
   var __super_addUser = this.addUser;
+  var __super_updateUserVerificationCode = this.updateUserVerificationCode;
+  var __super_addUserByEmailOrMobile = this.addUserByEmailOrMobile;
   var __super_retrieveUserById = this.retrieveUserById;
   var __super_retrieveUserByEmail = this.retrieveUserByEmail;
   var __super_deleteUser = this.deleteUser;
@@ -96,6 +98,54 @@ var AdministrationService = function(j_val) {
       return that;
     } else if (typeof __super_addUser != 'undefined') {
       return __super_addUser.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param user {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.updateUserVerificationCode =  function(user, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["updateUserVerificationCode(io.vertx.saysayX.ms.administration.pojo.UserBean,io.vertx.core.Handler)"](__args[0]  != null ? new UserBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_updateUserVerificationCode != 'undefined') {
+      return __super_updateUserVerificationCode.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param user {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.addUserByEmailOrMobile =  function(user, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["addUserByEmailOrMobile(io.vertx.saysayX.ms.administration.pojo.UserBean,io.vertx.core.Handler)"](__args[0]  != null ? new UserBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_addUserByEmailOrMobile != 'undefined') {
+      return __super_addUserByEmailOrMobile.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

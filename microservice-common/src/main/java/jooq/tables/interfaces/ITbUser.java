@@ -8,7 +8,7 @@ import io.github.jklingsporn.vertx.jooq.shared.UnexpectedJsonValueType;
 import io.github.jklingsporn.vertx.jooq.shared.internal.VertxPojo;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 
@@ -229,12 +229,22 @@ public interface ITbUser extends VertxPojo, Serializable {
     /**
      * Setter for <code>public.tb_user.createdon</code>.
      */
-    public ITbUser setCreatedon(OffsetDateTime value);
+    public ITbUser setCreatedon(Timestamp value);
 
     /**
      * Getter for <code>public.tb_user.createdon</code>.
      */
-    public OffsetDateTime getCreatedon();
+    public Timestamp getCreatedon();
+
+    /**
+     * Setter for <code>public.tb_user.verifiedon</code>.
+     */
+    public ITbUser setVerifiedon(Timestamp value);
+
+    /**
+     * Getter for <code>public.tb_user.verifiedon</code>.
+     */
+    public Timestamp getVerifiedon();
 
     // -------------------------------------------------------------------------
     // FROM and INTO
@@ -353,9 +363,14 @@ public interface ITbUser extends VertxPojo, Serializable {
             throw new UnexpectedJsonValueType("verificationcode","java.lang.String",e);
         }
         try {
-            // Omitting unrecognized type java.time.OffsetDateTime for column createdon!
+            // Omitting unrecognized type java.sql.Timestamp for column createdon!
         } catch (java.lang.ClassCastException e) {
-            throw new UnexpectedJsonValueType("createdon","java.time.OffsetDateTime",e);
+            throw new UnexpectedJsonValueType("createdon","java.sql.Timestamp",e);
+        }
+        try {
+            // Omitting unrecognized type java.sql.Timestamp for column verifiedon!
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("verifiedon","java.sql.Timestamp",e);
         }
         return this;
     }
@@ -384,7 +399,8 @@ public interface ITbUser extends VertxPojo, Serializable {
         json.put("active",getActive());
         json.put("verified",getVerified());
         json.put("verificationcode",getVerificationcode());
-        // Omitting unrecognized type java.time.OffsetDateTime for column createdon!
+        // Omitting unrecognized type java.sql.Timestamp for column createdon!
+        // Omitting unrecognized type java.sql.Timestamp for column verifiedon!
         return json;
     }
 

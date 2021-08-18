@@ -31,6 +31,10 @@ export default class AdministrationService {
 
   addUser(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
+  updateUserVerificationCode(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  addUserByEmailOrMobile(user: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
   retrieveUserById(userId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
 
   retrieveUserByEmail(email: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;

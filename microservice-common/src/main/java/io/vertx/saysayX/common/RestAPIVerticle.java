@@ -181,6 +181,29 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
 
     }
 
+    protected <T> Handler<AsyncResult<T>> expireResultHandler(RoutingContext context, int status) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                if (res == null)
+                    serviceUnavailable(context, "invalid_result");
+                else if (res.toString().equals("0")) {
+                    expired_code(context);
+                } else {
+                    context.response()
+                            .setStatusCode(status == 0 ? 200 : status)
+                            .putHeader("Content-type", "application/json")
+                            //res must always be > 0
+                            .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                    //.end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+                }
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
+
+    }
     protected <T> Handler<AsyncResult<T>> resultHandler(RoutingContext context, int status, String msg) {
         return ar -> {
             if (ar.succeeded()) {
@@ -393,5 +416,11 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         context.response().setStatusCode(404)
                 .putHeader("content-type", "application/json")
                 .end(new JsonObject().put("message", "not_found").encodePrettily());
+    }
+
+    protected void expired_code(RoutingContext context) {
+        context.response().setStatusCode(410)
+                .putHeader("content-type", "application/json")
+                .end(new JsonObject().put("message", "expired").encodePrettily());
     }
 }

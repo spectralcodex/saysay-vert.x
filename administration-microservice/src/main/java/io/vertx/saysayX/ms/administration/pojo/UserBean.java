@@ -38,9 +38,9 @@ public class UserBean {
         UserBeanConverter.fromJson(json, this);
         BaseUtils.isNullEmpty(this.roleid, "roleid");
         BaseUtils.isNullEmpty(this.rolename, "rolename");
-        BaseUtils.isNullEmpty(this.firstname, "firstname");
-        BaseUtils.isNullEmpty(this.lastname, "lastname");
-        BaseUtils.isNullEmpty(this.mobile, "mobile");
+        //BaseUtils.isNullEmpty(this.firstname, "firstname");
+        //BaseUtils.isNullEmpty(this.lastname, "lastname");
+        //BaseUtils.isNullEmpty(this.mobile, "mobile");
         BaseUtils.isNullEmpty(this.email, "email");
     }
 

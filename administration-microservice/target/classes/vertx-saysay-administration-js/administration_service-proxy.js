@@ -89,6 +89,42 @@
     /**
 
      @public
+     @param user {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.updateUserVerificationCode =  function(user, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"user":__args[0]}, {"action":"updateUserVerificationCode"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param user {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.addUserByEmailOrMobile =  function(user, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"user":__args[0]}, {"action":"addUserByEmailOrMobile"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
      @param userId {string} 
      @param resultHandler {function} 
      @return {AdministrationService} 
