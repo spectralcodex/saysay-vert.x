@@ -5,9 +5,11 @@ import io.vertx.core.Future;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
+
 import io.vertx.ext.asyncsql.AsyncSQLClient;
 import io.vertx.ext.asyncsql.PostgreSQLClient;
 import io.vertx.ext.sql.SQLConnection;
+
 import org.jooq.Configuration;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DefaultConfiguration;
@@ -41,7 +43,7 @@ public class JooqRepositoryWrapper {
                     Promise<JsonObject> promise = Promise.promise();
                     pgCon.execute(sql, ar -> {
                         if (ar.succeeded()) {
-                            logger.info("Persist OK --> id:" + t);
+                            logger.info("Persist OK --> {}",t);
                             promise.complete();
                         } else {
                             promise.fail(ar.cause());

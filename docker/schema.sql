@@ -2,32 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.4 (Ubuntu 12.4-1)
--- Dumped by pg_dump version 12.4 (Ubuntu 12.4-1)
+-- Dumped from database version 13.3
+-- Dumped by pg_dump version 13.2
 
--- Started on 2020-11-13 16:58:23 GMT
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-DROP DATABASE impala;
---
--- TOC entry 3031 (class 1262 OID 16385)
--- Name: impala; Type: DATABASE; Schema: -; Owner: -
---
-
-CREATE DATABASE impala WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
-
-
-\connect impala
+-- Started on 2021-07-30 17:31:46 GMT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -40,135 +18,57 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+DROP DATABASE IF EXISTS saysay;
 --
--- TOC entry 210 (class 1255 OID 16386)
--- Name: fn_get_now(); Type: FUNCTION; Schema: public; Owner: -
+-- TOC entry 3331 (class 1262 OID 16386)
+-- Name: saysay; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE FUNCTION public.fn_get_now() RETURNS character varying
-    LANGUAGE plpgsql
-    AS $$
-declare
-BEGIN
-   RETURN to_char(current_timestamp, 'HH12:MI:SS');
-END;
-$$;
+CREATE DATABASE saysay WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
+
+ALTER DATABASE saysay OWNER TO postgres;
+
+\connect saysay
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- TOC entry 202 (class 1259 OID 16387)
--- Name: tb_accomodation; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 209 (class 1259 OID 16454)
+-- Name: tb_sector; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.tb_accomodation (
+CREATE TABLE public.tb_sector (
     id bigint NOT NULL,
-    "serialNumber" character varying(255) NOT NULL,
+    sid character varying(50),
     name character varying(255),
-    abbrevation character varying(10),
-    units character varying(255),
-    "dormBedsPerRoom" integer,
-    "totalAccomodation" integer,
-    "createdOn" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "createdBy" character varying(255)
-);
-
-
---
--- TOC entry 203 (class 1259 OID 16394)
--- Name: tb_accomodation_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.tb_accomodation_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3032 (class 0 OID 0)
--- Dependencies: 203
--- Name: tb_accomodation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.tb_accomodation_id_seq OWNED BY public.tb_accomodation.id;
-
-
---
--- TOC entry 204 (class 1259 OID 16396)
--- Name: tb_property_amenity; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.tb_property_amenity (
-    id bigint NOT NULL,
-    "serialNumber" character varying(255) NOT NULL,
-    amenity character varying(255),
-    status character varying(5),
-    "createdOn" timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "createdBy" character varying(255) NOT NULL
-);
-
-
---
--- TOC entry 205 (class 1259 OID 16403)
--- Name: tb_property_amenity_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.tb_property_amenity_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3033 (class 0 OID 0)
--- Dependencies: 205
--- Name: tb_property_amenity_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.tb_property_amenity_id_seq OWNED BY public.tb_property_amenity.id;
-
-
---
--- TOC entry 206 (class 1259 OID 16405)
--- Name: tb_property_profile; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.tb_property_profile (
-    id bigint NOT NULL,
-    "serialNumber" character varying(255) NOT NULL,
-    type character varying(255),
+    createdby character varying(255),
     description text,
-    image text,
-    name character varying(255),
-    phone character varying(50),
-    email character varying(255),
-    website character varying(255),
-    "ownerFirstName" character varying(255),
-    "ownerLastName" character varying(255),
-    country character varying(255),
-    address1 character varying(255),
-    address2 character varying(255),
-    city character varying(255),
-    "postalCode" character varying(6),
-    "locationCoordinate" character varying(255),
-    "createdOn" timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "createdBy" character varying(255),
-    "profileCode" character varying(10)
+    createdon character varying DEFAULT CURRENT_TIMESTAMP
 );
 
 
+ALTER TABLE public.tb_sector OWNER TO postgres;
+
 --
--- TOC entry 207 (class 1259 OID 16412)
--- Name: tb_property_profile_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 208 (class 1259 OID 16452)
+-- Name: sector_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.tb_property_profile_id_seq
+CREATE SEQUENCE public.sector_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -176,38 +76,291 @@ CREATE SEQUENCE public.tb_property_profile_id_seq
     CACHE 1;
 
 
---
--- TOC entry 3034 (class 0 OID 0)
--- Dependencies: 207
--- Name: tb_property_profile_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.tb_property_profile_id_seq OWNED BY public.tb_property_profile.id;
-
+ALTER TABLE public.sector_id_seq OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 16414)
--- Name: tb_user; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 3332 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: sector_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.sector_id_seq OWNED BY public.tb_sector.id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 16466)
+-- Name: tb_category; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_category (
+    id bigint NOT NULL,
+    cid character varying(50),
+    name character varying(255),
+    description text,
+    createdby character varying(255),
+    createdon character varying DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.tb_category OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16464)
+-- Name: tb_category_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_category_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3333 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: tb_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_category_id_seq OWNED BY public.tb_category.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 16418)
+-- Name: tb_comment; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_comment (
+    id bigint NOT NULL,
+    authorid character varying(50),
+    cid character varying(50),
+    storyid character varying(50),
+    possibilitysensitive integer,
+    lang character varying(2),
+    entities text,
+    authorname character varying(255),
+    createdon character varying DEFAULT CURRENT_TIMESTAMP,
+    comment text
+);
+
+
+ALTER TABLE public.tb_comment OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16416)
+-- Name: tb_comment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_comment_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_comment_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3334 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: tb_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_comment_id_seq OWNED BY public.tb_comment.id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16430)
+-- Name: tb_company; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_company (
+    id bigint NOT NULL,
+    name character varying(255),
+    location character varying(255),
+    phonenumber character varying(50) NOT NULL,
+    sectorname character varying(255),
+    rating integer,
+    logo text,
+    backgroundinfo text,
+    entities text,
+    cid character varying(50),
+    code character varying(10),
+    createdby character varying(255),
+    email character varying(255),
+    website text,
+    otherlinks text,
+    categoryname character varying(255),
+    sectorid character varying(50),
+    categoryid character varying(50),
+    active integer DEFAULT 1,
+    createdon character varying DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.tb_company OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16428)
+-- Name: tb_company_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_company_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_company_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3335 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: tb_company_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_company_id_seq OWNED BY public.tb_company.id;
+
+
+--
+-- TOC entry 213 (class 1259 OID 16544)
+-- Name: tb_likes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_likes (
+    id bigint NOT NULL,
+    authorid character varying(50),
+    lid character varying(50),
+    comment_id character varying(50),
+    storyid character varying(50),
+    possibilitysensitive integer,
+    lang character varying(2),
+    entities text,
+    authorname character varying(255),
+    createdon character varying DEFAULT CURRENT_TIMESTAMP,
+    status character varying(1)
+);
+
+
+ALTER TABLE public.tb_likes OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 16542)
+-- Name: tb_likes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_likes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_likes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3336 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: tb_likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_likes_id_seq OWNED BY public.tb_likes.id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 16389)
+-- Name: tb_story; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tb_story (
+    id bigint NOT NULL,
+    authorid character varying(30),
+    entities text,
+    sid character varying(255),
+    lang character varying(2),
+    possiblysensitive integer,
+    source character varying(255),
+    story text,
+    likecount integer,
+    commentcount integer,
+    cautioncount integer,
+    categoryname character varying(255),
+    sectorname character varying(255),
+    companyid character varying(50),
+    sectorid character varying(50),
+    categoryid character varying(50),
+    authorname character varying(255),
+    companyname character varying(255),
+    createdon character varying DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.tb_story OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16387)
+-- Name: tb_story_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tb_story_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tb_story_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3337 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tb_story_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tb_story_id_seq OWNED BY public.tb_story.id;
+
+
+--
+-- TOC entry 207 (class 1259 OID 16442)
+-- Name: tb_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.tb_user (
     id bigint NOT NULL,
-    "roleId" character varying(255),
-    "firstName" character varying(255),
-    "lastName" character varying(255),
-    email character varying(255),
-    mobile character varying(255),
-    "hashedPassword" character varying(500),
-    "passwordSalt" character varying(255),
-    "companyCode" character varying(10),
-    "createdOn" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    "createdBy" character varying(255)
+    roleid character varying(50),
+    firstname character varying(50),
+    lastname character varying(50),
+    email character varying(255) NOT NULL,
+    mobile character varying(50) NOT NULL,
+    hashedpassword text,
+    salt text,
+    profilepic text,
+    backgroundinfo text,
+    website text,
+    gpslocation character varying(255),
+    dob character varying(50),
+    otherinfo text,
+    createdby character varying(255),
+    rolename character varying(255),
+    uid character varying(50),
+    active integer DEFAULT 1,
+    createdon character varying DEFAULT CURRENT_TIMESTAMP
 );
 
 
+ALTER TABLE public.tb_user OWNER TO postgres;
+
 --
--- TOC entry 209 (class 1259 OID 16421)
--- Name: tb_user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 206 (class 1259 OID 16440)
+-- Name: tb_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.tb_user_id_seq
@@ -218,84 +371,173 @@ CREATE SEQUENCE public.tb_user_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.tb_user_id_seq OWNER TO postgres;
+
 --
--- TOC entry 3035 (class 0 OID 0)
--- Dependencies: 209
--- Name: tb_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- TOC entry 3338 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: tb_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.tb_user_id_seq OWNED BY public.tb_user.id;
 
 
 --
--- TOC entry 2885 (class 2604 OID 16423)
--- Name: tb_accomodation id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 3170 (class 2604 OID 16469)
+-- Name: tb_category id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.tb_accomodation ALTER COLUMN id SET DEFAULT nextval('public.tb_accomodation_id_seq'::regclass);
-
-
---
--- TOC entry 2887 (class 2604 OID 16424)
--- Name: tb_property_amenity id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.tb_property_amenity ALTER COLUMN id SET DEFAULT nextval('public.tb_property_amenity_id_seq'::regclass);
+ALTER TABLE ONLY public.tb_category ALTER COLUMN id SET DEFAULT nextval('public.tb_category_id_seq'::regclass);
 
 
 --
--- TOC entry 2889 (class 2604 OID 16425)
--- Name: tb_property_profile id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 3160 (class 2604 OID 16421)
+-- Name: tb_comment id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.tb_property_profile ALTER COLUMN id SET DEFAULT nextval('public.tb_property_profile_id_seq'::regclass);
+ALTER TABLE ONLY public.tb_comment ALTER COLUMN id SET DEFAULT nextval('public.tb_comment_id_seq'::regclass);
 
 
 --
--- TOC entry 2891 (class 2604 OID 16426)
--- Name: tb_user id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 3162 (class 2604 OID 16433)
+-- Name: tb_company id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_company ALTER COLUMN id SET DEFAULT nextval('public.tb_company_id_seq'::regclass);
+
+
+--
+-- TOC entry 3172 (class 2604 OID 16547)
+-- Name: tb_likes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_likes ALTER COLUMN id SET DEFAULT nextval('public.tb_likes_id_seq'::regclass);
+
+
+--
+-- TOC entry 3168 (class 2604 OID 16457)
+-- Name: tb_sector id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_sector ALTER COLUMN id SET DEFAULT nextval('public.sector_id_seq'::regclass);
+
+
+--
+-- TOC entry 3158 (class 2604 OID 16392)
+-- Name: tb_story id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_story ALTER COLUMN id SET DEFAULT nextval('public.tb_story_id_seq'::regclass);
+
+
+--
+-- TOC entry 3165 (class 2604 OID 16445)
+-- Name: tb_user id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tb_user ALTER COLUMN id SET DEFAULT nextval('public.tb_user_id_seq'::regclass);
 
 
 --
--- TOC entry 2893 (class 2606 OID 16428)
--- Name: tb_accomodation tb_accomodation_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3185 (class 2606 OID 16503)
+-- Name: tb_user email_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.tb_accomodation
-    ADD CONSTRAINT tb_accomodation_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2895 (class 2606 OID 16430)
--- Name: tb_property_amenity tb_property_amenity_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.tb_property_amenity
-    ADD CONSTRAINT tb_property_amenity_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.tb_user
+    ADD CONSTRAINT email_uqx UNIQUE (email);
 
 
 --
--- TOC entry 2897 (class 2606 OID 16432)
--- Name: tb_property_profile tb_property_profile_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3187 (class 2606 OID 16505)
+-- Name: tb_user mobile_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.tb_property_profile
-    ADD CONSTRAINT tb_property_profile_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.tb_user
+    ADD CONSTRAINT mobile_uqx UNIQUE (mobile);
 
 
 --
--- TOC entry 2899 (class 2606 OID 16434)
--- Name: tb_user tb_user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3181 (class 2606 OID 16525)
+-- Name: tb_company phonenumber_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_company
+    ADD CONSTRAINT phonenumber_uqx UNIQUE (phonenumber);
+
+
+--
+-- TOC entry 3191 (class 2606 OID 16463)
+-- Name: tb_sector sector_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_sector
+    ADD CONSTRAINT sector_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3175 (class 2606 OID 16482)
+-- Name: tb_story sid_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_story
+    ADD CONSTRAINT sid_uqx UNIQUE (sid);
+
+
+--
+-- TOC entry 3193 (class 2606 OID 16475)
+-- Name: tb_category tb_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_category
+    ADD CONSTRAINT tb_category_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3179 (class 2606 OID 16426)
+-- Name: tb_comment tb_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_comment
+    ADD CONSTRAINT tb_comment_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3183 (class 2606 OID 16439)
+-- Name: tb_company tb_company_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_company
+    ADD CONSTRAINT tb_company_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3195 (class 2606 OID 16553)
+-- Name: tb_likes tb_likes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_likes
+    ADD CONSTRAINT tb_likes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3177 (class 2606 OID 16397)
+-- Name: tb_story tb_story_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tb_story
+    ADD CONSTRAINT tb_story_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3189 (class 2606 OID 16451)
+-- Name: tb_user tb_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tb_user
     ADD CONSTRAINT tb_user_pkey PRIMARY KEY (id);
 
 
--- Completed on 2020-11-13 16:58:23 GMT
+-- Completed on 2021-07-30 17:31:46 GMT
 
 --
 -- PostgreSQL database dump complete

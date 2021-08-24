@@ -1,0 +1,23 @@
+= Cheatsheets
+
+[[LikesBean]]
+== LikesBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[authorid]]`@authorid`|`String`|-
+|[[authorname]]`@authorname`|`String`|-
+|[[commentid]]`@commentid`|`String`|-
+|[[createdon]]`@createdon`|`String`|-
+|[[entities]]`@entities`|`Json object`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[lang]]`@lang`|`String`|-
+|[[lid]]`@lid`|`String`|-
+|[[possiblysensitive]]`@possiblysensitive`|`Number (Integer)`|-
+|[[status]]`@status`|`String`|-
+|[[storyid]]`@storyid`|`String`|-
+|===
+

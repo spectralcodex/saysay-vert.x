@@ -1,0 +1,11 @@
+{
+  "api.name": "story",
+  "story-http.address": "story-microservice",
+  "story.http.port": 8082,
+  "host": "localhost",
+  "driver_class": "org.postgresql.Driver",
+  "username": "sfadarkwah",
+  "password": "secr3t",
+  "max_pool_size": 30,
+  "database": "saysay"
+}

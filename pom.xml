@@ -11,10 +11,16 @@
 
     <modules>
         <!-- infrastructure components-->
-        <!--<module>api-gateway</module>-->
         <module>microservice-common</module>
+        <module>api-gateway</module>
 
         <!-- service components -->
+        <module>administration-microservice</module>
+        <module>story-microservice</module>
+        <module>comment-microservice</module>
+        <module>likes-microservice</module>
+
+
         <!--<module>administration-microservice</module>-->
         <!--<module>property-management-microservice</module>-->
         <!--<module>property-configuration-microservice</module>-->
@@ -32,7 +38,7 @@
     </modules>
 
     <properties>
-        <vertx.version>3.9.0</vertx.version>
+        <vertx.version>3.9.7</vertx.version>
         <pgsql.driver.version>42.2.12</pgsql.driver.version>
         <log4j.version>2.8</log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -182,12 +188,12 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
+
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <!--<version>3.7.0</version>-->
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -254,6 +260,16 @@
                                 <artifactSet>
                                 </artifactSet>
                                 <outputFile>${project.build.directory}/${project.artifactId}-fat.jar</outputFile>
+                                <!--<filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.SF</exclude>
+                                            <exclude>META-INF/*.DSA</exclude>
+                                            <exclude>META-INF/*.RSA</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>-->
                             </configuration>
                         </execution>
                     </executions>

@@ -1,0 +1,30 @@
+= Cheatsheets
+
+[[StoryBean]]
+== StoryBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[authorid]]`@authorid`|`String`|-
+|[[authorname]]`@authorname`|`String`|-
+|[[categoryid]]`@categoryid`|`String`|-
+|[[categoryname]]`@categoryname`|`String`|-
+|[[cautioncount]]`@cautioncount`|`Number (Integer)`|-
+|[[commentcount]]`@commentcount`|`Number (Integer)`|-
+|[[companyid]]`@companyid`|`String`|-
+|[[companyname]]`@companyname`|`String`|-
+|[[entities]]`@entities`|`Json object`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[lang]]`@lang`|`String`|-
+|[[likecount]]`@likecount`|`Number (Integer)`|-
+|[[possiblysensitive]]`@possiblysensitive`|`Number (Integer)`|-
+|[[sectorid]]`@sectorid`|`String`|-
+|[[sectorname]]`@sectorname`|`String`|-
+|[[sid]]`@sid`|`String`|-
+|[[source]]`@source`|`String`|-
+|[[story]]`@story`|`String`|-
+|===
+

@@ -1,0 +1,12 @@
+io/vertx/saysayX/ms/comment/CommentServiceVertxProxyHandler.class
+vertx-saysay-comment-js/comment_service.js
+io/vertx/saysayX/ms/comment/CommentService.class
+io/vertx/saysayX/ms/comment/pojo/CommentBean.class
+vertx-saysay-comment-js/comment_service-proxy.js
+io/vertx/saysayX/ms/comment/CommentServiceVertxEBProxy.class
+io/vertx/saysayX/ms/comment/CommentVerticle.class
+io/vertx/saysayX/ms/comment/pojo/CommentBeanConverter.class
+io/vertx/saysayX/ms/comment/impl/JooqCommentServiceImpl.class
+vertx-saysay-comment-js/comment_service-proxy.d.ts
+io/vertx/saysayX/ms/comment/package-info.class
+io/vertx/saysayX/ms/comment/api/CommentRestAPIVerticle.class

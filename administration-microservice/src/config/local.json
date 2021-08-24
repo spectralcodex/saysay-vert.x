@@ -1,0 +1,12 @@
+{
+  "api.name": "administration",
+  "administration.http.address": "0.0.0.0",
+  "administration.http.port": 8083,
+  "host": "localhost",
+  "driver_class": "org.postgresql.Driver",
+  "username": "postgres",
+  "password": "postgres",
+  "max_pool_size": 30,
+  "database": "saysay",
+  "em.username": "saysayapp1@gmail.com"
+}

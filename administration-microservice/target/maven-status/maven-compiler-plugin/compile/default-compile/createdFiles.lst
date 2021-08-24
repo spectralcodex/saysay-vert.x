@@ -1,0 +1,14 @@
+io/vertx/saysayX/ms/administration/package-info.class
+io/vertx/saysayX/ms/administration/AdministrationServiceVertxEBProxy.class
+vertx-saysay-administration-js/administration_service.js
+vertx-saysay-administration-js/administration_service-proxy.js
+io/vertx/saysayX/ms/administration/pojo/UserBean.class
+io/vertx/saysayX/ms/administration/AdministrationVerticle.class
+vertx-saysay-administration-js/administration_service-proxy.d.ts
+io/vertx/saysayX/ms/administration/api/AdministrationRestAPIVerticle.class
+io/vertx/saysayX/ms/administration/AdministrationService.class
+io/vertx/saysayX/ms/administration/pojo/CompanyBeanConverter.class
+io/vertx/saysayX/ms/administration/AdministrationServiceVertxProxyHandler.class
+io/vertx/saysayX/ms/administration/pojo/UserBeanConverter.class
+io/vertx/saysayX/ms/administration/pojo/CompanyBean.class
+io/vertx/saysayX/ms/administration/impl/AdministrationImpl.class

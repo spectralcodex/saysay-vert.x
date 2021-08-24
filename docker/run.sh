@@ -10,7 +10,7 @@ IP=127.0.0.1
 unamestr=`uname`
 if [[ "$unamestr" != 'Linux' ]]; then
   # Set docker-machine IP
-  IP="$(docker-machine ip)"
+  IP="$(docker-machine ip dev)"
 fi
 export EXTERNAL_IP=$IP
 
@@ -22,7 +22,7 @@ docker-compose -f $DIR/docker-compose.yml stop
 
 # Start container cluster
 # First start persistence and auth container and wait for it
-docker-compose -f $DIR/docker-compose.yml up -d pg_db elasticsearch filebeat kibana
+docker-compose -f $DIR/docker-compose.yml up -d pg_db
 echo "Waiting for persistence init..."
 sleep 30
 

@@ -1,0 +1,11 @@
+{
+  "api.name": "comment",
+  "comment.http.address": "comment-microservice",
+  "comment.http.port": 8084,
+  "host": "pg_db",
+  "driver_class": "org.postgresql.Driver",
+  "username": "postgres",
+  "password": "postgres",
+  "max_pool_size": 30,
+  "database": "saysay"
+}

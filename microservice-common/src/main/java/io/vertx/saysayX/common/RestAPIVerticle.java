@@ -45,7 +45,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         return httpServerPromise.future().map(r -> null);
     }
 
-    protected Router enableRouteLoggingSupport(Router router){
+    protected Router enableRouteLoggingSupport(Router router) {
         Router route = router;
         // set router options
         route.route().handler(BodyHandler.create().setBodyLimit(10 * 1024 * 1024)); // 10MB max body size
@@ -56,7 +56,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         // use customized request logger
         // there are three logger format: DEFAULT, SHORT, TINY, see Slf4jRequestLogger.java for details
         // you can make it configurable, e.g. dev using DEFAULT, prod using TINY
-        LoggerFormat loggerFormat = LoggerFormat.DEFAULT;
+        LoggerFormat loggerFormat = LoggerFormat.TINY;
         route.route().handler(RequestLogHandler.create(loggerFormat));
 
         return route;
@@ -126,7 +126,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         } else {
             context.response()
                     .setStatusCode(401)
-                    .end(new JsonObject().put("message", "need_auth").encode());
+                    .end(new JsonObject().put("msg", "need_auth").encode());
         }
     }
 
@@ -137,7 +137,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
             if (ar.succeeded()) {
                 handler.handle(ar.result());
             } else {
-                //logger.error(ar.cause());
+                //logger.error(ar.cause().getMessage());
                 internalError(context, ar.cause());
                 ar.cause().printStackTrace();
             }
@@ -150,7 +150,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
                 T res = ar.result();
                 context.response().putHeader("Content-type", "application/json")
                         .end(res == null ? "{}" : res.toString());
-            }else {
+            } else {
                 internalError(context, ar.cause());
                 ar.cause().printStackTrace();
             }
@@ -158,18 +158,66 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     }
 
     protected <T> Handler<AsyncResult<T>> resultHandler(RoutingContext context, int status) {
-            return ar -> {
-                if (ar.succeeded()) {
-                    T res = ar.result();
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                if (res == null)
+                    serviceUnavailable(context, "invalid_result");
+                else if (res.toString().equals("0")) {
+                    notFound(context);
+                } else {
                     context.response()
                             .setStatusCode(status == 0 ? 200 : status)
                             .putHeader("Content-type", "application/json")
-                            .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
-                } else {
-                    internalError(context, ar.cause());
-                    ar.cause().printStackTrace();
+                            //res must always be > 0
+                            .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                    //.end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
                 }
-            };
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
+
+    }
+
+    protected <T> Handler<AsyncResult<T>> expireResultHandler(RoutingContext context, int status) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                if (res == null)
+                    serviceUnavailable(context, "invalid_result");
+                else if (res.toString().equals("0")) {
+                    expired_code(context);
+                } else {
+                    context.response()
+                            .setStatusCode(status == 0 ? 200 : status)
+                            .putHeader("Content-type", "application/json")
+                            //res must always be > 0
+                            .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                    //.end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+                }
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
+
+    }
+    protected <T> Handler<AsyncResult<T>> resultHandler(RoutingContext context, int status, String msg) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                context.response()
+                        .setStatusCode(status == 0 ? 200 : status)
+                        .putHeader("Content-type", "application/json")
+                        .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+
+            } else {
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
+            }
+        };
 
     }
 
@@ -216,7 +264,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         return ar -> {
             if (ar.succeeded()) {
                 T res = ar.result();
-                logger.info("RESULT-->" + res);
+                //logger.info("RESULT-->" + res);
                 if (res == null) {
                     notFound(context);
                 } else {
@@ -270,7 +318,6 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     }
 
 
-
     protected Handler<AsyncResult<Void>> resultVoidHandler(RoutingContext context, int status) {
         return ar -> {
             if (ar.succeeded()) {
@@ -298,19 +345,19 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
      * @return generated handler
      */
 
-    protected<T> Handler<AsyncResult<T>> deleteResultHandler(RoutingContext context) {
-        return res -> {
-            if (res.succeeded()) {
-                context.response().setStatusCode(204)
+    protected <T> Handler<AsyncResult<T>> deleteResultHandler(RoutingContext context) {
+        return ar -> {
+            if (ar.succeeded()) {
+                T res = ar.result();
+                context.response().setStatusCode(200)
                         .putHeader("content-type", "application/json")
-                        .end(new JsonObject().put("message", "delete_success").encodePrettily());
+                        .end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
             } else {
-                internalError(context, res.cause());
-                res.cause().printStackTrace();
+                internalError(context, ar.cause());
+                ar.cause().printStackTrace();
             }
         };
     }
-
 
 
     // helper method dealing with failure
@@ -369,5 +416,11 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
         context.response().setStatusCode(404)
                 .putHeader("content-type", "application/json")
                 .end(new JsonObject().put("message", "not_found").encodePrettily());
+    }
+
+    protected void expired_code(RoutingContext context) {
+        context.response().setStatusCode(410)
+                .putHeader("content-type", "application/json")
+                .end(new JsonObject().put("message", "expired").encodePrettily());
     }
 }

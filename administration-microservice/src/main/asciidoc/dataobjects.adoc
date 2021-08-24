@@ -1,0 +1,59 @@
+= Cheatsheets
+
+[[CompanyBean]]
+== CompanyBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[active]]`@active`|`Number (Integer)`|-
+|[[backgroundinfo]]`@backgroundinfo`|`String`|-
+|[[categoryid]]`@categoryid`|`String`|-
+|[[categoryname]]`@categoryname`|`String`|-
+|[[cid]]`@cid`|`String`|-
+|[[code]]`@code`|`String`|-
+|[[createdby]]`@createdby`|`String`|-
+|[[email]]`@email`|`String`|-
+|[[entities]]`@entities`|`String`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[location]]`@location`|`String`|-
+|[[logo]]`@logo`|`String`|-
+|[[name]]`@name`|`String`|-
+|[[otherlinks]]`@otherlinks`|`String`|-
+|[[phonenumber]]`@phonenumber`|`String`|-
+|[[rating]]`@rating`|`Number (Integer)`|-
+|[[sectorid]]`@sectorid`|`String`|-
+|[[sectorname]]`@sectorname`|`String`|-
+|[[website]]`@website`|`String`|-
+|===
+
+[[UserBean]]
+== UserBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[active]]`@active`|`Number (Integer)`|-
+|[[backgroundinfo]]`@backgroundinfo`|`String`|-
+|[[createdby]]`@createdby`|`String`|-
+|[[dob]]`@dob`|`String`|-
+|[[email]]`@email`|`String`|-
+|[[firstname]]`@firstname`|`String`|-
+|[[gpslocation]]`@gpslocation`|`String`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[lastname]]`@lastname`|`String`|-
+|[[mobile]]`@mobile`|`String`|-
+|[[otherinfo]]`@otherinfo`|`String`|-
+|[[password]]`@password`|`String`|-
+|[[profilepic]]`@profilepic`|`String`|-
+|[[roleid]]`@roleid`|`String`|-
+|[[rolename]]`@rolename`|`String`|-
+|[[uid]]`@uid`|`String`|-
+|[[verificationCode]]`@verificationCode`|`String`|-
+|[[website]]`@website`|`String`|-
+|===
+

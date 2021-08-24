@@ -1,0 +1,11 @@
+{
+  "api.name": "likes",
+  "likes-http.address": "likes-microservice",
+  "likes.http.port": 8085,
+  "host": "localhost",
+  "driver_class": "org.postgresql.Driver",
+  "username": "sfadarkwah",
+  "password": "secr3t",
+  "max_pool_size": 30,
+  "database": "saysay"
+}
