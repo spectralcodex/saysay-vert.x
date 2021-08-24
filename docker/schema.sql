@@ -5,7 +5,7 @@
 -- Dumped from database version 13.3
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-07-30 17:31:46 GMT
+-- Started on 2021-08-24 14:21:29 GMT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +20,7 @@ SET row_security = off;
 
 DROP DATABASE IF EXISTS saysay;
 --
--- TOC entry 3331 (class 1262 OID 16386)
+-- TOC entry 3332 (class 1262 OID 16386)
 -- Name: saysay; Type: DATABASE; Schema: -; Owner: postgres
 --
 
@@ -79,7 +79,7 @@ CREATE SEQUENCE public.sector_id_seq
 ALTER TABLE public.sector_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3332 (class 0 OID 0)
+-- TOC entry 3333 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: sector_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -120,7 +120,7 @@ CREATE SEQUENCE public.tb_category_id_seq
 ALTER TABLE public.tb_category_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3333 (class 0 OID 0)
+-- TOC entry 3334 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: tb_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -165,7 +165,7 @@ CREATE SEQUENCE public.tb_comment_id_seq
 ALTER TABLE public.tb_comment_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3334 (class 0 OID 0)
+-- TOC entry 3335 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: tb_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -220,7 +220,7 @@ CREATE SEQUENCE public.tb_company_id_seq
 ALTER TABLE public.tb_company_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3335 (class 0 OID 0)
+-- TOC entry 3336 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: tb_company_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -266,7 +266,7 @@ CREATE SEQUENCE public.tb_likes_id_seq
 ALTER TABLE public.tb_likes_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3336 (class 0 OID 0)
+-- TOC entry 3337 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: tb_likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -320,7 +320,7 @@ CREATE SEQUENCE public.tb_story_id_seq
 ALTER TABLE public.tb_story_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3337 (class 0 OID 0)
+-- TOC entry 3338 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: tb_story_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -352,7 +352,10 @@ CREATE TABLE public.tb_user (
     rolename character varying(255),
     uid character varying(50),
     active integer DEFAULT 1,
-    createdon character varying DEFAULT CURRENT_TIMESTAMP
+    verified integer DEFAULT 0,
+    verificationcode text,
+    createdon timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    verifiedon timestamp without time zone
 );
 
 
@@ -374,7 +377,7 @@ CREATE SEQUENCE public.tb_user_id_seq
 ALTER TABLE public.tb_user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3338 (class 0 OID 0)
+-- TOC entry 3339 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: tb_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -383,7 +386,7 @@ ALTER SEQUENCE public.tb_user_id_seq OWNED BY public.tb_user.id;
 
 
 --
--- TOC entry 3170 (class 2604 OID 16469)
+-- TOC entry 3171 (class 2604 OID 16469)
 -- Name: tb_category id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -407,7 +410,7 @@ ALTER TABLE ONLY public.tb_company ALTER COLUMN id SET DEFAULT nextval('public.t
 
 
 --
--- TOC entry 3172 (class 2604 OID 16547)
+-- TOC entry 3173 (class 2604 OID 16547)
 -- Name: tb_likes id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -415,7 +418,7 @@ ALTER TABLE ONLY public.tb_likes ALTER COLUMN id SET DEFAULT nextval('public.tb_
 
 
 --
--- TOC entry 3168 (class 2604 OID 16457)
+-- TOC entry 3169 (class 2604 OID 16457)
 -- Name: tb_sector id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -439,7 +442,7 @@ ALTER TABLE ONLY public.tb_user ALTER COLUMN id SET DEFAULT nextval('public.tb_u
 
 
 --
--- TOC entry 3185 (class 2606 OID 16503)
+-- TOC entry 3186 (class 2606 OID 16503)
 -- Name: tb_user email_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -448,7 +451,7 @@ ALTER TABLE ONLY public.tb_user
 
 
 --
--- TOC entry 3187 (class 2606 OID 16505)
+-- TOC entry 3188 (class 2606 OID 16505)
 -- Name: tb_user mobile_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -457,7 +460,7 @@ ALTER TABLE ONLY public.tb_user
 
 
 --
--- TOC entry 3181 (class 2606 OID 16525)
+-- TOC entry 3182 (class 2606 OID 16525)
 -- Name: tb_company phonenumber_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -466,7 +469,7 @@ ALTER TABLE ONLY public.tb_company
 
 
 --
--- TOC entry 3191 (class 2606 OID 16463)
+-- TOC entry 3192 (class 2606 OID 16463)
 -- Name: tb_sector sector_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -475,7 +478,7 @@ ALTER TABLE ONLY public.tb_sector
 
 
 --
--- TOC entry 3175 (class 2606 OID 16482)
+-- TOC entry 3176 (class 2606 OID 16482)
 -- Name: tb_story sid_uqx; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -484,7 +487,7 @@ ALTER TABLE ONLY public.tb_story
 
 
 --
--- TOC entry 3193 (class 2606 OID 16475)
+-- TOC entry 3194 (class 2606 OID 16475)
 -- Name: tb_category tb_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -493,7 +496,7 @@ ALTER TABLE ONLY public.tb_category
 
 
 --
--- TOC entry 3179 (class 2606 OID 16426)
+-- TOC entry 3180 (class 2606 OID 16426)
 -- Name: tb_comment tb_comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -502,7 +505,7 @@ ALTER TABLE ONLY public.tb_comment
 
 
 --
--- TOC entry 3183 (class 2606 OID 16439)
+-- TOC entry 3184 (class 2606 OID 16439)
 -- Name: tb_company tb_company_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -511,7 +514,7 @@ ALTER TABLE ONLY public.tb_company
 
 
 --
--- TOC entry 3195 (class 2606 OID 16553)
+-- TOC entry 3196 (class 2606 OID 16553)
 -- Name: tb_likes tb_likes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -520,7 +523,7 @@ ALTER TABLE ONLY public.tb_likes
 
 
 --
--- TOC entry 3177 (class 2606 OID 16397)
+-- TOC entry 3178 (class 2606 OID 16397)
 -- Name: tb_story tb_story_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -529,7 +532,7 @@ ALTER TABLE ONLY public.tb_story
 
 
 --
--- TOC entry 3189 (class 2606 OID 16451)
+-- TOC entry 3190 (class 2606 OID 16451)
 -- Name: tb_user tb_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -537,7 +540,7 @@ ALTER TABLE ONLY public.tb_user
     ADD CONSTRAINT tb_user_pkey PRIMARY KEY (id);
 
 
--- Completed on 2021-07-30 17:31:46 GMT
+-- Completed on 2021-08-24 14:21:29 GMT
 
 --
 -- PostgreSQL database dump complete
