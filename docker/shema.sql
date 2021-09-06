@@ -5,7 +5,7 @@
 -- Dumped from database version 13.3
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-08-24 14:21:29 GMT
+-- Started on 2021-09-06 20:37:35 GMT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +20,7 @@ SET row_security = off;
 
 DROP DATABASE IF EXISTS saysay;
 --
--- TOC entry 3332 (class 1262 OID 16386)
+-- TOC entry 3346 (class 1262 OID 16386)
 -- Name: saysay; Type: DATABASE; Schema: -; Owner: postgres
 --
 
@@ -79,7 +79,7 @@ CREATE SEQUENCE public.sector_id_seq
 ALTER TABLE public.sector_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3333 (class 0 OID 0)
+-- TOC entry 3347 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: sector_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -120,7 +120,7 @@ CREATE SEQUENCE public.tb_category_id_seq
 ALTER TABLE public.tb_category_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3334 (class 0 OID 0)
+-- TOC entry 3348 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: tb_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -165,7 +165,7 @@ CREATE SEQUENCE public.tb_comment_id_seq
 ALTER TABLE public.tb_comment_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3335 (class 0 OID 0)
+-- TOC entry 3349 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: tb_comment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -220,7 +220,7 @@ CREATE SEQUENCE public.tb_company_id_seq
 ALTER TABLE public.tb_company_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3336 (class 0 OID 0)
+-- TOC entry 3350 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: tb_company_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -266,7 +266,7 @@ CREATE SEQUENCE public.tb_likes_id_seq
 ALTER TABLE public.tb_likes_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3337 (class 0 OID 0)
+-- TOC entry 3351 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: tb_likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -320,7 +320,7 @@ CREATE SEQUENCE public.tb_story_id_seq
 ALTER TABLE public.tb_story_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3338 (class 0 OID 0)
+-- TOC entry 3352 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: tb_story_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -339,7 +339,7 @@ CREATE TABLE public.tb_user (
     firstname character varying(50),
     lastname character varying(50),
     email character varying(255) NOT NULL,
-    mobile character varying(50) NOT NULL,
+    mobile character varying(50),
     hashedpassword text,
     salt text,
     profilepic text,
@@ -377,7 +377,7 @@ CREATE SEQUENCE public.tb_user_id_seq
 ALTER TABLE public.tb_user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3339 (class 0 OID 0)
+-- TOC entry 3353 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: tb_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -439,6 +439,142 @@ ALTER TABLE ONLY public.tb_story ALTER COLUMN id SET DEFAULT nextval('public.tb_
 --
 
 ALTER TABLE ONLY public.tb_user ALTER COLUMN id SET DEFAULT nextval('public.tb_user_id_seq'::regclass);
+
+
+--
+-- TOC entry 3338 (class 0 OID 16466)
+-- Dependencies: 211
+-- Data for Name: tb_category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_category (id, cid, name, description, createdby, createdon) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3330 (class 0 OID 16418)
+-- Dependencies: 203
+-- Data for Name: tb_comment; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_comment (id, authorid, cid, storyid, possibilitysensitive, lang, entities, authorname, createdon, comment) FROM stdin;
+1	35443544333577787688	C74fc0b19d7ea4f709a1a66c9aa14ac66	eeee	1	en	{"yea":"kee"}	shrug_life	2021-07-23 15:53:36.007856+00	Abena Korkor is my baby
+\.
+
+
+--
+-- TOC entry 3332 (class 0 OID 16430)
+-- Dependencies: 205
+-- Data for Name: tb_company; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_company (id, name, location, phonenumber, sectorname, rating, logo, backgroundinfo, entities, cid, code, createdby, email, website, otherlinks, categoryname, sectorid, categoryid, active, createdon) FROM stdin;
+7	SaySay	accrsdffdgfa	00000000	ertert	\N	ertre			Cb951db333f5e4e20ac34f6e9ae39ffe5	ertr	23423aaa			423432	ertrt	2342332	435435	1	2021-05-26 19:30:42.608999+00
+\.
+
+
+--
+-- TOC entry 3340 (class 0 OID 16544)
+-- Dependencies: 213
+-- Data for Name: tb_likes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_likes (id, authorid, lid, comment_id, storyid, possibilitysensitive, lang, entities, authorname, createdon, status) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3336 (class 0 OID 16454)
+-- Dependencies: 209
+-- Data for Name: tb_sector; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_sector (id, sid, name, createdby, description, createdon) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3328 (class 0 OID 16389)
+-- Dependencies: 201
+-- Data for Name: tb_story; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_story (id, authorid, entities, sid, lang, possiblysensitive, source, story, likecount, commentcount, cautioncount, categoryname, sectorname, companyid, sectorid, categoryid, authorname, companyname, createdon) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3334 (class 0 OID 16442)
+-- Dependencies: 207
+-- Data for Name: tb_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tb_user (id, roleid, firstname, lastname, email, mobile, hashedpassword, salt, profilepic, backgroundinfo, website, gpslocation, dob, otherinfo, createdby, rolename, uid, active, verified, verificationcode, createdon, verifiedon) FROM stdin;
+49	2332111	\N	\N	fr3man.stephen@gmail.com	233248620321	\N	\N	\N	\N	\N	\N	\N	\N	freeman	basic	Uf57750246e0a4e08b6966af00c81ca01	1	1	ieRyPleaiS1sBAMJ	2021-08-18 17:47:32.814348	\N
+\.
+
+
+--
+-- TOC entry 3354 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: sector_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sector_id_seq', 1, false);
+
+
+--
+-- TOC entry 3355 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: tb_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_category_id_seq', 1, false);
+
+
+--
+-- TOC entry 3356 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: tb_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_comment_id_seq', 1, true);
+
+
+--
+-- TOC entry 3357 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: tb_company_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_company_id_seq', 8, true);
+
+
+--
+-- TOC entry 3358 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: tb_likes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_likes_id_seq', 3, true);
+
+
+--
+-- TOC entry 3359 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: tb_story_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_story_id_seq', 40, true);
+
+
+--
+-- TOC entry 3360 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: tb_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tb_user_id_seq', 49, true);
 
 
 --
@@ -540,7 +676,7 @@ ALTER TABLE ONLY public.tb_user
     ADD CONSTRAINT tb_user_pkey PRIMARY KEY (id);
 
 
--- Completed on 2021-08-24 14:21:29 GMT
+-- Completed on 2021-09-06 20:37:35 GMT
 
 --
 -- PostgreSQL database dump complete
