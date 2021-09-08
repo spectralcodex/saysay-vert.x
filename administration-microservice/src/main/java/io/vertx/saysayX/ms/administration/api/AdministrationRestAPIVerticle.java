@@ -26,6 +26,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private static final String API_ADD_USER = "/user";
     private static final String API_RETRIEVE_ALL_USER = "/users";
     private static final String API_RETRIEVE_USER = "/user/:uid";
+    private static final String API_RETRIEVE_USER_BY_EMAIL = "/user/email/:email";
     private static final String API_UPDATE_USER = "/user/:uid";
     private static final String API_DELETE_USER = "/user/:uid";
     private static final String API_ACTIVATE_USER = "/user/on/:uid";
@@ -57,6 +58,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         //User routes
         router.post(API_ADD_USER).handler(this::apiAddUser);
         router.get(API_RETRIEVE_USER).handler(this::apiRetrieveUser);
+        router.get(API_RETRIEVE_USER_BY_EMAIL).handler(this::apiRetrieveUserByEmail);
         router.get(API_RETRIEVE_ALL_USER).handler(this::apiRetrieveAllUser);
         router.patch(API_UPDATE_USER).handler(this::apiUpdateUser);
         router.delete(API_DELETE_USER).handler(this::apiDeleteUser);
@@ -102,7 +104,8 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
                             }
                         });
                     context.response().setStatusCode(201)
-                            .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+                            .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
+                            .put("uid", uid).put("vid", verifyCode).encodePrettily());
                      } else {
                     internalError(context, ar.cause());
                     ar.cause().printStackTrace();
@@ -116,6 +119,12 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private void apiRetrieveUser(RoutingContext context) {
         String uid = context.request().getParam("uid");
         service.retrieveUserById(uid, resultHandlerNonEmpty(context));
+    }
+
+
+    private void apiRetrieveUserByEmail(RoutingContext context) {
+        String uid = context.request().getParam("email");
+        service.retrieveUserByEmail(uid, resultHandlerNonEmpty(context));
     }
 
     private void apiRetrieveAllUser(RoutingContext ctx) {
