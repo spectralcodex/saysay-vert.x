@@ -371,7 +371,7 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     protected void notImplemented(RoutingContext context) {
         context.response().setStatusCode(501)
                 .putHeader("content-type", "application/json")
-                .end(new JsonObject().put("message", "not_implemented").encodePrettily());
+                .end(new JsonObject().put("msg", "not_implemented").encodePrettily());
     }
 
     protected void badGateway(Throwable ex, RoutingContext context) {
@@ -415,12 +415,12 @@ public class RestAPIVerticle extends BaseMicroserviceVerticle {
     protected void notFound(RoutingContext context) {
         context.response().setStatusCode(404)
                 .putHeader("content-type", "application/json")
-                .end(new JsonObject().put("message", "not_found").encodePrettily());
+                .end(new JsonObject().put("msg", "not_found").encodePrettily());
     }
 
     protected void expired_code(RoutingContext context) {
         context.response().setStatusCode(410)
                 .putHeader("content-type", "application/json")
-                .end(new JsonObject().put("message", "expired").encodePrettily());
+                .end(new JsonObject().put("msg", "expired").encodePrettily());
     }
 }

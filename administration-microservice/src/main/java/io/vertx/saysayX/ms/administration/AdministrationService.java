@@ -55,7 +55,7 @@ public interface AdministrationService{
     AdministrationService updateUserVerificationCode(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
 
     @Fluent
-    AdministrationService addUserByEmailOrMobile(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
+    AdministrationService addUserByEmail(UserBean user, Handler<AsyncResult<Integer>> resultHandler);
 
     /**
      * @param userId

@@ -92,21 +92,25 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
             final String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
             user.setVerificationCode(verifyCode);
             user.setUid(uid);
-            service.addUserByEmailOrMobile(user, ar -> {
+            service.addUserByEmail(user, ar -> {
                 if (ar.succeeded()) {
                     Integer res = ar.result();
-                    if(res == 1)
+                    if(res == 1) {
                         MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail()).put("verifyCode", verifyCode),
                                 mailRes -> {
-                            if(mailRes.failed()){
-                                internalError(context, mailRes.cause());
-                                mailRes.cause().printStackTrace();
-                            }
-                        });
-                    context.response().setStatusCode(201)
-                            .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
-                            .put("uid", uid).put("vid", verifyCode).encodePrettily());
-                     } else {
+                                    if (mailRes.failed()) {
+                                        internalError(context, mailRes.cause());
+                                        mailRes.cause().printStackTrace();
+                                    }
+                                });
+                        context.response().setStatusCode(201)
+                                .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
+                                .put("uid", uid).put("vid", verifyCode).encodePrettily());
+                    } else{
+                        context.response().setStatusCode(400).putHeader("Content-type", "application/json")
+                                .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                    }
+                } else {
                     internalError(context, ar.cause());
                     ar.cause().printStackTrace();
                 }

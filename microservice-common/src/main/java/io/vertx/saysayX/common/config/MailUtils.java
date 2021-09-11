@@ -23,7 +23,9 @@ public class MailUtils {
                 .setFrom(msgConf.getString("em.username", "saysayapp1@gmail.com"))
                 .setTo(msgConf.getString("em.to"))
                 .setSubject(msgConf.getString("em.verification.subject", "The SaySay Team"))
-                .setHtml("verify email <a href=\"https://sayworx.com/identity/verification?vid="
+                //.setHtml("verify email <a href=\"https://sayworx.com/identity/verification?vid="
+                //        + msgConf.getString("verifyCode") + "\">click Here!</a>");
+.setHtml("verify email <a href=\"https://35.85.45.199:8787/api/administration/user/verify/"
                         + msgConf.getString("verifyCode") + "\">click Here!</a>");
 
         mailClient.sendMail(email, handler);

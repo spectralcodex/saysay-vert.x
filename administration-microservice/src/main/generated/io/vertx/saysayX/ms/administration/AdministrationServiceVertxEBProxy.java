@@ -125,7 +125,7 @@ public class AdministrationServiceVertxEBProxy implements AdministrationService 
     return this;
   }
   @Override
-  public  AdministrationService addUserByEmailOrMobile(UserBean user, Handler<AsyncResult<Integer>> resultHandler){
+  public  AdministrationService addUserByEmail(UserBean user, Handler<AsyncResult<Integer>> resultHandler){
     if (closed) {
       resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
@@ -134,7 +134,7 @@ public class AdministrationServiceVertxEBProxy implements AdministrationService 
     _json.put("user", user == null ? null : user.toJson());
 
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
-    _deliveryOptions.addHeader("action", "addUserByEmailOrMobile");
+    _deliveryOptions.addHeader("action", "addUserByEmail");
     _vertx.eventBus().<Integer>request(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));

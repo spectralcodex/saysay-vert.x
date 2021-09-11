@@ -73,17 +73,16 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
         return this;
     }
     @Override
-    public AdministrationService addUserByEmailOrMobile(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
+    public AdministrationService addUserByEmail(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
         //String verifyCode = authProviderHelper.getVerifyCode();
         //String uid = "U" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
         executor.execute(dsl -> dsl.insertInto(TB_USER,
                 TB_USER.ROLEID, TB_USER.ROLENAME,
                 TB_USER.EMAIL,
-                TB_USER.MOBILE,
                 TB_USER.CREATEDBY, TB_USER.VERIFICATIONCODE,
                 TB_USER.UID)
                 .values(user.getRoleid(), user.getRolename(),
-                        user.getEmail(),user.getMobile(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
+                        user.getEmail(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
                 .onComplete(resultHandler);
         return this;
     }

@@ -55,7 +55,7 @@ public class RestStoryApiVerticle extends RestAPIVerticle {
                         .putHeader("content-type", "application/json")
                         .end(result);
             }));*/
-            service.addStory(story, resultHandler(ctx, 201, "user_added"));
+            service.addStory(story, resultHandler(ctx, 201, "story_added"));
         } catch (Exception e) {
             badRequest(ctx, e);
         }
