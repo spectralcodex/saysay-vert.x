@@ -62,4 +62,16 @@ export default class AdministrationService {
   updateCompanyById(company: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
 
   retrieveAllCompany(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
+
+  addInterest(interestId: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveInterestId(interestId: string, resultHandler: (err: any, result: Object) => any) : AdministrationService;
+
+  deleteInterest(interestId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  activateInterest(interestId: string, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  updateInterestById(interest: any, resultHandler: (err: any, result: any) => any) : AdministrationService;
+
+  retrieveAllInterest(resultHandler: (err: any, result: Array<Object>) => any) : AdministrationService;
 }

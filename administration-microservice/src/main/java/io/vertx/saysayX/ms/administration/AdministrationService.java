@@ -8,6 +8,7 @@ import io.vertx.core.Handler;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
+import io.vertx.saysayX.ms.administration.pojo.InterestBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 
 import java.util.List;
@@ -131,4 +132,22 @@ public interface AdministrationService{
 
     @Fluent
     AdministrationService retrieveAllCompany(Handler<AsyncResult<List<JsonObject>>> resultHandler);
+
+    @Fluent
+    AdministrationService addInterest(InterestBean interestId, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService retrieveInterestId(String interestId, Handler<AsyncResult<JsonObject>> resultHandler);
+
+    @Fluent
+    AdministrationService deleteInterest(String interestId, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService activateInterest(String interestId, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService updateInterestById(InterestBean interest, Handler<AsyncResult<Integer>> resultHandler);
+
+    @Fluent
+    AdministrationService retrieveAllInterest(Handler<AsyncResult<List<JsonObject>>> resultHandler);
 }

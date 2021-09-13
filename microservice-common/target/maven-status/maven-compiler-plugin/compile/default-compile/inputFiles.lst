@@ -6,6 +6,7 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbStory.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/Keys.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/package-info.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbInterestDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/RestAPIVerticle.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbCompanyDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbStory.java
@@ -13,6 +14,7 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbCategoryDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbCompanyRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/converters/Bindings.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbInterestRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbUserRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbCompany.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbLikes.java
@@ -33,6 +35,7 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/Tables.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbCommentDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/config/MailUtils.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbInterest.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbCategoryRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbSector.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbComment.java
@@ -41,11 +44,13 @@
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/daos/TbSectorDao.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbCategory.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbUser.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbInterest.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/converters/Converters.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbCommentRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbCompany.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/interfaces/ITbCategory.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/pojos/TbCategory.java
+/Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbInterest.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/TbLikes.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/jooq/tables/records/TbStoryRecord.java
 /Users/sfadarkwah/Documents/GitHub/Projects/Idea/saysay-vert.x/microservice-common/src/main/java/io/vertx/saysayX/common/BaseMicroserviceVerticle.java

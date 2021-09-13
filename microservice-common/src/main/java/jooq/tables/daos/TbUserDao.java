@@ -203,13 +203,6 @@ public class TbUserDao extends AbstractAsyncVertxDAO<TbUserRecord, jooq.tables.p
         return findOneByCondition(TbUser.TB_USER.EMAIL.eq(value));
     }
 
-    /**
-     * Find a unique record that has <code>mobile = value</code> asynchronously
-     */
-    public Future<jooq.tables.pojos.TbUser> findOneByMobile(String value) {
-        return findOneByCondition(TbUser.TB_USER.MOBILE.eq(value));
-    }
-
     @Override
     public AsyncClassicQueryExecutor<TbUserRecord,jooq.tables.pojos.TbUser,Long> queryExecutor(){
         return (AsyncClassicQueryExecutor<TbUserRecord,jooq.tables.pojos.TbUser,Long>) super.queryExecutor();

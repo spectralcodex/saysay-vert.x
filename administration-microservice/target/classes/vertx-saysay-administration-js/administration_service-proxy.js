@@ -373,6 +373,113 @@
       } else throw new TypeError('function invoked with invalid arguments');
     };
 
+    /**
+
+     @public
+     @param interestId {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.addInterest =  function(interestId, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"interestId":__args[0]}, {"action":"addInterest"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param interestId {string} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.retrieveInterestId =  function(interestId, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"interestId":__args[0]}, {"action":"retrieveInterestId"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param interestId {string} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.deleteInterest =  function(interestId, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"interestId":__args[0]}, {"action":"deleteInterest"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param interestId {string} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.activateInterest =  function(interestId, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"interestId":__args[0]}, {"action":"activateInterest"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param interest {Object} 
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.updateInterestById =  function(interest, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"interest":__args[0]}, {"action":"updateInterestById"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
+    /**
+
+     @public
+     @param resultHandler {function} 
+     @return {AdministrationService}
+     */
+    this.retrieveAllInterest =  function(resultHandler) {
+      var __args = arguments;
+      if (__args.length === 1 && typeof __args[0] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {}, {"action":"retrieveAllInterest"}, function(err, result) { __args[0](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
   };
 
   if (typeof exports !== 'undefined') {

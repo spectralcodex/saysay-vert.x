@@ -20,6 +20,7 @@ var utils = require('vertx-js/util/utils');
 var io = Packages.io;
 var JsonObject = io.vertx.core.json.JsonObject;
 var JAdministrationService = Java.type('io.vertx.saysayX.ms.administration.AdministrationService');
+var InterestBean = Java.type('io.vertx.saysayX.ms.administration.pojo.InterestBean');
 var UserBean = Java.type('io.vertx.saysayX.ms.administration.pojo.UserBean');
 var CompanyBean = Java.type('io.vertx.saysayX.ms.administration.pojo.CompanyBean');
 
@@ -54,6 +55,12 @@ var AdministrationService = function(j_val) {
   var __super_activateCompany = this.activateCompany;
   var __super_updateCompanyById = this.updateCompanyById;
   var __super_retrieveAllCompany = this.retrieveAllCompany;
+  var __super_addInterest = this.addInterest;
+  var __super_retrieveInterestId = this.retrieveInterestId;
+  var __super_deleteInterest = this.deleteInterest;
+  var __super_activateInterest = this.activateInterest;
+  var __super_updateInterestById = this.updateInterestById;
+  var __super_retrieveAllInterest = this.retrieveAllInterest;
   /**
 
    @public
@@ -481,6 +488,149 @@ var AdministrationService = function(j_val) {
       return that;
     } else if (typeof __super_retrieveAllCompany != 'undefined') {
       return __super_retrieveAllCompany.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param interestId {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.addInterest =  function(interestId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["addInterest(io.vertx.saysayX.ms.administration.pojo.InterestBean,io.vertx.core.Handler)"](__args[0]  != null ? new InterestBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_addInterest != 'undefined') {
+      return __super_addInterest.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param interestId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.retrieveInterestId =  function(interestId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["retrieveInterestId(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](utils.convReturnJson(ar.result()), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveInterestId != 'undefined') {
+      return __super_retrieveInterestId.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param interestId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.deleteInterest =  function(interestId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["deleteInterest(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_deleteInterest != 'undefined') {
+      return __super_deleteInterest.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param interestId {string} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.activateInterest =  function(interestId, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_administrationService["activateInterest(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_activateInterest != 'undefined') {
+      return __super_activateInterest.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param interest {Object} 
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.updateInterestById =  function(interest, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && (typeof __args[0] === 'object' && __args[0] != null) && typeof __args[1] === 'function') {
+      j_administrationService["updateInterestById(io.vertx.saysayX.ms.administration.pojo.InterestBean,io.vertx.core.Handler)"](__args[0]  != null ? new InterestBean(new JsonObject(Java.asJSONCompatible(__args[0]))) : null, function(ar) {
+        if (ar.succeeded()) {
+          __args[1](ar.result(), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_updateInterestById != 'undefined') {
+      return __super_updateInterestById.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+
+   @public
+   @param resultHandler {function} 
+   @return {AdministrationService}
+   */
+  this.retrieveAllInterest =  function(resultHandler) {
+    var __args = arguments;
+    if (__args.length === 1 && typeof __args[0] === 'function') {
+      j_administrationService["retrieveAllInterest(io.vertx.core.Handler)"](function(ar) {
+        if (ar.succeeded()) {
+          __args[0](utils.convReturnListSetJson(ar.result()), null);
+        } else {
+          __args[0](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveAllInterest != 'undefined') {
+      return __super_retrieveAllInterest.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

@@ -20,6 +20,7 @@ jooq/tables/TbUser.class
 jooq/tables/converters/Converters.class
 jooq/tables/pojos/TbStory.class
 io/vertx/saysayX/common/config/Log4jConfigurationServiceHandler.class
+jooq/tables/pojos/TbInterest.class
 jooq/Sequences.class
 jooq/tables/records/TbCategoryRecord.class
 jooq/tables/pojos/TbCategory.class
@@ -29,6 +30,7 @@ jooq/tables/daos/TbCommentDao.class
 io/vertx/saysayX/common/RestAPIVerticle.class
 jooq/Public.class
 jooq/tables/records/TbLikesRecord.class
+jooq/tables/TbInterest.class
 io/vertx/saysayX/common/config/RequestLogHandler.class
 io/vertx/saysayX/common/config/ConfigRetrieverHelper.class
 io/vertx/saysayX/common/config/BaseUtils.class
@@ -39,6 +41,7 @@ jooq/tables/records/TbSectorRecord.class
 io/vertx/saysayX/common/service/JooqRepositoryWrapper.class
 jooq/tables/records/TbStoryRecord.class
 jooq/tables/TbCategory.class
+jooq/tables/daos/TbInterestDao.class
 jooq/tables/daos/TbCompanyDao.class
 jooq/tables/records/TbCompanyRecord.class
 jooq/tables/TbLikes.class
@@ -51,6 +54,7 @@ jooq/tables/interfaces/ITbComment.class
 io/vertx/saysayX/common/config/PropertiesCache$LazyHolder.class
 jooq/tables/pojos/TbCompany.class
 jooq/Indexes$Indexes0.class
+jooq/tables/records/TbInterestRecord.class
 jooq/tables/daos/TbUserDao.class
 jooq/tables/pojos/TbUser.class
 jooq/Tables.class
@@ -58,5 +62,6 @@ io/vertx/saysayX/common/config/PropertiesCache$1.class
 vertx-saysayx-microservice-common-js/request_log_handler.js
 jooq/Keys.class
 jooq/Keys$UniqueKeys0.class
+jooq/tables/interfaces/ITbInterest.class
 io/vertx/saysayX/common/config/Slf4jRequestLogger.class
 jooq/tables/interfaces/ITbUser.class

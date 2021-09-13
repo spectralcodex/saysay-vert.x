@@ -7,6 +7,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.saysayX.ms.administration.AdministrationService;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
+import io.vertx.saysayX.ms.administration.pojo.InterestBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import io.vertx.saysayX.common.config.BaseUtils;
 import io.vertx.saysayX.common.service.JooqRepositoryWrapper;
@@ -22,8 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import static jooq.Tables.TB_COMPANY;
-import static jooq.Tables.TB_USER;
+import static jooq.Tables.*;
 
 
 public class AdministrationImpl extends JooqRepositoryWrapper implements AdministrationService {
@@ -59,7 +59,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                         user.getEmail(), user.getMobile(),
                         user.getProfilepic(), user.getBackgroundinfo(),
                         user.getWebsite(), user.getGpslocation(), user.getDob(),
-                        user.getOtherinfo(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
+                        user.getOtherinfo(), user.getCreatedby(), user.getVerificationCode(), user.getUid()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -72,6 +72,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                 .where(TB_USER.UID.eq(user.getUid()))).onComplete(resultHandler);
         return this;
     }
+
     @Override
     public AdministrationService addUserByEmail(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
         //String verifyCode = authProviderHelper.getVerifyCode();
@@ -82,7 +83,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                 TB_USER.CREATEDBY, TB_USER.VERIFICATIONCODE,
                 TB_USER.UID)
                 .values(user.getRoleid(), user.getRolename(),
-                        user.getEmail(), user.getCreatedby(),user.getVerificationCode() , user.getUid()))
+                        user.getEmail(), user.getCreatedby(), user.getVerificationCode(), user.getUid()))
                 .onComplete(resultHandler);
         return this;
     }
@@ -91,8 +92,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     public AdministrationService retrieveUserById(String userId, Handler<AsyncResult<JsonObject>> resultHandler) {
         executor.findOneJson(
                 dsl -> dsl.selectFrom(TB_USER).where(TB_USER.UID.eq(userId)))
-                //dsl -> dsl.selectFrom("SELECT * FROM tb_user WHERE createdon > NOW() - INTERVAL '20 minutes'"))
-               .onComplete(resultHandler);
+                .onComplete(resultHandler);
         return this;
     }
 
@@ -112,7 +112,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
 
     @Override
     public AdministrationService activateUserByUid(UserBean user, Handler<AsyncResult<Integer>> resultHandler) {
-        final String salt  = authProviderHelper.generateSalt();
+        final String salt = authProviderHelper.generateSalt();
         executor.execute(dsl -> dsl.update(TB_USER).set(TB_USER.ACTIVE, 1)//0 means disable
                 .set(TB_USER.HASHEDPASSWORD, authProviderHelper.computeHash(user.getPassword(), salt))
                 .set(TB_USER.SALT, salt)
@@ -135,7 +135,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                 dsl -> dsl.update(TB_USER).set(TB_USER.VERIFIED, 1)
                         .set(TB_USER.VERIFIEDON, new Timestamp(System.currentTimeMillis()))
                         .where(TB_USER.VERIFICATIONCODE.eq(userVerifyCode)).and(TB_USER.CREATEDON.greaterThan(expireTime)))
-                                .onComplete(resultHandler);
+                .onComplete(resultHandler);
         return this;
     }
 
@@ -226,7 +226,7 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
                 .set(TB_COMPANY.WEBSITE, company.getWebsite())
                 .set(TB_COMPANY.OTHERLINKS, company.getOtherlinks())
                 .set(TB_COMPANY.CATEGORYID, company.getCategoryid())
-                .set(TB_COMPANY.CATEGORYNAME, company.getCategoryname()))
+                .set(TB_COMPANY.CATEGORYNAME, company.getCategoryname()).where(TB_COMPANY.CID.eq(company.getCid())))
                 .onComplete(resultHandler);
         return this;
     }
@@ -234,6 +234,53 @@ public class AdministrationImpl extends JooqRepositoryWrapper implements Adminis
     @Override
     public AdministrationService retrieveAllCompany(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
         executor.findManyJson(dsl -> dsl.selectFrom(TB_COMPANY))
+                .onComplete(resultHandler);
+
+        return this;
+    }
+
+    @Override
+    public AdministrationService addInterest(InterestBean interest, Handler<AsyncResult<Integer>> resultHandler) {
+        String iid = "I" + UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
+        executor.execute(dsl -> dsl.insertInto(TB_INTEREST,
+                TB_INTEREST.NAME, TB_INTEREST.DESCRIPTION, TB_INTEREST.IID, TB_INTEREST.CREATEDBY)
+                .values(interest.getName(), interest.getDescription(), iid, interest.getCreatedby()))
+                .onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
+    public AdministrationService retrieveInterestId(String interestId, Handler<AsyncResult<JsonObject>> resultHandler) {
+        executor.findOneJson(dsl -> dsl.selectFrom(TB_INTEREST).where(TB_INTEREST.IID.eq(interestId)))
+                .onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
+    public AdministrationService deleteInterest(String interestId, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(dsl -> dsl.delete(TB_INTEREST)
+                .where(TB_INTEREST.IID.eq(interestId))).onComplete(resultHandler);
+
+        return this;
+    }
+
+    @Override
+    public AdministrationService activateInterest(String interestId, Handler<AsyncResult<Integer>> resultHandler) {
+        return null;
+    }
+
+    @Override
+    public AdministrationService updateInterestById(InterestBean interest, Handler<AsyncResult<Integer>> resultHandler) {
+        executor.execute(dsl -> dsl.update(TB_INTEREST)
+                .set(TB_INTEREST.NAME, interest.getName())
+                .set(TB_INTEREST.DESCRIPTION, interest.getDescription()).where(TB_INTEREST.IID.eq(interest.getIid())))
+                .onComplete(resultHandler);
+        return this;
+    }
+
+    @Override
+    public AdministrationService retrieveAllInterest(Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+        executor.findManyJson(dsl -> dsl.selectFrom(TB_INTEREST))
                 .onComplete(resultHandler);
 
         return this;

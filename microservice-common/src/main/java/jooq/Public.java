@@ -13,6 +13,7 @@ import javax.annotation.Generated;
 import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbInterest;
 import jooq.tables.TbLikes;
 import jooq.tables.TbSector;
 import jooq.tables.TbStory;
@@ -37,7 +38,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 2094822818;
+    private static final long serialVersionUID = -1831022087;
 
     /**
      * The reference instance of <code>public</code>
@@ -58,6 +59,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.tb_company</code>.
      */
     public final TbCompany TB_COMPANY = jooq.tables.TbCompany.TB_COMPANY;
+
+    /**
+     * The table <code>public.tb_interest</code>.
+     */
+    public final TbInterest TB_INTEREST = jooq.tables.TbInterest.TB_INTEREST;
 
     /**
      * The table <code>public.tb_likes</code>.
@@ -108,6 +114,7 @@ public class Public extends SchemaImpl {
             Sequences.TB_CATEGORY_ID_SEQ,
             Sequences.TB_COMMENT_ID_SEQ,
             Sequences.TB_COMPANY_ID_SEQ,
+            Sequences.TB_INTEREST_ID_SEQ,
             Sequences.TB_LIKES_ID_SEQ,
             Sequences.TB_STORY_ID_SEQ,
             Sequences.TB_USER_ID_SEQ);
@@ -125,6 +132,7 @@ public class Public extends SchemaImpl {
             TbCategory.TB_CATEGORY,
             TbComment.TB_COMMENT,
             TbCompany.TB_COMPANY,
+            TbInterest.TB_INTEREST,
             TbLikes.TB_LIKES,
             TbSector.TB_SECTOR,
             TbStory.TB_STORY,

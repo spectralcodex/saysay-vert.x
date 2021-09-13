@@ -12,6 +12,7 @@ import io.vertx.saysayX.common.RestAPIVerticle;
 import io.vertx.saysayX.common.config.MailUtils;
 import io.vertx.saysayX.ms.administration.AdministrationService;
 import io.vertx.saysayX.ms.administration.pojo.CompanyBean;
+import io.vertx.saysayX.ms.administration.pojo.InterestBean;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
 
     //User endpoints
     private static final String API_ADD_USER = "/user";
-    private static final String API_RETRIEVE_ALL_USER = "/users";
+    private static final String API_RETRIEVE_ALL_USER = "/user/all/get";
     private static final String API_RETRIEVE_USER = "/user/:uid";
     private static final String API_RETRIEVE_USER_BY_EMAIL = "/user/email/:email";
     private static final String API_UPDATE_USER = "/user/:uid";
@@ -34,12 +35,21 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     private static final String API_RESEND_VERIFY_CODE = "/user/resend/:uid";
 
     //Company endpoints
-    private static final String API_ADD_COMPANY = "/company";
-    private static final String API_RETRIEVE_ALL_COMPANY = "/companies";
+    private static final String API_ADD_COMPANY = "/company/add";
+    private static final String API_RETRIEVE_ALL_COMPANY = "/company/all/get";
     private static final String API_RETRIEVE_COMPANY = "/company/:cid";
     private static final String API_UPDATE_COMPANY = "/company/:cid";
     private static final String API_DELETE_COMPANY = "/company/:cid";
     private static final String API_ACTIVATE_COMPANY = "/company/on/:cid";
+
+
+    //Interest endpoints
+    private static final String API_ADD_INTEREST = "/interest/add";
+    private static final String API_RETRIEVE_ALL_INTEREST = "/interest/all/get";
+    private static final String API_RETRIEVE_INTEREST = "/interest/:iid";
+    private static final String API_UPDATE_INTEREST = "/interest/:iid";
+    private static final String API_DELETE_INTEREST = "/interest/:iid";
+    private static final String API_ACTIVATE_INTEREST = "/interest/on/:iid";
 
     protected final static Logger logger = LoggerFactory.getLogger(AdministrationRestAPIVerticle.class);
 
@@ -74,6 +84,14 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         router.delete(API_DELETE_COMPANY).handler(this::apiDeleteCompany);
         router.delete(API_ACTIVATE_COMPANY).handler(this::apiActivateCompany);
 
+        //Interest routes
+        router.post(API_ADD_INTEREST).handler(this::apiAddInterest);
+        router.get(API_RETRIEVE_INTEREST).handler(this::apiRetrieveInterest);
+        router.get(API_RETRIEVE_ALL_INTEREST).handler(this::apiRetrieveAllInterest);
+        router.patch(API_UPDATE_INTEREST).handler(this::apiUpdateInterest);
+        router.delete(API_DELETE_INTEREST).handler(this::apiDeleteInterest);
+        router.delete(API_ACTIVATE_INTEREST).handler(this::apiActivateInterest);
+
         String host = config().getString("administration.http.address", "0.0.0.0");
         int port = config().getInteger("administration.http.port", 8082);
 
@@ -95,7 +113,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
             service.addUserByEmail(user, ar -> {
                 if (ar.succeeded()) {
                     Integer res = ar.result();
-                    if(res == 1) {
+                    if (res == 1) {
                         MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail()).put("verifyCode", verifyCode),
                                 mailRes -> {
                                     if (mailRes.failed()) {
@@ -106,9 +124,9 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
                         context.response().setStatusCode(201)
                                 .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString())
                                 .put("uid", uid).put("vid", verifyCode).encodePrettily());
-                    } else{
+                    } else {
                         context.response().setStatusCode(400).putHeader("Content-type", "application/json")
-                                .end(new JsonObject().put("msg", res.toString()).encodePrettily());
+                                .end(new JsonObject().put("msg", ar.cause().toString()).encodePrettily());
                     }
                 } else {
                     internalError(context, ar.cause());
@@ -204,7 +222,7 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
     }
 
     //Extras
-    public void resendVerification(RoutingContext context){
+    public void resendVerification(RoutingContext context) {
         try {
             UserBean user = new UserBean(context.getBodyAsJson());
             final String verifyCode = RandomStringUtils.randomAlphanumeric(11, 21);
@@ -212,16 +230,20 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
             service.updateUserVerificationCode(user, ar -> {
                 if (ar.succeeded()) {
                     Integer res = ar.result();
-                    if(res == 1)
+                    if (res == 1) {
                         MailUtils.mailLocal(vertx, config().put("em.to", user.getEmail()).put("verifyCode", verifyCode),
                                 mailRes -> {
-                                    if(mailRes.failed()){
+                                    if (mailRes.failed()) {
                                         internalError(context, ar.cause());
                                         mailRes.cause().printStackTrace();
                                     }
                                 });
-                    context.response().setStatusCode(200)
-                            .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+                        context.response().setStatusCode(200)
+                                .putHeader("Content-type", "application/json").end(res == null ? "{}" : new JsonObject().put("msg", res.toString()).encodePrettily());
+                    } else {
+                        context.response().setStatusCode(400).putHeader("Content-type", "application/json")
+                                .end(new JsonObject().put("msg", ar.cause().toString()).encodePrettily());
+                    }
                 } else {
                     internalError(context, ar.cause());
                     ar.cause().printStackTrace();
@@ -232,4 +254,42 @@ public class AdministrationRestAPIVerticle extends RestAPIVerticle {
         }
     }
 
+    //Interest APIs
+    private void apiAddInterest(RoutingContext ctx) {
+        try {
+            InterestBean interest = new InterestBean(ctx.getBodyAsJson());
+            service.addInterest(interest, resultHandler(ctx, 201, "success"));
+        } catch (Exception e) {
+            badRequest(ctx, e);
+        }
+    }
+
+    private void apiRetrieveInterest(RoutingContext ctx) {
+        String iid = ctx.request().getParam("iid");
+        service.retrieveInterestId(iid, resultHandlerNonEmpty(ctx));
+    }
+
+    private void apiRetrieveAllInterest(RoutingContext ctx) {
+        //String cid = ctx.request().getParam("cid");
+        service.retrieveAllInterest(resultHandlerNonEmpty(ctx));
+    }
+
+    private void apiUpdateInterest(RoutingContext ctx) {
+        try {
+            InterestBean interest = new InterestBean(ctx.getBodyAsJson());
+            interest.setIid(ctx.request().getParam("iid"));
+            service.updateInterestById(interest, resultHandler(ctx, 200));
+        } catch (Exception e) {
+            badRequest(ctx, e);
+        }
+    }
+
+    private void apiDeleteInterest(RoutingContext ctx) {
+        String iid = ctx.request().getParam("iid");
+        service.deleteInterest(iid, deleteResultHandler(ctx));
+    }
+
+    private void apiActivateInterest(RoutingContext ctx) {
+        notImplemented(ctx);
+    }
 }

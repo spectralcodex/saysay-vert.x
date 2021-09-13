@@ -29,6 +29,21 @@
 |[[website]]`@website`|`String`|-
 |===
 
+[[InterestBean]]
+== InterestBean
+
+
+[cols=">25%,25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[createdby]]`@createdby`|`String`|-
+|[[description]]`@description`|`String`|-
+|[[id]]`@id`|`Number (Long)`|-
+|[[iid]]`@iid`|`String`|-
+|[[name]]`@name`|`String`|-
+|===
+
 [[UserBean]]
 == UserBean
 

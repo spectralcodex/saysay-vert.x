@@ -41,6 +41,7 @@ import io.vertx.serviceproxy.ServiceException;
 import io.vertx.serviceproxy.ServiceExceptionMessageCodec;
 import io.vertx.serviceproxy.HelperUtils;
 
+import io.vertx.saysayX.ms.administration.pojo.InterestBean;
 import java.util.List;
 import io.vertx.saysayX.ms.administration.pojo.UserBean;
 import io.vertx.saysayX.ms.administration.AdministrationService;
@@ -203,6 +204,35 @@ public class AdministrationServiceVertxProxyHandler extends ProxyHandler {
         }
         case "retrieveAllCompany": {
           service.retrieveAllCompany(HelperUtils.createListHandler(msg));
+          break;
+        }
+        case "addInterest": {
+          service.addInterest(json.getJsonObject("interestId") == null ? null : new io.vertx.saysayX.ms.administration.pojo.InterestBean(json.getJsonObject("interestId")),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveInterestId": {
+          service.retrieveInterestId((java.lang.String)json.getValue("interestId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "deleteInterest": {
+          service.deleteInterest((java.lang.String)json.getValue("interestId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "activateInterest": {
+          service.activateInterest((java.lang.String)json.getValue("interestId"),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "updateInterestById": {
+          service.updateInterestById(json.getJsonObject("interest") == null ? null : new io.vertx.saysayX.ms.administration.pojo.InterestBean(json.getJsonObject("interest")),
+                        HelperUtils.createHandler(msg));
+          break;
+        }
+        case "retrieveAllInterest": {
+          service.retrieveAllInterest(HelperUtils.createListHandler(msg));
           break;
         }
         default: throw new IllegalStateException("Invalid action: " + action);

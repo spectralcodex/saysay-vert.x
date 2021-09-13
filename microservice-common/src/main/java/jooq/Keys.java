@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbInterest;
 import jooq.tables.TbLikes;
 import jooq.tables.TbSector;
 import jooq.tables.TbStory;
@@ -16,6 +17,7 @@ import jooq.tables.TbUser;
 import jooq.tables.records.TbCategoryRecord;
 import jooq.tables.records.TbCommentRecord;
 import jooq.tables.records.TbCompanyRecord;
+import jooq.tables.records.TbInterestRecord;
 import jooq.tables.records.TbLikesRecord;
 import jooq.tables.records.TbSectorRecord;
 import jooq.tables.records.TbStoryRecord;
@@ -47,6 +49,7 @@ public class Keys {
     public static final Identity<TbCategoryRecord, Long> IDENTITY_TB_CATEGORY = Identities0.IDENTITY_TB_CATEGORY;
     public static final Identity<TbCommentRecord, Long> IDENTITY_TB_COMMENT = Identities0.IDENTITY_TB_COMMENT;
     public static final Identity<TbCompanyRecord, Long> IDENTITY_TB_COMPANY = Identities0.IDENTITY_TB_COMPANY;
+    public static final Identity<TbInterestRecord, Long> IDENTITY_TB_INTEREST = Identities0.IDENTITY_TB_INTEREST;
     public static final Identity<TbLikesRecord, Long> IDENTITY_TB_LIKES = Identities0.IDENTITY_TB_LIKES;
     public static final Identity<TbSectorRecord, Long> IDENTITY_TB_SECTOR = Identities0.IDENTITY_TB_SECTOR;
     public static final Identity<TbStoryRecord, Long> IDENTITY_TB_STORY = Identities0.IDENTITY_TB_STORY;
@@ -60,13 +63,13 @@ public class Keys {
     public static final UniqueKey<TbCommentRecord> TB_COMMENT_PKEY = UniqueKeys0.TB_COMMENT_PKEY;
     public static final UniqueKey<TbCompanyRecord> TB_COMPANY_PKEY = UniqueKeys0.TB_COMPANY_PKEY;
     public static final UniqueKey<TbCompanyRecord> PHONENUMBER_UQX = UniqueKeys0.PHONENUMBER_UQX;
+    public static final UniqueKey<TbInterestRecord> TB_INTEREST_PKEY = UniqueKeys0.TB_INTEREST_PKEY;
     public static final UniqueKey<TbLikesRecord> TB_LIKES_PKEY = UniqueKeys0.TB_LIKES_PKEY;
     public static final UniqueKey<TbSectorRecord> SECTOR_PKEY = UniqueKeys0.SECTOR_PKEY;
     public static final UniqueKey<TbStoryRecord> TB_STORY_PKEY = UniqueKeys0.TB_STORY_PKEY;
     public static final UniqueKey<TbStoryRecord> SID_UQX = UniqueKeys0.SID_UQX;
     public static final UniqueKey<TbUserRecord> TB_USER_PKEY = UniqueKeys0.TB_USER_PKEY;
     public static final UniqueKey<TbUserRecord> EMAIL_UQX = UniqueKeys0.EMAIL_UQX;
-    public static final UniqueKey<TbUserRecord> MOBILE_UQX = UniqueKeys0.MOBILE_UQX;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -81,6 +84,7 @@ public class Keys {
         public static Identity<TbCategoryRecord, Long> IDENTITY_TB_CATEGORY = Internal.createIdentity(TbCategory.TB_CATEGORY, TbCategory.TB_CATEGORY.ID);
         public static Identity<TbCommentRecord, Long> IDENTITY_TB_COMMENT = Internal.createIdentity(TbComment.TB_COMMENT, TbComment.TB_COMMENT.ID);
         public static Identity<TbCompanyRecord, Long> IDENTITY_TB_COMPANY = Internal.createIdentity(TbCompany.TB_COMPANY, TbCompany.TB_COMPANY.ID);
+        public static Identity<TbInterestRecord, Long> IDENTITY_TB_INTEREST = Internal.createIdentity(TbInterest.TB_INTEREST, TbInterest.TB_INTEREST.ID);
         public static Identity<TbLikesRecord, Long> IDENTITY_TB_LIKES = Internal.createIdentity(TbLikes.TB_LIKES, TbLikes.TB_LIKES.ID);
         public static Identity<TbSectorRecord, Long> IDENTITY_TB_SECTOR = Internal.createIdentity(TbSector.TB_SECTOR, TbSector.TB_SECTOR.ID);
         public static Identity<TbStoryRecord, Long> IDENTITY_TB_STORY = Internal.createIdentity(TbStory.TB_STORY, TbStory.TB_STORY.ID);
@@ -92,12 +96,12 @@ public class Keys {
         public static final UniqueKey<TbCommentRecord> TB_COMMENT_PKEY = Internal.createUniqueKey(TbComment.TB_COMMENT, "tb_comment_pkey", TbComment.TB_COMMENT.ID);
         public static final UniqueKey<TbCompanyRecord> TB_COMPANY_PKEY = Internal.createUniqueKey(TbCompany.TB_COMPANY, "tb_company_pkey", TbCompany.TB_COMPANY.ID);
         public static final UniqueKey<TbCompanyRecord> PHONENUMBER_UQX = Internal.createUniqueKey(TbCompany.TB_COMPANY, "phonenumber_uqx", TbCompany.TB_COMPANY.PHONENUMBER);
+        public static final UniqueKey<TbInterestRecord> TB_INTEREST_PKEY = Internal.createUniqueKey(TbInterest.TB_INTEREST, "tb_interest_pkey", TbInterest.TB_INTEREST.ID);
         public static final UniqueKey<TbLikesRecord> TB_LIKES_PKEY = Internal.createUniqueKey(TbLikes.TB_LIKES, "tb_likes_pkey", TbLikes.TB_LIKES.ID);
         public static final UniqueKey<TbSectorRecord> SECTOR_PKEY = Internal.createUniqueKey(TbSector.TB_SECTOR, "sector_pkey", TbSector.TB_SECTOR.ID);
         public static final UniqueKey<TbStoryRecord> TB_STORY_PKEY = Internal.createUniqueKey(TbStory.TB_STORY, "tb_story_pkey", TbStory.TB_STORY.ID);
         public static final UniqueKey<TbStoryRecord> SID_UQX = Internal.createUniqueKey(TbStory.TB_STORY, "sid_uqx", TbStory.TB_STORY.SID);
         public static final UniqueKey<TbUserRecord> TB_USER_PKEY = Internal.createUniqueKey(TbUser.TB_USER, "tb_user_pkey", TbUser.TB_USER.ID);
         public static final UniqueKey<TbUserRecord> EMAIL_UQX = Internal.createUniqueKey(TbUser.TB_USER, "email_uqx", TbUser.TB_USER.EMAIL);
-        public static final UniqueKey<TbUserRecord> MOBILE_UQX = Internal.createUniqueKey(TbUser.TB_USER, "mobile_uqx", TbUser.TB_USER.MOBILE);
     }
 }

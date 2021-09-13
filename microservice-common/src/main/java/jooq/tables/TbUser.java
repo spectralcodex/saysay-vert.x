@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbUser extends TableImpl<TbUserRecord> {
 
-    private static final long serialVersionUID = 1499942948;
+    private static final long serialVersionUID = -353094339;
 
     /**
      * The reference instance of <code>public.tb_user</code>
@@ -85,7 +85,7 @@ public class TbUser extends TableImpl<TbUserRecord> {
     /**
      * The column <code>public.tb_user.mobile</code>.
      */
-    public final TableField<TbUserRecord, String> MOBILE = createField("mobile", org.jooq.impl.SQLDataType.VARCHAR(50).nullable(false), this, "");
+    public final TableField<TbUserRecord, String> MOBILE = createField("mobile", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>public.tb_user.hashedpassword</code>.
@@ -213,7 +213,7 @@ public class TbUser extends TableImpl<TbUserRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.EMAIL_UQX, Indexes.MOBILE_UQX, Indexes.TB_USER_PKEY);
+        return Arrays.<Index>asList(Indexes.EMAIL_UQX, Indexes.TB_USER_PKEY);
     }
 
     /**
@@ -237,7 +237,7 @@ public class TbUser extends TableImpl<TbUserRecord> {
      */
     @Override
     public List<UniqueKey<TbUserRecord>> getKeys() {
-        return Arrays.<UniqueKey<TbUserRecord>>asList(Keys.TB_USER_PKEY, Keys.EMAIL_UQX, Keys.MOBILE_UQX);
+        return Arrays.<UniqueKey<TbUserRecord>>asList(Keys.TB_USER_PKEY, Keys.EMAIL_UQX);
     }
 
     /**

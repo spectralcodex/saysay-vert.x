@@ -5,7 +5,7 @@
 -- Dumped from database version 13.3
 -- Dumped by pg_dump version 13.2
 
--- Started on 2021-09-11 07:32:17 GMT
+-- Started on 2021-09-13 16:38:51 GMT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -235,7 +235,7 @@ ALTER SEQUENCE public.tb_company_id_seq OWNED BY public.tb_company.id;
 
 CREATE TABLE public.tb_interest (
     id bigint NOT NULL,
-    iid character varying(30),
+    iid character varying(50),
     description text,
     name text,
     createdby character varying(255),
@@ -322,7 +322,7 @@ ALTER SEQUENCE public.tb_likes_id_seq OWNED BY public.tb_likes.id;
 
 CREATE TABLE public.tb_story (
     id bigint NOT NULL,
-    authorid character varying(30),
+    authorid character varying(50),
     entities text,
     sid character varying(255),
     lang character varying(2),
@@ -615,7 +615,7 @@ SELECT pg_catalog.setval('public.tb_company_id_seq', 8, true);
 -- Name: tb_interest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tb_interest_id_seq', 1, false);
+SELECT pg_catalog.setval('public.tb_interest_id_seq', 1, true);
 
 
 --
@@ -744,7 +744,7 @@ ALTER TABLE ONLY public.tb_user
     ADD CONSTRAINT tb_user_pkey PRIMARY KEY (id);
 
 
--- Completed on 2021-09-11 07:32:17 GMT
+-- Completed on 2021-09-13 16:38:51 GMT
 
 --
 -- PostgreSQL database dump complete

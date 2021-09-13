@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import jooq.tables.TbCategory;
 import jooq.tables.TbComment;
 import jooq.tables.TbCompany;
+import jooq.tables.TbInterest;
 import jooq.tables.TbLikes;
 import jooq.tables.TbSector;
 import jooq.tables.TbStory;
@@ -40,12 +41,12 @@ public class Indexes {
     public static final Index TB_COMMENT_PKEY = Indexes0.TB_COMMENT_PKEY;
     public static final Index PHONENUMBER_UQX = Indexes0.PHONENUMBER_UQX;
     public static final Index TB_COMPANY_PKEY = Indexes0.TB_COMPANY_PKEY;
+    public static final Index TB_INTEREST_PKEY = Indexes0.TB_INTEREST_PKEY;
     public static final Index TB_LIKES_PKEY = Indexes0.TB_LIKES_PKEY;
     public static final Index SECTOR_PKEY = Indexes0.SECTOR_PKEY;
     public static final Index SID_UQX = Indexes0.SID_UQX;
     public static final Index TB_STORY_PKEY = Indexes0.TB_STORY_PKEY;
     public static final Index EMAIL_UQX = Indexes0.EMAIL_UQX;
-    public static final Index MOBILE_UQX = Indexes0.MOBILE_UQX;
     public static final Index TB_USER_PKEY = Indexes0.TB_USER_PKEY;
 
     // -------------------------------------------------------------------------
@@ -57,12 +58,12 @@ public class Indexes {
         public static Index TB_COMMENT_PKEY = Internal.createIndex("tb_comment_pkey", TbComment.TB_COMMENT, new OrderField[] { TbComment.TB_COMMENT.ID }, true);
         public static Index PHONENUMBER_UQX = Internal.createIndex("phonenumber_uqx", TbCompany.TB_COMPANY, new OrderField[] { TbCompany.TB_COMPANY.PHONENUMBER }, true);
         public static Index TB_COMPANY_PKEY = Internal.createIndex("tb_company_pkey", TbCompany.TB_COMPANY, new OrderField[] { TbCompany.TB_COMPANY.ID }, true);
+        public static Index TB_INTEREST_PKEY = Internal.createIndex("tb_interest_pkey", TbInterest.TB_INTEREST, new OrderField[] { TbInterest.TB_INTEREST.ID }, true);
         public static Index TB_LIKES_PKEY = Internal.createIndex("tb_likes_pkey", TbLikes.TB_LIKES, new OrderField[] { TbLikes.TB_LIKES.ID }, true);
         public static Index SECTOR_PKEY = Internal.createIndex("sector_pkey", TbSector.TB_SECTOR, new OrderField[] { TbSector.TB_SECTOR.ID }, true);
         public static Index SID_UQX = Internal.createIndex("sid_uqx", TbStory.TB_STORY, new OrderField[] { TbStory.TB_STORY.SID }, true);
         public static Index TB_STORY_PKEY = Internal.createIndex("tb_story_pkey", TbStory.TB_STORY, new OrderField[] { TbStory.TB_STORY.ID }, true);
         public static Index EMAIL_UQX = Internal.createIndex("email_uqx", TbUser.TB_USER, new OrderField[] { TbUser.TB_USER.EMAIL }, true);
-        public static Index MOBILE_UQX = Internal.createIndex("mobile_uqx", TbUser.TB_USER, new OrderField[] { TbUser.TB_USER.MOBILE }, true);
         public static Index TB_USER_PKEY = Internal.createIndex("tb_user_pkey", TbUser.TB_USER, new OrderField[] { TbUser.TB_USER.ID }, true);
     }
 }
