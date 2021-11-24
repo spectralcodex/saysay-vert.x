@@ -2,7 +2,7 @@ version: "3"
 services:
 
   pg_db:
-    image: postgres
+    image: postgres:13
     container_name: pg_db
     environment:
       - POSTGRES_USER=postgres
