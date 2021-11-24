@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory extends TableImpl<TbStoryRecord> {
 
-    private static final long serialVersionUID = 92642412;
+    private static final long serialVersionUID = -1734998290;
 
     /**
      * The reference instance of <code>public.tb_story</code>
@@ -64,7 +64,7 @@ public class TbStory extends TableImpl<TbStoryRecord> {
     /**
      * The column <code>public.tb_story.authorid</code>.
      */
-    public final TableField<TbStoryRecord, String> AUTHORID = createField("authorid", org.jooq.impl.SQLDataType.VARCHAR(30), this, "");
+    public final TableField<TbStoryRecord, String> AUTHORID = createField("authorid", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>public.tb_story.entities</code>.
@@ -150,6 +150,11 @@ public class TbStory extends TableImpl<TbStoryRecord> {
      * The column <code>public.tb_story.createdon</code>.
      */
     public final TableField<TbStoryRecord, String> CREATEDON = createField("createdon", org.jooq.impl.SQLDataType.VARCHAR.defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
+
+    /**
+     * The column <code>public.tb_story.gpslocation</code>.
+     */
+    public final TableField<TbStoryRecord, String> GPSLOCATION = createField("gpslocation", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
 
     /**
      * Create a <code>public.tb_story</code> table reference

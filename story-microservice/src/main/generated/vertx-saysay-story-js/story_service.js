@@ -43,6 +43,7 @@ var StoryService = function(j_val) {
   var __super_retrieveAllStories = this.retrieveAllStories;
   var __super_updateStory = this.updateStory;
   var __super_deleteStory = this.deleteStory;
+  var __super_retrieveStoriesByLocation = this.retrieveStoriesByLocation;
   /**
 
    @public
@@ -235,6 +236,31 @@ var StoryService = function(j_val) {
       return that;
     } else if (typeof __super_deleteStory != 'undefined') {
       return __super_deleteStory.apply(this, __args);
+    }
+    else throw new TypeError('function invoked with invalid arguments');
+  };
+
+  /**
+   Delete all stories from the persistence
+
+   @public
+   @param location {string} 
+   @param resultHandler {function} the result handler will be called as soon as the stories have been removed. The async result indicates whether the operation was successful or not. 
+   @return {StoryService}
+   */
+  this.retrieveStoriesByLocation =  function(location, resultHandler) {
+    var __args = arguments;
+    if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+      j_storyService["retrieveStoriesByLocation(java.lang.String,io.vertx.core.Handler)"](__args[0], function(ar) {
+        if (ar.succeeded()) {
+          __args[1](utils.convReturnListSetJson(ar.result()), null);
+        } else {
+          __args[1](null, ar.cause());
+        }
+      }) ;
+      return that;
+    } else if (typeof __super_retrieveStoriesByLocation != 'undefined') {
+      return __super_retrieveStoriesByLocation.apply(this, __args);
     }
     else throw new TypeError('function invoked with invalid arguments');
   };

@@ -155,6 +155,11 @@ public class StoryServiceVertxProxyHandler extends ProxyHandler {
                         HelperUtils.createHandler(msg));
           break;
         }
+        case "retrieveStoriesByLocation": {
+          service.retrieveStoriesByLocation((java.lang.String)json.getValue("location"),
+                        HelperUtils.createListHandler(msg));
+          break;
+        }
         default: throw new IllegalStateException("Invalid action: " + action);
       }
     } catch (Throwable t) {

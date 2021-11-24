@@ -42,4 +42,6 @@ export default class StoryService {
   updateStory(story: any, resultHandler: (err: any, result: any) => any) : StoryService;
 
   deleteStory(id: string, resultHandler: (err: any, result: any) => any) : StoryService;
+
+  retrieveStoriesByLocation(location: string, resultHandler: (err: any, result: Array<Object>) => any) : StoryService;
 }

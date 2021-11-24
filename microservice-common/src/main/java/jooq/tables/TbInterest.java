@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbInterest extends TableImpl<TbInterestRecord> {
 
-    private static final long serialVersionUID = -1247029859;
+    private static final long serialVersionUID = -1981822501;
 
     /**
      * The reference instance of <code>public.tb_interest</code>
@@ -65,7 +65,7 @@ public class TbInterest extends TableImpl<TbInterestRecord> {
     /**
      * The column <code>public.tb_interest.iid</code>.
      */
-    public final TableField<TbInterestRecord, String> IID = createField("iid", org.jooq.impl.SQLDataType.VARCHAR(30), this, "");
+    public final TableField<TbInterestRecord, String> IID = createField("iid", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>public.tb_interest.description</code>.

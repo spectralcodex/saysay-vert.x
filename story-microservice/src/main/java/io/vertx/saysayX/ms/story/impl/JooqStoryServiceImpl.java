@@ -111,4 +111,11 @@ public class JooqStoryServiceImpl extends JooqRepositoryWrapper implements Story
                 .onComplete(resultHandler);
         return this;
     }
+
+    @Override
+    public StoryService retrieveStoriesByLocation(String location, Handler<AsyncResult<List<JsonObject>>> resultHandler) {
+        executor.findManyJson(dsl-> dsl.selectFrom(TB_STORY).where(TB_STORY.AUTHORID.eq(location)))
+                .onComplete(resultHandler);
+        return this;
+    }
 }

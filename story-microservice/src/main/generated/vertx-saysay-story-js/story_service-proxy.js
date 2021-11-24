@@ -198,6 +198,25 @@
       } else throw new TypeError('function invoked with invalid arguments');
     };
 
+    /**
+     Delete all stories from the persistence
+
+     @public
+     @param location {string} 
+     @param resultHandler {function} the result handler will be called as soon as the stories have been removed. The async result indicates whether the operation was successful or not. 
+     @return {StoryService}
+     */
+    this.retrieveStoriesByLocation =  function(location, resultHandler) {
+      var __args = arguments;
+      if (__args.length === 2 && typeof __args[0] === 'string' && typeof __args[1] === 'function') {
+        if (closed) {
+          throw new Error('Proxy is closed');
+        }
+        j_eb.send(j_address, {"location":__args[0]}, {"action":"retrieveStoriesByLocation"}, function(err, result) { __args[1](err, result && result.body); });
+        return that;
+      } else throw new TypeError('function invoked with invalid arguments');
+    };
+
   };
 
   if (typeof exports !== 'undefined') {

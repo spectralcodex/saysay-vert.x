@@ -175,6 +175,13 @@ public class TbStoryDao extends AbstractAsyncVertxDAO<TbStoryRecord, jooq.tables
     }
 
     /**
+     * Find records that have <code>gpslocation IN (values)</code> asynchronously
+     */
+    public Future<List<jooq.tables.pojos.TbStory>> findManyByGpslocation(Collection<String> values) {
+        return findManyByCondition(TbStory.TB_STORY.GPSLOCATION.in(values));
+    }
+
+    /**
      * Find a unique record that has <code>sid = value</code> asynchronously
      */
     public Future<jooq.tables.pojos.TbStory> findOneBySid(String value) {

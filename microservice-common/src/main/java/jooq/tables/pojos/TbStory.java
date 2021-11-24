@@ -24,7 +24,7 @@ import jooq.tables.interfaces.ITbStory;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TbStory implements VertxPojo, ITbStory {
 
-    private static final long serialVersionUID = -1137644579;
+    private static final long serialVersionUID = 1409500138;
 
     private Long    id;
     private String  authorid;
@@ -45,6 +45,7 @@ public class TbStory implements VertxPojo, ITbStory {
     private String  authorname;
     private String  companyname;
     private String  createdon;
+    private String  gpslocation;
 
     public TbStory() {}
 
@@ -68,6 +69,7 @@ public class TbStory implements VertxPojo, ITbStory {
         this.authorname = value.getAuthorname();
         this.companyname = value.getCompanyname();
         this.createdon = value.getCreatedon();
+        this.gpslocation = value.getGpslocation();
     }
 
     public TbStory(
@@ -89,7 +91,8 @@ public class TbStory implements VertxPojo, ITbStory {
         String  categoryid,
         String  authorname,
         String  companyname,
-        String  createdon
+        String  createdon,
+        String  gpslocation
     ) {
         this.id = id;
         this.authorid = authorid;
@@ -110,6 +113,7 @@ public class TbStory implements VertxPojo, ITbStory {
         this.authorname = authorname;
         this.companyname = companyname;
         this.createdon = createdon;
+        this.gpslocation = gpslocation;
     }
 
     @Override
@@ -322,6 +326,17 @@ public class TbStory implements VertxPojo, ITbStory {
     }
 
     @Override
+    public String getGpslocation() {
+        return this.gpslocation;
+    }
+
+    @Override
+    public TbStory setGpslocation(String gpslocation) {
+        this.gpslocation = gpslocation;
+        return this;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("TbStory (");
 
@@ -344,6 +359,7 @@ public class TbStory implements VertxPojo, ITbStory {
         sb.append(", ").append(authorname);
         sb.append(", ").append(companyname);
         sb.append(", ").append(createdon);
+        sb.append(", ").append(gpslocation);
 
         sb.append(")");
         return sb.toString();
@@ -377,6 +393,7 @@ public class TbStory implements VertxPojo, ITbStory {
         setAuthorname(from.getAuthorname());
         setCompanyname(from.getCompanyname());
         setCreatedon(from.getCreatedon());
+        setGpslocation(from.getGpslocation());
     }
 
     /**

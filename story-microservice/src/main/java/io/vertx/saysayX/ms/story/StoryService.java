@@ -110,7 +110,8 @@ public interface StoryService {
      * @param resultHandler the result handler will be called as soon as the stories have been removed. The async result indicates
      *                      whether the operation was successful or not.
      */
-    /*@Fluent
-    StoryService deleteAllAccounts(Handler<AsyncResult<Void>> resultHandler);
-    */
+
+    @Fluent
+    StoryService retrieveStoriesByLocation(String location, Handler<AsyncResult<List<JsonObject>>> resultHandler);
+
 }

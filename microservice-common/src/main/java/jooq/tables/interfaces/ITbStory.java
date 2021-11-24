@@ -215,6 +215,16 @@ public interface ITbStory extends VertxPojo, Serializable {
      */
     public String getCreatedon();
 
+    /**
+     * Setter for <code>public.tb_story.gpslocation</code>.
+     */
+    public ITbStory setGpslocation(String value);
+
+    /**
+     * Getter for <code>public.tb_story.gpslocation</code>.
+     */
+    public String getGpslocation();
+
     // -------------------------------------------------------------------------
     // FROM and INTO
     // -------------------------------------------------------------------------
@@ -326,6 +336,11 @@ public interface ITbStory extends VertxPojo, Serializable {
         } catch (java.lang.ClassCastException e) {
             throw new UnexpectedJsonValueType("createdon","java.lang.String",e);
         }
+        try {
+            setGpslocation(json.getString("gpslocation"));
+        } catch (java.lang.ClassCastException e) {
+            throw new UnexpectedJsonValueType("gpslocation","java.lang.String",e);
+        }
         return this;
     }
 
@@ -352,6 +367,7 @@ public interface ITbStory extends VertxPojo, Serializable {
         json.put("authorname",getAuthorname());
         json.put("companyname",getCompanyname());
         json.put("createdon",getCreatedon());
+        json.put("gpslocation",getGpslocation());
         return json;
     }
 
